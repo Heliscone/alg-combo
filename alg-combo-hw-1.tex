@@ -134,14 +134,14 @@
 \end{problem}
 \begin{proof}[Solution]
 \begin{enumerate}[{i}]
-    \item Let $\yen$ be the graph with vertices corresponding to the $n + 1$ possible states of the $n$ coins, and edges between states that differ in exactly one coin. The probability of moving to an adjacent edge on the graph is $\frac{1}{2}$. Thus, each coin flip can be modeled as a random walk on $\yen$. Starting at $\yen_n$ (all coins heads), we are after the probability of arriving back at $\yen_n$ after $m$ steps. For odd $m$, it is impossible for all coins to return to being heads, meaning that the probability is 0. 
+    \item Flipping a coin can be modeled by walking to an adjacent vertex on a hypercube, $Q_n$. Recall from lecture that the eigenvalues of $A(Q_n)$ are of the form $n-2i$ as $i$ ranges from $0$ to $n$, where $\lambda_i=n-2i$ has multiplicity $\binom{n}{i}$. Thus, after $m$ flips the eigenvalues of $A{(Q_n)}^m$ are of the form ${(n-2i)}^m$. The number of closed $m$-walks on $Q_n$ is then
     \begin{align*}
-        P_{ij} = \begin{cases}
-            \frac{1}{2} & \text{if } i \text{ and } j \text{ differ in exactly one coin} \\
-            0 & \text{otherwise}
-        \end{cases}
+        \sum_{i = 0}^{n} \binom{n}{i} (n-2i)^m
     \end{align*}
-    \item The probability of all coins having been flipped to tails is the same as the probability of moving from $\yen_n$ to $\yen_0$ after $m$ steps. 
+    In total, there are $n^m$ possible $m$-walks, so the probability that a given $m$-walk on this hypercube is closed, which is also the probability we end our $m$-flips with all heads, is $\frac{\sum_{i = 0}^{n} \binom{n}{i} (n-2i)^m}{n^m}$.
+
+    \item Flipping all coins to tails is the same as walking to the opposite vertex on the hypercube. FINISIH PROOF
+    \item START PROOF
 \end{enumerate}
 % \begin{enumerate}[(i)]
 %     \item By writing the chain of coins as a string of ones and zeros (where a zero corresponds to a tail), each flip changes exactly one digit. We can thus view the process of $m$ flips as an $m$-walk on an $n$-dimensional hypercube, making our probability \[\frac{\#\text{ closed }m-\text{walks from a given vertex to itself}}{\#m-\text{walks starting at a given vertex}},\]which is also \[\frac{\#\text{closed }m-\text{walks}}{\#m-\text{walks}}\text{ on }\ZZ_2^n.\] We find the number of closed $m$-walks on $\ZZ_2^n$ by finding the graph's eigenvalues. We view $\ZZ_2^n$ as the graph direct sum of $\ZZ_2^{n-1}$ and $\ZZ_2$, that is, a bipartite graph with partites of size $2^{n-1}$. From Q2(ii), for even $m$, we have \[2(2^{n-1}2^{n-1})^m=(2^{2n-2})^m+(-2^{2n-2})^m\] closed $m$-walks. For odd $m$, we have $0=(2^{2n-2})^m+(-2^{2n-2})^m$ closed $m$-walks. Therefore, $(2^{2n-2})^m+(-2^{2n-2})^m$ and $\sum\lambda_i^m$ agree for all positive $m$, so the eigenvalues are precisely $\pm2^{2n-2}$ and some number of $0$s. Thus, the number of closed $m$-walks is $(2^{2n-2})^m+(-2^{2n-2})^m$. There are naturally $n^m$ total possible $m$-walks,  by the combinatorial argument that we choose between $n$ coins to flip $m$ times (or that each edge has). Therefore, the probability that a given $m$-walk on this hypercube is closed, which is also the probability we end our $m$-flips with all heads, is \[\boxed{\frac{(4^{n-1})^m+(-4^{n-1})^m}{n^m}}.\]
@@ -163,7 +163,7 @@
     
 \end{problem}
 \begin{proof}
-    Recall from lecture that the eigenvalues of $Q_n$ are of the from $n-2i$ as $i$ ranges from $0$ to $n$, where $\lambda_i=n-2i$ has multiplicity $\binom{n}{i}$. Consider $A(Q_n)^2$. We aim to show that \[A(Q_n)^2=nI_n+2A(G_n)\] via a walk counting argument. $A(Q_n)^2_{ij}$ counts the number of $2$-walks from $i$ to $j$ (vertices on the hypercube). When $i=j$, this is precisely $\deg i=n$. When $i\neq j$, for there to be a $2$-walk from $i$ to $j$, we must have $\omega(i+j)=2$. Each step flips one coordinate of $i$, and since there must be exactly two coordinates to flip, we have $2!=2$ such walks. Thus, $A(Q_n)^2_{ij}=2$ when $\omega(i+j)=2$. $2A(G_n)$ is the matrix with $2$s when $\omega(i+j)=2$ and zeroes elsewhere, and $nI_n$ is the matrix with $n$s along the diagonal. Therefore, \[A(Q_n)^2=nI_n+2A(G_n),\] so for any given eigenvalue $\lambda_i$ of $Q_n$, since $A(Q_n)$ is diagonalizable, $\lambda_i^2$ is an eigenvalue of $A(Q_n)^2$. Thus,
+    Recall from lecture that the eigenvalues of $A(Q_n)$ are of the form $n-2i$ as $i$ ranges from $0$ to $n$, where $\lambda_i=n-2i$ has multiplicity $\binom{n}{i}$. Consider $A(Q_n)^2$. We aim to show that \[A(Q_n)^2=nI_n+2A(G_n)\] via a walk counting argument. $A(Q_n)^2_{ij}$ counts the number of $2$-walks from $i$ to $j$ (vertices on the hypercube). When $i=j$, this is precisely $\deg i=n$. When $i\neq j$, for there to be a $2$-walk from $i$ to $j$, we must have $\omega(i+j)=2$. Each step flips one coordinate of $i$, and since there must be exactly two coordinates to flip, we have $2!=2$ such walks. Thus, $A(Q_n)^2_{ij}=2$ when $\omega(i+j)=2$. $2A(G_n)$ is the matrix with $2$s when $\omega(i+j)=2$ and zeroes elsewhere, and $nI_n$ is the matrix with $n$s along the diagonal. Therefore, \[A(Q_n)^2=nI_n+2A(G_n),\] so for any given eigenvalue $\lambda_i$ of $Q_n$, since $A(Q_n)$ is diagonalizable, $\lambda_i^2$ is an eigenvalue of $A(Q_n)^2$. Thus,
     \begin{align*}
         \det(A(Q_n)^2-\lambda_i^2I_n)&=0\\
         \det(nI_n+2A(G_n)-\lambda_i^2I_n)&=0\\
