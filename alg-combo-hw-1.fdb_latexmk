@@ -1,21 +1,21 @@
 # Fdb version 4
-["cusdep asy pdf alg-combo-hw-1-1"] 0 "alg-combo-hw-1-1.asy" "alg-combo-hw-1-1.pdf" "alg-combo-hw-1-1" 1707239253.74893 -1
-  "alg-combo-hw-1-1.asy" 1707239253.62598 2117 0a45dce1c7ca1219f5731e9520b49ea9 "pdflatex"
+["cusdep asy pdf alg-combo-hw-1-1"] 0 "alg-combo-hw-1-1.asy" "alg-combo-hw-1-1.pdf" "alg-combo-hw-1-1" 1707257758.51294 -1
+  "alg-combo-hw-1-1.asy" 1707257758.40787 2117 0a45dce1c7ca1219f5731e9520b49ea9 "pdflatex"
   (generated)
   "alg-combo-hw-1-1.pdf"
   (rewritten before read)
-["cusdep asy pdf alg-combo-hw-1-2"] 0 "alg-combo-hw-1-2.asy" "alg-combo-hw-1-2.pdf" "alg-combo-hw-1-2" 1707239253.74889 -1
-  "alg-combo-hw-1-2.asy" 1707239253.62988 2223 0fa38049f503c6b9ef80ed3e00987f84 "pdflatex"
+["cusdep asy pdf alg-combo-hw-1-2"] 0 "alg-combo-hw-1-2.asy" "alg-combo-hw-1-2.pdf" "alg-combo-hw-1-2" 1707257758.5129 -1
+  "alg-combo-hw-1-2.asy" 1707257758.40989 2223 0fa38049f503c6b9ef80ed3e00987f84 "pdflatex"
   (generated)
   "alg-combo-hw-1-2.pdf"
   (rewritten before read)
-["cusdep asy pdf alg-combo-hw-1-3"] 0 "alg-combo-hw-1-3.asy" "alg-combo-hw-1-3.pdf" "alg-combo-hw-1-3" 1707239253.74882 -1
-  "alg-combo-hw-1-3.asy" 1707239253.63777 2228 7d18b9f67a771d9f88ac37593476ee7a "pdflatex"
+["cusdep asy pdf alg-combo-hw-1-3"] 1707251708.74821 "alg-combo-hw-1-3.asy" "alg-combo-hw-1-3.pdf" "alg-combo-hw-1-3" 1707257758.51283 0
+  "alg-combo-hw-1-3.asy" 1707257758.41796 2228 7d18b9f67a771d9f88ac37593476ee7a "pdflatex"
   (generated)
   "alg-combo-hw-1-3.pdf"
   (rewritten before read)
-["pdflatex"] 1707239252.31789 "/Users/evanlim/LaTeX/algebraic-combinatorics/alg-combo-hw-1.tex" "alg-combo-hw-1.pdf" "alg-combo-hw-1" 1707239253.74898 0
-  "/Users/evanlim/LaTeX/algebraic-combinatorics/alg-combo-hw-1.tex" 1707239251.95824 14015 1c85a4c78b925a318adbc8d7348b249a ""
+["pdflatex"] 1707257757.22597 "/Users/evanlim/LaTeX/algebraic-combinatorics/alg-combo-hw-1.tex" "alg-combo-hw-1.pdf" "alg-combo-hw-1" 1707257758.51297 0
+  "/Users/evanlim/LaTeX/algebraic-combinatorics/alg-combo-hw-1.tex" 1707257757.18299 11847 b55d4b9e44cb4737ec6d62eafda0f517 ""
   "/Users/evanlim/Library/texmf/tex/latex/evan/evan.sty" 1706637350.81615 21465 0ce1e2b173e919dee545912a162653e7 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -70,7 +70,6 @@
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb" 1248133631 32442 c975af247b6702f7ca0c299af3616b80 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
-  "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb" 1248133631 30273 87a352d78b6810ae5cfdc68d2fb827b2 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb" 1248133631 30212 b6aafa449db0097a6b9b890f66741063 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1248133631 31764 459c573c03a4949a528c2cc7f557e217 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
@@ -258,11 +257,11 @@
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "alg-combo-hw-1-1.pdf" 1706857221.78126 10053 15927c2863ef49bf3c3d5f4324faebca "cusdep asy pdf alg-combo-hw-1-1"
   "alg-combo-hw-1-2.pdf" 1707193543.18688 18703 975bc9365e1fccf02828b1580442a3b0 "cusdep asy pdf alg-combo-hw-1-2"
-  "alg-combo-hw-1-3.pdf" 1706860654.22365 10109 372759f17b11c231b98b785c66599cb2 "cusdep asy pdf alg-combo-hw-1-3"
-  "alg-combo-hw-1.aux" 1707239253.65847 1160 68b1731676fdbbe9f116b7ea15c01049 "pdflatex"
-  "alg-combo-hw-1.out" 1707239253.43511 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "alg-combo-hw-1.pre" 1707239253.6534 123 f1955cdd5251ecfe76a4b6adcd233779 "pdflatex"
-  "alg-combo-hw-1.tex" 1707239251.95824 14015 1c85a4c78b925a318adbc8d7348b249a ""
+  "alg-combo-hw-1-3.pdf" 1707251710.07938 10110 02bfa79e4ed5cd8cc45e384abc9ae78d "cusdep asy pdf alg-combo-hw-1-3"
+  "alg-combo-hw-1.aux" 1707257758.43572 1160 41c44f7a3273239662a94fcfccbcaf53 "pdflatex"
+  "alg-combo-hw-1.out" 1707257758.23984 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "alg-combo-hw-1.pre" 1707257758.43241 123 f1955cdd5251ecfe76a4b6adcd233779 "pdflatex"
+  "alg-combo-hw-1.tex" 1707257757.18299 11847 b55d4b9e44cb4737ec6d62eafda0f517 ""
   (generated)
   "alg-combo-hw-1-1.asy"
   "alg-combo-hw-1-2.asy"
