@@ -3,8 +3,8 @@
 \usepackage{asymptote}
 
 \title{Algebraic Combinatorics HW 1}
-\author{Evan Lim}
-\date{2-3-2024}
+\author{Evan Lim and Dallin Guisti}
+\date{2-6-2024}
 \definecolor{palegreen}{rgb}{0.6, 0.98, 0.6}
 \begin{document}
 \maketitle
@@ -13,9 +13,14 @@
     Find a combinatorial proof of the fact that $\#$ closed walks of length $l$ in $K_n$ from some vertex to itself is \[\frac{1}{n}\left((n-1)^l+(n-1)(-1)^l\right)\]
 \end{problem}
 \begin{proof}
-    We'll count the number of closed $l$-walks from $v_1$ to $v_1$, which, by symmetry, is the number of closed $l$-walks from any vertex to itself. We write each walk as an ordered list of vertices, so that we must find the number of walks \[v_1,v_{i_1},v_{i_2},\cdots,v_{i_{l-1}},v_1,\] where $v_{i_1}\neq v_1$, $v_{i_{l-1}}\neq v_1$, and $v_{i_k}\neq v_{i_{k+1}}$ for all $1\leq k\leq l-2$. We count starting with $(n-1)^l$, or the number of $l-1$-walks starting with $v_1$: each subsequent vertex is distinct from the preceding one, for $n-1$ options. However, we overcount by the number of sequences where $v_{i_{l-1}}=v_1$, which is the number of closed $l-1$-walks
+    We'll count the number of closed $l$-walks from $v_1$ to $v_1$, which, by symmetry, is the number of closed $l$-walks from any vertex to itself. We write each walk as an ordered list of vertices, so that we must find the number of walks 
+    \[v_1,v_{i_1},v_{i_2},\cdots,v_{i_{l-1}},v_1\] with adjacent vertices distinct, so $v_{i_k}\neq v_{i_{k+1}}$ and $v_{i_1},v_{i_{l-1}}\neq v_1$. 
+    
+    We start our count with the number of valid walks when neglecting the $v_{i_{l-1}}\neq v_1$ constraint: there are $(n-1)^{l-1}$ such walks ($l-1$-walks beginning at $v_1$). 
+    
+    We then must subtract the number of sequences where $v_{i_{l-1}}=v_1$, (the number of closed $l-1$-walks)
     \footnote{This suggests that we could complete via an inductive proof, using \[(n-1)^{l}-\frac{1}{n}\left((n-1)^{l-1}+(n-1)(-1)^{l-1}\right)=\frac{1}{n}\left((n-1)^{l}+(n-1)(-1)^l\right).\]}. 
-    The idea is that we take any $l-1$-walk, and make our next step $v_1$, but we need to subtract the closed $l-1$ walks, which would make our final step impossible. Repeating the same reasoning, we can find the number of closed $l-1$-walks by taking $(n-1)^{l-1}$ and then subtracting the number of closed $l-2$-walks. In this way, and finishing with $n-1$ $2$-walks, the number of closed $l$-walks from a vertex to itself is
+    Repeating the same reasoning, we find the number of closed $l-1$-walks by taking $(n-1)^{l-2}$ and then subtracting the number of closed $l-2$-walks. In this way, and finishing with $n-1$ $2$-walks, the number of closed $l$-walks from a vertex to itself is
     \begin{align*}
         &(n-1)^{l-1}-(n-1)^{l-2}+(n-1)^{l-3}+\cdots+(-1)^l(n-1)\\
         &=\sum_{k=1}^{l-1}(n-1)^k(-1)^{l-1+k}\\
@@ -60,7 +65,7 @@
         \end{asy}
     \end{center}
     \begin{enumerate}[(i)]
-        \item Every step on a walk takes us between partites sets $A$ and $B$. Thus, there are no $2l+1$-walks, meaning that \[\sum (\lambda_i)^{2l+1}=0,\] so \[\sum(-\lambda_i)^{2l+1}=-\sum(\lambda_i)^{2l+1}=0=\sum (\lambda_i)^{2l+1}.\] As $\sum(\lambda_i)^{2l}=\sum(-\lambda_i)^{2l}$, $\sum\lambda_i^k$ and $\sum(-\lambda_i)^k$ agree for all positive integers $k$, so the $-\lambda_i$ are simply a permutation of the $\lambda_i$, meaning that all nonzero eigenvalues come in $\pm\lambda$ pairs.
+        \item Every step on a walk takes us between partite sets $A$ and $B$. Thus, there are no $2l+1$-walks, meaning that \[\sum (\lambda_i)^{2l+1}=0,\] so \[\sum(-\lambda_i)^{2l+1}=-\sum(\lambda_i)^{2l+1}=0=\sum (\lambda_i)^{2l+1}.\] As $\sum(\lambda_i)^{2l}=\sum(-\lambda_i)^{2l}$, $\sum\lambda_i^k$ and $\sum(-\lambda_i)^k$ agree for all positive integers $k$, so the $-\lambda_i$ are simply a permutation of the $\lambda_i$, meaning that all nonzero eigenvalues come in $\pm\lambda$ pairs.
         \begin{center}
             \begin{asy}
                 size(3cm);
@@ -81,7 +86,7 @@
                 dot(A1); dot(A2); dot(A3); dot(B1); dot(B2); dot(B3);
             \end{asy}
         \end{center}
-        \item Call the partite with $r$ elements $A$ and the partite with $s$ elements $B$. If $l$ is odd, there are zero walks. So, we assume $l$ is even. If we begin our $l$-walk in $A$, we know go from $A$ to $B$ $l$ times and $B$ to $A$ $l$ times. Each time we go from $A$ to $B$, we have $s$ options. Each time we go from $B$ to $A$, we have $r$ options, except the last step, at which point we must return to our original vertex, for which we have $r$ choices. There are thus $s^{l}r^{l-1}r=(rs)^l$ $l$-walks beginning in $A$, and an identical argument gives $(rs)^l$ $l$-walks beginning in $B$. There are thus \[\begin{cases}0&l\equiv1\pmod{2}\\2(rs)^l&l\equiv0\pmod{2}\end{cases}\] $l$-walks.
+        \item Call the partite with $r$ elements $A$ and the partite with $s$ elements $B$. If $l$ is odd, there are zero walks. So, we assume $l$ is even. If we begin our $l$-walk in $A$, we know go from $A$ to $B$ $l$ times and $B$ to $A$ $l$ times. Each time we go from $A$ to $B$, we have $s$ options. Each time we go from $B$ to $A$, we have $r$ options, except the last step, at which point we must return to our original vertex, for which we have $r$ choices. There are thus $s^{l}r^{l-1}r=(rs)^l$ $l$-walks beginning in $A$, and an identical argument gives $(rs)^l$ $l$-walks beginning in $B$. There are thus \[\begin{cases}0&l\text{ odd}\\2(rs)^l&l\text{ even}\end{cases}\] $l$-walks.
         \item $\sum\lambda_i^l$ and $(rs)^l+(-rs)^l+(n-2)\cdot(0)^l$ agree for all positive $l$, so the eigenvalues of $K_{r,s}$ are \[\pm rs,0\text{ }(r+s-2\text{ times}).\]
         We now consider the $K_{n,n}-nK_2$ graph, providing $n=3$ as an example:
         \begin{center}
@@ -104,7 +109,7 @@
                 dot(A1); dot(A2); dot(A3); dot(B1); dot(B2); dot(B3);
             \end{asy}
         \end{center}
-        \item We aim to find the number of $l$-walks (for even $l$) on $K_{n,n}-nK_2$. If we write the partites as $a_1,a_2,\cdots, a_n$ and $b_1,b_2,\cdots,b_n$ such that the $a_i$ and $b_i$ are not connected, but $a_i$ and $b_j$ for $i\neq j$ are connected, then our walk-counting problem becomes analogous to the $K_n$ problem. Any valid will alternate between $A$ and $B$, but have \textit{no index repeated twice in a row}. That is, $a_1b_2$ is a valid step, while $a_1b_1$ is not. We can use this to establish an bijection between $l$-walks starting in $A$ and $l$-walks on $K_n$, meaning that the \textit{total} number of $l$-walks on $K_{n,n}-nK_2$ is \[2n\left(\frac{1}{n}\left((n-1)^l+(n-1)(-1)^l\right)\right)=2(n-1)^l+2(n-1)(-1)^l.\] For odd $l$, the number of walks is clearly $0$, and so $\sum\lambda_i^l$ agrees for all positive $l$ with \[(n-1)^l+(1-n)^l+(n-1)((-1)^l+(1)^l),\] meaning that our eigenvalues are \[\pm 1(n-1\text{ times}),\pm(n-1)\text{(once each)}.\]
+        \item We aim to find the number of $l$-walks (for even $l$) on $K_{n,n}-nK_2$. If we write the partites as $a_1,a_2,\cdots, a_n$ and $b_1,b_2,\cdots,b_n$ such that the $a_i$ and $b_i$ are not connected, but $a_i$ and $b_j$ for $i\neq j$ are connected, then our walk-counting problem becomes analogous to the $K_n$ problem. Any valid will alternate between $A$ and $B$, but have \textit{no index repeated twice in a row}. That is, $a_1b_2$ is a valid step, while $a_1b_1$ is not. We can use this to establish an bijection between $l$-walks starting in $A$ and $l$-walks on $K_n$, meaning that the \textit{total} number of $l$-walks on $K_{n,n}-nK_2$ is \[2n\left(\frac{1}{n}\left((n-1)^l+(n-1)(-1)^l\right)\right)=2(n-1)^l+2(n-1)(-1)^l.\] For odd $l$, the number of walks is $0$, and so $\sum\lambda_i^l$ agrees for all positive $l$ with \[(n-1)^l+(1-n)^l+(n-1)((-1)^l+(1)^l),\] meaning that our eigenvalues are \[\pm 1(n-1\text{ times}),\pm(n-1)\text{(once each)}.\]
     \end{enumerate}
 \end{proof}
 \begin{problem}[\textcolor{red}{On the largest eigenvalue of $A(G)$}; \textbf{Extra credit}]\phantom{0}
@@ -128,19 +133,43 @@
 \end{enumerate}
 \end{problem}
 \begin{proof}[Solution]
-\begin{enumerate}[(i)]
-    \item By writing the chain of coins as a string of ones and zeros (where a zero corresponds to a tail), each flip changes exactly one digit. We can thus view the process of $m$ flips as an $m$-walk on an $n$-dimensional hypercube, making our probability \[\frac{\#\text{ closed }m-\text{walks from a given vertex to itself}}{\#m-\text{walks starting at a given vertex}},\]which is also \[\frac{\#\text{closed }m-\text{walks}}{\#m-\text{walks}}\text{ on }\ZZ_2^n.\] We find the number of closed $m$-walks on $\ZZ_2^n$ by finding the graph's eigenvalues. We view $\ZZ_2^n$ as the graph direct sum of $\ZZ_2^{n-1}$ and $\ZZ_2$, that is, a bipartite graph with partites of size $2^{n-1}$. From Q2(ii), for even $m$, we have \[2(2^{n-1}2^{n-1})^m=(2^{2n-2})^m+(-2^{2n-2})^m\] closed $m$-walks. For odd $m$, we have $0=(2^{2n-2})^m+(-2^{2n-2})^m$ closed $m$-walks. Therefore, $(2^{2n-2})^m+(-2^{2n-2})^m$ and $\sum\lambda_i^m$ agree for all positive $m$, so the eigenvalues are precisely $\pm2^{2n-2}$ and some number of $0$s. Thus, the number of closed $m$-walks is $(2^{2n-2})^m+(-2^{2n-2})^m$. There are naturally $n^m$ total possible $m$-walks,  by the combinatorial argument that we choose between $n$ coins to flip $m$ times (or that each edge has). Therefore, the probability that a given $m$-walk on this hypercube is closed, which is also the probability we end our $m$-flips with all heads, is \[\boxed{\frac{(4^{n-1})^m+(-4^{n-1})^m}{n^m}}.\]
-    \item We want to find the number of $m$-walks from vertex $\underbrace{000\cdots000}_{n\text{ zeroes}}$ to vertex $\underbrace{111\cdots111}_{n\text{ ones}}$, which is $(A(G)^m)_{0,2^n}$. Note that since the eigenvalues we previously found are $\pm2^{2n-2}$ and $2^{n}-2$ zeroes, we can diagonalize \[A(G)=S\mathop{\mathrm{diag}}(2^{2n-2},-2^{2n-2},\underbrace{0,0,0,\cdots,0}_{2^n-2})S^{-1},\] with some permutation of these diagonal elements. Then, 
+\begin{enumerate}[{i}]
+    \item Let $\yen$ be the graph with vertices corresponding to the $n + 1$ possible states of the $n$ coins, and edges between states that differ in exactly one coin. The probability of moving to an adjacent edge on the graph is $\frac{1}{2}$. Thus, each coin flip can be modeled as a random walk on $\yen$. Starting at $\yen_n$ (all coins heads), we are after the probability of arriving back at $\yen_n$ after $m$ steps. For odd $m$, it is impossible for all coins to return to being heads, meaning that the probability is 0. 
     \begin{align*}
-        (A(G))^{k+2}&=S\mathop{\mathrm{diag}}(2^{(2n-2)(k+2)},(-2^{2n-2})^{k+2},0,\cdots)S^{-1}\\
-        &=S\mathop{\mathrm{diag}}((2^{2n-2})^22^{(2n-2)(k)},(2^{2n-2})^2(-2^{2n-2})^{k},0,\cdots)S^{-1}\\
-        &=2^{4n-4}S\mathop{\mathrm{diag}}(2^{(2n-2)k},(-2^{2n-2})^{k},0,\cdots)S^{-1}\\
-        &=2^{4n-4}(A(G))^k,
+        P_{ij} = \begin{cases}
+            \frac{1}{2} & \text{if } i \text{ and } j \text{ differ in exactly one coin} \\
+            0 & \text{otherwise}
+        \end{cases}
     \end{align*}
-    so if we know the number of valid $m$-walks, we know the number of valid $m+2c$ walks. That is, if we know the number of ways to go from all heads to all tails in $m$ moves, we know the number of ways to do so in all $m+2c$ moves. The fewest number of moves in which we could flip from all heads to all tails is $n$, which is simply flipping each coin. There are also naturally $n!$ ways to do our flipping in $n$ moves, so if $m$ is the same parity as $n$, the number of valid $m$-walks is \[2^{(4n-4)\frac{m-n}{2}}n!=4^{(n-2)(m-n)}n!.\] Notice that, by the coin-flipping mechanism, when the $m$ and $n$ are not the same parity, we have no possibilities (we will be in the wrong partite of the graph). \[\frac{4^{(n-2)(m-n)}n!}{n^m}\] FINISH EXPLANATION
+    \item The probability of all coins having been flipped to tails is the same as the probability of moving from $\yen_n$ to $\yen_0$ after $m$ steps. 
 \end{enumerate}
+% \begin{enumerate}[(i)]
+%     \item By writing the chain of coins as a string of ones and zeros (where a zero corresponds to a tail), each flip changes exactly one digit. We can thus view the process of $m$ flips as an $m$-walk on an $n$-dimensional hypercube, making our probability \[\frac{\#\text{ closed }m-\text{walks from a given vertex to itself}}{\#m-\text{walks starting at a given vertex}},\]which is also \[\frac{\#\text{closed }m-\text{walks}}{\#m-\text{walks}}\text{ on }\ZZ_2^n.\] We find the number of closed $m$-walks on $\ZZ_2^n$ by finding the graph's eigenvalues. We view $\ZZ_2^n$ as the graph direct sum of $\ZZ_2^{n-1}$ and $\ZZ_2$, that is, a bipartite graph with partites of size $2^{n-1}$. From Q2(ii), for even $m$, we have \[2(2^{n-1}2^{n-1})^m=(2^{2n-2})^m+(-2^{2n-2})^m\] closed $m$-walks. For odd $m$, we have $0=(2^{2n-2})^m+(-2^{2n-2})^m$ closed $m$-walks. Therefore, $(2^{2n-2})^m+(-2^{2n-2})^m$ and $\sum\lambda_i^m$ agree for all positive $m$, so the eigenvalues are precisely $\pm2^{2n-2}$ and some number of $0$s. Thus, the number of closed $m$-walks is $(2^{2n-2})^m+(-2^{2n-2})^m$. There are naturally $n^m$ total possible $m$-walks,  by the combinatorial argument that we choose between $n$ coins to flip $m$ times (or that each edge has). Therefore, the probability that a given $m$-walk on this hypercube is closed, which is also the probability we end our $m$-flips with all heads, is \[\boxed{\frac{(4^{n-1})^m+(-4^{n-1})^m}{n^m}}.\]
+%     \item We want to find the number of $m$-walks from vertex $\underbrace{000\cdots000}_{n\text{ zeroes}}$ to vertex $\underbrace{111\cdots111}_{n\text{ ones}}$, which is $(A(G)^m)_{0,2^n}$. Note that since the eigenvalues we previously found are $\pm2^{2n-2}$ and $2^{n}-2$ zeroes, we can diagonalize \[A(G)=S\mathop{\mathrm{diag}}(2^{2n-2},-2^{2n-2},\underbrace{0,0,0,\cdots,0}_{2^n-2})S^{-1},\] with some permutation of these diagonal elements. Then, 
+%     \begin{align*}
+%         (A(G))^{k+2}&=S\mathop{\mathrm{diag}}(2^{(2n-2)(k+2)},(-2^{2n-2})^{k+2},0,\cdots)S^{-1}\\
+%         &=S\mathop{\mathrm{diag}}((2^{2n-2})^22^{(2n-2)(k)},(2^{2n-2})^2(-2^{2n-2})^{k},0,\cdots)S^{-1}\\
+%         &=2^{4n-4}S\mathop{\mathrm{diag}}(2^{(2n-2)k},(-2^{2n-2})^{k},0,\cdots)S^{-1}\\
+%         &=2^{4n-4}(A(G))^k,
+%     \end{align*}
+%     so if we know the number of valid $m$-walks, we know the number of valid $m+2c$ walks. That is, if we know the number of ways to go from all heads to all tails in $m$ moves, we know the number of ways to do so in all $m+2c$ moves. The fewest number of moves in which we could flip from all heads to all tails is $n$, which is simply flipping each coin. There are also naturally $n!$ ways to do our flipping in $n$ moves, so if $m$ is the same parity as $n$, the number of valid $m$-walks is \[2^{(4n-4)\frac{m-n}{2}}n!=4^{(n-2)(m-n)}n!.\] Notice that, by the coin-flipping mechanism, when the $m$ and $n$ are not the same parity, we have no possibilities (we will be in the wrong partite of the graph). \[\frac{4^{(n-2)(m-n)}n!}{n^m}\] FINISH EXPLANATION
+%     this is the one that's kind of sketchy to me...
+% i had an idea, dallin! OH SHUSH
+% \end{enumerate}
+
 \end{proof}
 \begin{problem}
     Let $G_n$ be the graph with vertex set $\ZZ_2^n$ with the edge set defined as: $u$ and $v$ are adjacent iff they differ in exactly two coordinates (that is, $\omega(u+v)=2$). What are the eigenvalues of $G_n$?
+    
 \end{problem}
+\begin{proof}
+    Recall from lecture that the eigenvalues of $Q_n$ are of the from $n-2i$ as $i$ ranges from $0$ to $n$, where $\lambda_i=n-2i$ has multiplicity $\binom{n}{i}$. Consider $A(Q_n)^2$. We aim to show that \[A(Q_n)^2=nI_n+2A(G_n)\] via a walk counting argument. $A(Q_n)^2_{ij}$ counts the number of $2$-walks from $i$ to $j$ (vertices on the hypercube). When $i=j$, this is precisely $\deg i=n$. When $i\neq j$, for there to be a $2$-walk from $i$ to $j$, we must have $\omega(i+j)=2$. Each step flips one coordinate of $i$, and since there must be exactly two coordinates to flip, we have $2!=2$ such walks. Thus, $A(Q_n)^2_{ij}=2$ when $\omega(i+j)=2$. $2A(G_n)$ is the matrix with $2$s when $\omega(i+j)=2$ and zeroes elsewhere, and $nI_n$ is the matrix with $n$s along the diagonal. Therefore, \[A(Q_n)^2=nI_n+2A(G_n),\] so for any given eigenvalue $\lambda_i$ of $Q_n$, since $A(Q_n)$ is diagonalizable, $\lambda_i^2$ is an eigenvalue of $A(Q_n)^2$. Thus,
+    \begin{align*}
+        \det(A(Q_n)^2-\lambda_i^2I_n)&=0\\
+        \det(nI_n+2A(G_n)-\lambda_i^2I_n)&=0\\
+        \det(2A(G_n)-(\lambda_i^2-n)I_n)&=0\\
+        \det\left(A(G_n)-\frac{\lambda_i^2-n}{2}I_n\right)&=0,
+    \end{align*} 
+    so $\frac{\lambda_i^2-n}{2}=\frac{(n-2i)^2-n}{2}$ is an eigenvalue of $G_n$, as $i$ ranges from $0$ to $n$.
+\end{proof}
 \end{document}
