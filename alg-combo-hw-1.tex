@@ -122,12 +122,12 @@
 \end{problem}
 \begin{proof}
     \begin{enumerate}[(i)]
-        \item Let $\lambda_1$ be the largest eigenvalue of $A(G)$, and let $v$ be the corresponding eigenvector. Thus, $A(g)v = \lambda_1 v$ and therefore $\sum_{i} {A_{ij}v_i} = \lambda_1 v_j$ for every $j$. Therefore we have
-        \begin{align*}
-            |\lambda_1| |v_j| &= \left|\sum_{i} {A_{ij}v_i}\right| \\
-            |\lambda_1| &\leq \left|\sum_{i} {A_{ij}}\right| = \sum_{i} {A_{ij}} = \deg(j).
-        \end{align*}
-        Therefore, $\lambda_1 \leq \max_j \deg(j) = \Delta(G)$.
+        \item Let $u$ be the corresponding eigenvector to the eigenvalue $\lambda_1$. By computation of $A(G)u = \lambda_1 u$, we see $\sum_{i} {A_{ij}u_i} = \lambda_1 u_j$ for every index $j$ of $u$. Choose $j$ such that $u_j$ is maximal magnitude. It follows that
+            \[|\lambda_1| |u_j| = \left|\sum_{i} {A_{ij}u_i}\right|=|u_i|\left|\sum_i A_{ij}\right|\leq |u_j||\deg(v_j)|,\] 
+            so 
+           \[\lambda_1\leq|\lambda_1| \leq|\deg(v_j)|\leq\Delta(G),\]
+        as desired.
+        \item Since $G$ is simple (no loops), its adjacency matrix is traceless, so the sum of its eigenvalues is zero. The number of two walks is both the sum of the squares of the eigenvalues and $2m$ (each edge corresponds to two $2$-walks), so \[\lambda_1^2=\left(-\sum_{i=2}^n1\cdot\lambda_i\right)^2\leq \left(\sum_{i=2}^n1^2\right)\left(\sum_{i=2}^n\lambda_i^2\right)=(n-1)(2m-\lambda_1^2).\] It follows that \[\lambda_1^2\leq \frac{(n-1)2m}{n}\leq 2m,\] so $\lambda_1\leq \sqrt{2m}$.
     \end{enumerate}
 \end{proof}
 \begin{problem}
@@ -150,7 +150,14 @@
     so the desired probability is \[\dfrac{\sum_{i = 0}^{n} \binom{n}{i} (n-2i)^m}{n^m}.\]
 
     \item Starting with all heads and ending with all tails is akin to walking from $v_1$ to $v_{2^n}$. So, we seek the ratio \[\frac{((A(Q_n))^m)_{1,2^n}}{n^m},\] and applying Corollary 2.5 from the textbook gives a probability of \[\frac{\sum_{i=0}^n\sum_{j=0}^k(-1)^j\dbinom{k}{j}\dbinom{n-k}{i-j}(n-2i)^l}{2^nn^m}.\]
-    \item The adjacency matrix $A(Q_n)^2$ represents the number of ways to flip two coins, but it allows us to flip the same coin twice in a row, result in nonzero diagonals. Thus, if we subtract some scalar multiple of the identity from $A(Q_n)^2$, yielding a matrix with zeroes along the diagonal, we have the adjacency matrix representing the two-flip graph. Each $a_{ii}$ 
+    \item We aim to find the adjacency matrix $A(G)$ of the graph represented by flipping two coins at a time. $A(Q_n)^2$ represents the number of ways to flip two coins, but it allows us to flip the same coin twice in a row, result in nonzero diagonals that we must eliminate. Each $(A(Q_n))^2_{ii}=n$ because we have $n$ coins that we can flip and then un-flip. One further consideration is that $A(Q_n)^2-nI_n$ eliminates the loops, but still overcounts by a factor of two (it regards flipping $A$ then $B$ as distinct from flipping $B$ then $A$). Thus, \[A(G)=\frac12(A(Q_n)^2-nI_n),\] from which we find that the eigenvalues of $A(G)$ are simply the eigenvalues of $A(Q_n)^2$ shifted by $n$, noting that
+    \begin{align*}
+        \det(A(Q_n)^2-\lambda_iI_n)&=0\\
+        \det(A(Q_n)^2-nI_n-(\lambda_i-n)I_n)&=0\\
+        \det\left(\frac12(A(Q_n)^2-nI_n)-\frac{\lambda_i-n}{2}I_n\right)&=0\\
+        \det\left(A(G)-\frac{\lambda_i-n}{2}I_n\right)&=0.
+    \end{align*}
+    The eigenvalues of $A(Q_n)^2$ are $(n-2i)^2$ for $0\leq i\leq n$ with multiplicity $\binom n i$. So, the eigenvalues of $A(G)$ are \[\frac{(n-2i)^2-n}{2}\] as $i$ ranges from $0$ to $n$ with multiplicity $\binom n i$. The number of closed $m$-walks beginning at the zero vertex is then \[\frac{1}{n}\sum_{i=0}^n\binom n i\left(\frac{(n-2i)^2-n}{2}\right)^m,\] and since there are $\binom{n}{2}^m$ total $m$-walks beginning at the zero vertex, our probability is \[\frac{\sum_{i=0}^n\binom n i\left(\frac{(n-2i)^2-n}{2}\right)^m}{n\frac{(n^2-n)^m}{2^m}}=\frac{\sum_{i=0}^n\binom n i ((n-2i)^2-n)^m}{n(n^2-n)^m}.\]
 \end{enumerate}
 \end{proof}
 \begin{problem}
