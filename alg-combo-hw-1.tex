@@ -122,7 +122,12 @@
 \end{problem}
 \begin{proof}
     \begin{enumerate}[(i)]
-        \item 
+        \item Let $\lambda_1$ be the largest eigenvalue of $A(G)$, and let $v$ be the corresponding eigenvector. Thus, $A(g)v = \lambda_1 v$ and therefore $\sum_{i} {A_{ij}v_i} = \lambda_1 v_j$ for every $j$. Therefore we have
+        \begin{align*}
+            |\lambda_1| |v_j| &= \left|\sum_{i} {A_{ij}v_i}\right| \\
+            |\lambda_1| &\leq \left|\sum_{i} {A_{ij}}\right| = \sum_{i} {A_{ij}} = \deg(j).
+        \end{align*}
+        Therefore, $\lambda_1 \leq \max_j \deg(j) = \Delta(G)$.
     \end{enumerate}
 \end{proof}
 \begin{problem}
