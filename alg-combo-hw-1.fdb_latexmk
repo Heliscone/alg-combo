@@ -1,21 +1,21 @@
 # Fdb version 4
-["cusdep asy pdf alg-combo-hw-1-1"] 1707324584.56687 "alg-combo-hw-1-1.asy" "alg-combo-hw-1-1.pdf" "alg-combo-hw-1-1" 1707327548.22119 0
-  "alg-combo-hw-1-1.asy" 1707327548.10747 2117 0a45dce1c7ca1219f5731e9520b49ea9 "pdflatex"
+["cusdep asy pdf alg-combo-hw-1-1"] 1707324584.56687 "alg-combo-hw-1-1.asy" "alg-combo-hw-1-1.pdf" "alg-combo-hw-1-1" 1707327720.73441 0
+  "alg-combo-hw-1-1.asy" 1707327720.62434 2117 0a45dce1c7ca1219f5731e9520b49ea9 "pdflatex"
   (generated)
   "alg-combo-hw-1-1.pdf"
   (rewritten before read)
-["cusdep asy pdf alg-combo-hw-1-2"] 1707324584.0548 "alg-combo-hw-1-2.asy" "alg-combo-hw-1-2.pdf" "alg-combo-hw-1-2" 1707327548.22115 0
-  "alg-combo-hw-1-2.asy" 1707327548.10961 2223 0fa38049f503c6b9ef80ed3e00987f84 "pdflatex"
+["cusdep asy pdf alg-combo-hw-1-2"] 1707324584.0548 "alg-combo-hw-1-2.asy" "alg-combo-hw-1-2.pdf" "alg-combo-hw-1-2" 1707327720.73437 0
+  "alg-combo-hw-1-2.asy" 1707327720.62617 2223 0fa38049f503c6b9ef80ed3e00987f84 "pdflatex"
   (generated)
   "alg-combo-hw-1-2.pdf"
   (rewritten before read)
-["cusdep asy pdf alg-combo-hw-1-3"] 1707324583.37757 "alg-combo-hw-1-3.asy" "alg-combo-hw-1-3.pdf" "alg-combo-hw-1-3" 1707327548.22104 0
-  "alg-combo-hw-1-3.asy" 1707327548.11779 2228 7d18b9f67a771d9f88ac37593476ee7a "pdflatex"
+["cusdep asy pdf alg-combo-hw-1-3"] 1707324583.37757 "alg-combo-hw-1-3.asy" "alg-combo-hw-1-3.pdf" "alg-combo-hw-1-3" 1707327720.73429 0
+  "alg-combo-hw-1-3.asy" 1707327720.63322 2228 7d18b9f67a771d9f88ac37593476ee7a "pdflatex"
   (generated)
   "alg-combo-hw-1-3.pdf"
   (rewritten before read)
-["pdflatex"] 1707327546.8024 "/Users/evanlim/LaTeX/algebraic-combinatorics/alg-combo-hw-1.tex" "alg-combo-hw-1.pdf" "alg-combo-hw-1" 1707327548.22123 0
-  "/Users/evanlim/LaTeX/algebraic-combinatorics/alg-combo-hw-1.tex" 1707327546.62386 14034 4e634f5d78cb6237ef64166c4bee2d8e ""
+["pdflatex"] 1707327719.3966 "/Users/evanlim/LaTeX/algebraic-combinatorics/alg-combo-hw-1.tex" "alg-combo-hw-1.pdf" "alg-combo-hw-1" 1707327720.73445 0
+  "/Users/evanlim/LaTeX/algebraic-combinatorics/alg-combo-hw-1.tex" 1707327719.05885 14034 4761eebf0e8f491bac59ca22dded1083 ""
   "/Users/evanlim/Library/texmf/tex/latex/evan/evan.sty" 1706637350.81615 21465 0ce1e2b173e919dee545912a162653e7 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -258,10 +258,10 @@
   "alg-combo-hw-1-1.pdf" 1707325814.12967 10055 73df47721e7b61f61719ebeace9186b0 "cusdep asy pdf alg-combo-hw-1-1"
   "alg-combo-hw-1-2.pdf" 1707325814.12988 18703 9c847d614dee890f6036d52a5a0baeb4 "cusdep asy pdf alg-combo-hw-1-2"
   "alg-combo-hw-1-3.pdf" 1707325814.13012 10110 93b509662c1cf3a01085c2d6a094280a "cusdep asy pdf alg-combo-hw-1-3"
-  "alg-combo-hw-1.aux" 1707327548.14003 1160 f7aeed643904ad99032705629df9ad0b "pdflatex"
-  "alg-combo-hw-1.out" 1707327547.92795 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "alg-combo-hw-1.pre" 1707327548.13622 123 f1955cdd5251ecfe76a4b6adcd233779 "pdflatex"
-  "alg-combo-hw-1.tex" 1707327546.62386 14034 4e634f5d78cb6237ef64166c4bee2d8e ""
+  "alg-combo-hw-1.aux" 1707327720.65439 1160 f7aeed643904ad99032705629df9ad0b "pdflatex"
+  "alg-combo-hw-1.out" 1707327720.44967 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "alg-combo-hw-1.pre" 1707327720.65072 123 f1955cdd5251ecfe76a4b6adcd233779 "pdflatex"
+  "alg-combo-hw-1.tex" 1707327719.05885 14034 4761eebf0e8f491bac59ca22dded1083 ""
   (generated)
   "alg-combo-hw-1-1.asy"
   "alg-combo-hw-1-2.asy"
