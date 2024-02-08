@@ -1,0 +1,37 @@
+\documentclass[11pt]{scrartcl}
+\usepackage{evan}
+\usepackage[inline]{asymptote}
+
+\title{Algebraic Combinatorics HW 2}
+\author{Evan Lim and Dallin Guisti}
+\date{2-13-2024}
+\definecolor{palegreen}{rgb}{0.6, 0.98, 0.6}
+\begin{document}
+\maketitle
+\setcounter{section}{1}
+\begin{problem}[\textcolor{red}{Random Walks on $\mathbb{Z}$}]
+    Consider a random walk on $\mathbb{Z}$ where we start at 0 and move from $i$ to $i + 1$ or $i - 1$ with equal probability.
+
+    \begin{enumerate}[(i)]
+        \item Prove that we eventually return to 0 with probability 1.
+        \item Compute $a_i$ explicitly and conclude that
+        \[
+            \sum_{n=0}^{\infty} \frac{a_n}{2_n} = 1
+        \]
+
+        What is the sequence ${a_n}$ called in Math literature?
+        \item Prove that each number n is visited at least once with probability 1.
+        \item Let $H_n$ denote the expected \# steps needed to reach $n$ for the first time. What is wrong with the
+        following argument?
+        We claim that $H_n = cn$ for some constant $c$. This is true for $n = 0$. So let $n > 0$. On the average, we need $H_1$ steps to reach 1, and then $H_{n-1}$ steps to reach n starting from 1. Hence
+        \[
+            H_n = 1 + H_{n-1} = c + c(n-1) = cn ; H_1 = c
+        \]
+    \end{enumerate}
+\end{problem}
+\begin{proof}
+    \begin{enumerate}[(i)]
+        \item 
+    \end{enumerate}
+\end{proof}
+\end{document}
