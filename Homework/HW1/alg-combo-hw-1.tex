@@ -148,7 +148,7 @@
     \end{align*}
     so the desired probability is \[\dfrac{\sum_{i = 0}^{n} \binom{n}{i} (n-2i)^m}{n^m}.\]
 
-    \item Starting with all heads and ending with all tails is akin to walking from $v_1$ to $v_{2^n}$. So, we seek the ratio \[\frac{((A(Q_n))^m)_{1,2^n}}{n^m},\] and applying Corollary 2.5 from the textbook gives a probability of \[\frac{\sum_{i=0}^n\sum_{j=0}^k(-1)^j\dbinom{k}{j}\dbinom{n-k}{i-j}(n-2i)^l}{2^nn^m}.\]
+    \item Starting with all heads and ending with all tails is akin to walking from $v_1$ to $v_{2^n}$. So, we seek the ratio \[\frac{((A(Q_n))^m)_{1,2^n}}{n^m},\] and applying Corollary 2.5 from the textbook gives a probability of \[\frac{\sum_{i=0}^n\sum_{j=0}^n(-1)^j\dbinom{n}{j}(n-2i)^l}{2^nn^m}.\]
     \item We aim to find the adjacency matrix $A(G)$ of the graph represented by flipping two coins at a time. $A(Q_n)^2$ represents the number of ways to flip two coins, but it allows us to flip the same coin twice in a row, result in nonzero diagonals that we must eliminate. Each $(A(Q_n))^2_{ii}=n$ because we have $n$ coins that we can flip and then un-flip. One further consideration is that $A(Q_n)^2-nI_n$ eliminates the loops, but still overcounts by a factor of two (it regards flipping $A$ then $B$ as distinct from flipping $B$ then $A$). Thus, \[A(G)=\frac12(A(Q_n)^2-nI_n),\] from which we find that the eigenvalues of $A(G)$ are simply the eigenvalues of $A(Q_n)^2$ shifted by $n$, noting that
     \begin{align*}
         \det(A(Q_n)^2-\lambda_iI_n)&=0\\
