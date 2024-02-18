@@ -15,25 +15,33 @@
         \item Prove that we eventually return to 0 with probability 1.
         \item Compute $a_i$ explicitly and conclude that
         \[
-            \sum_{n=0}^{\infty} \frac{a_n}{2_n} = 1
+            \sum_{n=0}^{\infty} \frac{a_n}{2^n} = 1
         \]
 
         What is the sequence ${a_n}$ called in Math literature?
-        \item Prove that each number n is visited at least once with probability 1.
+        \item Prove that each number $n$ is visited at least once with probability 1.
         \item Let $H_n$ denote the expected \# steps needed to reach $n$ for the first time. What is wrong with the
         following argument?
+
         We claim that $H_n = cn$ for some constant $c$. This is true for $n = 0$. So let $n > 0$. On the average, we need $H_1$ steps to reach 1, and then $H_{n-1}$ steps to reach n starting from 1. Hence
         \[
-            H_n = 1 + H_{n-1} = c + c(n-1) = cn ; H_1 = c
+            H_n = H_1 + H_{n-1} = c + c(n-1) = cn ; H_1 = c
         \]
     \end{enumerate}
 \end{problem}
+%NEEDS CHECKING: ALSO, WHAT IS THIS SEQUENCE CALLED? IS THERE A NICER WAY TO WRITE IT?
 \begin{proof}
     \begin{enumerate}[(i)]
-        \item Let $a_i$ be the number of ways to return to $0$ after $i$ steps.
+        \item Denote the probability that, starting at $a$, we eventually reach $b$, by $P(a\to b)$. Then, notice that our second step either brings us to $\pm 2$ or to $0$. Thus, \[P(0\to 0)=\frac12+\frac12P(2\to 0)=\frac12+\frac12P(2\to1)P(1\to0)=\frac12+\frac12P(1\to 0)^2.\]
+        We find $P(1\to0)$ using a similar method as in class:
+        \[P(1\to 0)=\frac12+\frac12(P(2\to 0))=\frac12+\frac12 P(1\to0)^2,\] so $P(1\to0)^2-2P(1\to 0)+1=0$, so $P(1\to 0)=1$. Thus, \[P(0\to 0)=\frac12+\frac12=1.\]
+        \item We compute $a_i$, the number of $i$-walks from $0$ to $0$. Clearly, if $i$ is odd, $a_{2i+1}=0$. If $i$ is even, then we simply choose $\frac{i}2$ left steps out of $i$ total steps, so $a_{2i}=\dbinom{2i}{i}$. Thus, \[a_n=\dbinom{n}{n/2}\frac{1+(-1)^n}{2}.\] The probability of returning to the origin after $n$ steps is $\frac{a_n}{2^n}$, and since we know we eventually return to the origin, it follows that \[\sum_{n=0}^{\infty}\frac{a_n}{2^n}=1.\]
+        \item As shown in part (i), $P(1\to 0)=1$, and by symmetry, $P(0\to 1)=1$. Thus, at some point, we reach $1$. Then, since $P(0\to 1)=P(n\to n+1)$, we will reach $2$ at some point. Noting that $P(n\to n-1)=P(n\to n+1)=1$, we see that we can reach any $n$ at some point wiht probability $1$.
+        \item The flaw in this argument is that it fails to calculate $H_1$. Suppose, for the sake of contradiction, that $H_1$ is finite. Then, $H_1=\frac{1}{2}+\frac{1}{2}(H_2+1)$, so \[2H_1=2+2H_1+1,\] which is moderately problematic, and a contradiction. Thus, we cannot say $H_1=c$.
     \end{enumerate}
 \end{proof}
-\begin{problem}[\textcolor{red}{Some examples of Hitting times}]
+\begin{problem}[\textcolor{red}{Some examples of Hitting times}]\phantom{0}
+
     \begin{enumerate}[(i)]
         \item Find the hitting time between any two vertices of $K_n$.
         \item Find the hitting time between the endpoints of $P_n$ (a path on $n$ vertices).
@@ -42,6 +50,61 @@
         \item Find the hitting time between two `antipodal' vertices of $Q_3$.
     \end{enumerate}
 \end{problem}
+\begin{proof}
+    \begin{enumerate}[(i)]
+        \item We exploit unfair labor market conditions. That is, we exploit symmetry in the graph: the hitting time between any two distinct vertices of $K_n$ is the same. Let this hitting time be $x$, then \[x=\frac{1}{n-1}\cdot1+\frac{n-2}{n-1}(x+1),\] whence \[x=(n-1)^2.\]
+        \item Label our path with vertices $\{1,2,3,\dots,n\}$. Denote by $c_i$ the expected number of steps to go from vertex $i$ to $i+1$. We build a recursion relation for the $c_i$: \[c_{i}=\frac12\cdot1+\frac12(1+c_{i-1}+c_{i})\] gives \[c_i=2+c_{i-1}.\] Clearly, $c_1=1$, so $c_{i}=2i-1$, and the hitting time between the endpoints of $P_n$, or the hitting time from $1$ to $n$, is \[c_1+c_2+\cdots+c_{n-1}=(n-1)^2.\]
+        \item This is simply the sum \[\sum_{i=1}^kc_i=k^2.\]
+        \item WLOG we're considering vertices of distance $k$ from $v_1$. For odd $n$, we can take a step and have distance from a vertex unchanged ($v_3$ and $v_4$ are equidistant from $v_1$ on $C_5$). This observation motivates us to consider the graph with vertices $w_i$ that represent distance between our vertex and $v_1$.
+        
+        For even $n=2a$, we have
+        \begin{center}
+            \begin{asy}
+                size(3cm);
+                dot((0,0));
+                dot((1,0));
+                dot((2,0));
+                draw((0,0)--(2,0));
+                label("$w_0$",(0,0),S);
+                label("$w_1$",(1,0),N);
+                label("$w_2$",(2,0),S);
+                label("$\dots$",(3,0));
+                dot((4,0));
+                label("$w_{a-1}$",(4,0),S);
+                dot((6,0));
+                label("$w_a$",(6,0),S);
+                draw((6,0)--(4,0));
+            \end{asy}
+        \end{center}
+        and so wish to find the hitting time between $w_k$ and $w_0$. This is an analogous setup to the previous part, so our hitting time is $k^2$.
+
+        For odd $n=2a+1$,
+        \begin{center}
+            \begin{asy}
+                size(3cm);
+                dot((0,0));
+                dot((1,0));
+                dot((2,0));
+                draw((0,0)--(2,0));
+                label("$w_0$",(0,0),S);
+                label("$w_1$",(1,0),N);
+                label("$w_2$",(2,0),S);
+                label("$\dots$",(3,0));
+                dot((4,0));
+                label("$w_{a-1}$",(4,0),S);
+                dot((6,0));
+                label("$w_{a}$",(6,0),S);
+                draw((6,0)--(4,0));
+                draw((6,0)--(6.5,0.5));
+                draw(arc((7,0),(6.5,-0.5),(6.5,0.5)));
+                draw((6,0)--(6.5,-0.5));
+            \end{asy}
+        \end{center}
+        which slightly scuppers attempts to make a direct corollary of part (ii). That said, we can define $c_i$ to be the expected steps between $w_i$ and $w_{i-1}$. Notice that (for $i<a$) \[c_i=\frac12\cdot1+\frac12(1+c_{i+1}+c_i)\implies c_i=2+c_{i+1},\] and as \[c_a=\frac{1}{2}\cdot1+\frac12\cdot(1+c_a)\implies c_a=2,\] $c_i=2+2a-2i$. We compute \[\sum_{i=1}^k c_i=(2+2a)(k)-k(k+1)=k(n-k).\]
+        The hitting time is thus: \[\begin{cases}k^2&n\text{ even}\\ k(n-k)&n\text{ odd}\end{cases}.\]
+        \item i imagine you can do something similar to previous parts here, if i had to guess it'd be like $(2^3-1)^3$ or smth. find hitting time btw neighbors, cube it? you can certainly verify such a claim using wolframalpha and the adjacency matrix, but i don't feel like opening matlab again.
+    \end{enumerate}
+\end{proof}
 \begin{problem}
     \begin{enumerate}[(i)]
         \item Show that the following may hold for some graphs $G$ (including regular graphs)
