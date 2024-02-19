@@ -1,6 +1,5 @@
 \documentclass[11pt]{scrartcl}
-\usepackage{evan}
-
+\usepackage[bagel]{evan}
 \title{Algebraic Combinatorics HW 2}
 \author{Evan L, Dallin G, Alexander D, and Sawyer V}
 \date{2-13-2024}
@@ -35,8 +34,8 @@
         \item Denote the probability that, starting at $a$, we eventually reach $b$, by $P(a\to b)$. Then, notice that our second step either brings us to $\pm 2$ or to $0$. Thus, \[P(0\to 0)=\frac12+\frac12P(2\to 0)=\frac12+\frac12P(2\to1)P(1\to0)=\frac12+\frac12P(1\to 0)^2.\]
         We find $P(1\to0)$ using a similar method as in class:
         \[P(1\to 0)=\frac12+\frac12(P(2\to 0))=\frac12+\frac12 P(1\to0)^2,\] so $P(1\to0)^2-2P(1\to 0)+1=0$, so $P(1\to 0)=1$. Thus, \[P(0\to 0)=\frac12+\frac12=1.\]
-        \item We compute $a_i$, the number of $i$-walks from $0$ to $0$. Clearly, if $i$ is odd, $a_{2i+1}=0$. If $i$ is even, then we simply choose $\frac{i}2$ left steps out of $i$ total steps, so $a_{2i}=\dbinom{2i}{i}$. Thus, \[a_n=\dbinom{n}{n/2}\frac{1+(-1)^n}{2}.\] The probability of returning to the origin after $n$ steps is $\frac{a_n}{2^n}$, and since we know we eventually return to the origin, it follows that \[\sum_{n=0}^{\infty}\frac{a_n}{2^n}=1.\]
-        \item As shown in part (i), $P(1\to 0)=1$, and by symmetry, $P(0\to 1)=1$. Thus, at some point, we reach $1$. Then, since $P(0\to 1)=P(n\to n+1)$, we will reach $2$ at some point. Noting that $P(n\to n-1)=P(n\to n+1)=1$, we see that we can reach any $n$ at some point wiht probability $1$.
+        \item We compute $a_i$, the number of $i$-walks from $0$ to $0$. Clearly, if $i$ is odd, $a_{2i+1}=0$. If $i$ is even, then we simply choose $\frac{i}2$ left steps out of $i$ total steps, so $a_{2i}=\dbinom{2i}{i}$. Thus, \[a_n=\dbinom{n}{n/2}\frac{1+(-1)^n}{2}.\] This sequence is \href{https://oeis.org/A126869}{OEIS A126869}, alternating zero and B-type Catalan numbers/ middle binomial coefficients. The probability of returning to the origin after $n$ steps is $\frac{a_n}{2^n}$, and since we know we eventually return to the origin, it follows that \[\sum_{n=0}^{\infty}\frac{a_n}{2^n}=1.\]
+        \item As shown in part (i), $P(1\to 0)=1$, and by symmetry, $P(0\to 1)=1$. Thus, at some point, we reach $1$. Then, since $P(0\to 1)=P(n\to n+1)$, we will reach $2$ at some point. Noting that $P(n\to n-1)=P(n\to n+1)=1$, we see that we can reach any $n$ at some point with probability $1$.
         \item The flaw in this argument is that it fails to calculate $H_1$. Suppose, for the sake of contradiction, that $H_1$ is finite. Then, $H_1=\frac{1}{2}+\frac{1}{2}(H_2+1)$, so \[2H_1=2+2H_1+1,\] which is moderately problematic, and a contradiction. Thus, we cannot say $H_1=c$.
     \end{enumerate}
 \end{proof}
@@ -110,17 +109,22 @@
                 dot((1,0));
                 dot((2,0));
                 dot((3,0));
-                draw((0,0)--(3,0));
-                label("$0$",(0,0),S);
-                label("$1$",(1,0),S);
-                label("$2$",(2,0),S);
-                label("$3$",(3,0),S);
-                label("$1$",(0.5,0),N);
-                label("$1/3$",(1.5,0),N);
-                label("$2/3$",(2.5,0),N);
+                draw(arc((0.5,-1),(0,0),(1,0),CW),Arrow);
+                draw(arc((0.5,1),(1,0),(0,0),CW),Arrow);
+                draw(arc((1.5,-1),(1,0),(2,0),CW),Arrow);
+                draw(arc((1.5,1),(2,0),(1,0),CW),Arrow);
+                draw(arc((2.5,-1),(2,0),(3,0),CW),Arrow);
+                draw(arc((2.5,1),(3,0),(2,0),CW),Arrow);
+                label("$w_0$",(0,0),S);
+                label("$w_3$",(3,0),S);
+                label("$1$",(0.5,0.25),N);
+                label("$\frac13$",(1.5,0.25),N);
+                label("$\frac23$",(2.5,0.25),N);
+                label("$\frac23$",(0.5,-0.25),S);
+                label("$\frac13$",(1.5,-0.25),S);
+                label("$1$",(2.5,-0.25),S);
             \end{asy}
         \end{center}
-
         From these probabilities, we can construct the following transition matrix:
         \[
             M = \begin{pmatrix}
@@ -170,7 +174,7 @@
     \begin{enumerate}[(i)]
         \item Show that the following may hold for some graphs $G$ (including regular graphs)
         \[H(u,v)\neq H(v,u),\text{ for some }u,v\in V(G).\]
-        \item If $u$ and $v$ have the same degree, then the probability that a random walk starting at $u$ vists $v$ before returning to $u$ is equal to the probability that a random walk starting at $v$ vists $u$ before returning to $u$. What can be said if the degrees of $u$ and $v$ are different?
+        \item If $u$ and $v$ have the same degree, then the probability that a random walk starting at $u$ visits $v$ before returning to $u$ is equal to the probability that a random walk starting at $v$ vists $u$ before returning to $v$. What can be said if the degrees of $u$ and $v$ are different?
     \end{enumerate}
 \end{problem}
 \begin{proof}
@@ -215,7 +219,7 @@
         \]
 
         Therefore, we have found a graph for which $H(u,v) \neq H(v,u)$ for some $u,v \in V(G)$.
-
+        \item If the degrees of $u$ and $v$ are different, we'd expect the two probabilities to be in the ratio $\deg u$ to $\deg v$: Consider the expected number of steps until we reach $v$ from $u$, which is $\frac{2e}{\deg u}$. The expected number of steps until we reach $u$ after visiting $v$ is $H(v,u)+H(u,v)$. This seems to suggest that the probability of reaching $v$ before returning to $u$ is inversely proportional to $\deg u$, and likewise for the other probability. So, if the degrees of $u$ and $v$ are different, the probabilities' ratio is the degrees' ratio.
     \end{enumerate}
 \end{proof}
 \end{document}
