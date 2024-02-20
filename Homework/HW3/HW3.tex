@@ -1,0 +1,44 @@
+\documentclass[11pt]{scrartcl}
+\usepackage{evan}
+\usepackage[inline]{asymptote}
+
+\title{Algebraic Combinatorics HW 3}
+\author{Evan L, Dallin G, Alexander D, and Sawyer V}
+\date{2-22-2024}
+\definecolor{palegreen}{rgb}{0.6, 0.98, 0.6}
+\begin{document}
+\maketitle
+\setcounter{section}{1}
+\begin{problem}[\textcolor{red}{Symmetric polynomial and unimodality}]
+    $f(x)= p_0 + p_1x + p_2x^2 + \cdots + p_nx^n$ is \textit{symmetric} if for all $i$, $$p_i=p_{n-i}$$ It is \textit{unimodal} if for some fixed $j$, $$p_0\le p_1\le \cdots \le p_{j-1}\le p_j \ge p_{j+1}\ge \cdots \ge p_{n-1}\ge p_n$$ Let $F(q)$, $G(q)$ be symmetric and unimodal polynomials with non-negative real coefficients. Show that $F(q)G(q)$ is also symmetric (easy) and unimodal (less easy).
+\end{problem}
+\begin{proof}
+\end{proof}
+
+\begin{problem}[\textcolor{red}{Log-concavity of Binomial coefficients}]
+    A sequence $a_1,a_2, a_3, \cdots, a_n$ is \textcolor{red}{\textit{logarithmically concave}} if $$a_i^2\ge a_{i-1}a_{i+1}~;~ \forall i$$
+
+    \begin{enumerate}[(i)]
+        \item Show that if a sequence of positive terms is log-concave, then it is also unimodal.\smallskip
+        \item It is easy to see algebraically that the sequence $\binom{n}{0},\binom{n}{1}, \binom{n}{2}, \cdots, \binom{n}{n}$ is log-concave. Give a combinatorial proof of this fact.
+    \end{enumerate}
+\end{problem}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{problem}[\textcolor{red}{Uniqueness in Sperner's Thm}]
+    Show that equality in Sperner's Theorem for $B_n$ is achieved only by the middle (middle two) rank(s) if $n$ is even (odd). (\textit{Hint}: If not, then move the example closer to the middle rank(s))
+\end{problem}
+\begin{proof}
+\end{proof}
+
+\begin{problem}[\textcolor{red}{A generalization of Sperner's Thm}]
+    Let $P$ be a rank-symmetric, rank-unimodal poset. Show that if $P$ has a symmetric chain decomposition, then it has \textcolor{red}{\textit{strong Sperner property}}, that is, for any $j\ge 1$, the largest size of a union of $j$ antichains is equal to the size of the largest $j$ levels of $P$. (\textit{Remark}: $j=1$ corresponds to Sperner's Theorem when $P=B_n$)
+\end{problem}
+
+\begin{proof}
+\end{proof}
+
+\end{document}
