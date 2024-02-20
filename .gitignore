@@ -297,6 +297,9 @@ TSWLatexianTemp*
 
 # Asymptote
 *.asy
+*-[0-9].tex
+*-[0-9].pdf
+*-[0-9]_[0-9].pdf
 
 # REVTeX puts footnotes in the bibliography by default, unless the nofootinbib
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
