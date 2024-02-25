@@ -9,7 +9,7 @@
 \begin{document}
 \maketitle
 \setcounter{section}{1}
-\begin{problem}[\textcolor{red}{Symmetric polynomial and unimodality}]
+\begin{problem}[\textcolor{red}{Symmetric polynomial and unimodality}; Extra-Credit]
     $f(x)= p_0 + p_1x + p_2x^2 + \cdots + p_nx^n$ is \textit{symmetric} if for all $i$, $$p_i=p_{n-i}$$ It is \textit{unimodal} if for some fixed $j$, $$p_0\le p_1\le \cdots \le p_{j-1}\le p_j \ge p_{j+1}\ge \cdots \ge p_{n-1}\ge p_n$$ Let $F(q)$, $G(q)$ be symmetric and unimodal polynomials with non-negative real coefficients. Show that $F(q)G(q)$ is also symmetric (easy) and unimodal (less easy).
 \end{problem}
 \begin{proof}
@@ -25,13 +25,26 @@
 \end{problem}
 
 \begin{proof}
-    
+    \begin{enumerate}
+        \item We rewrite the given relation as 
+        \[
+            \frac{a_i}{a_{i-1}} \ge \frac{a_{i+1}}{a_i}.
+        \]
+        
+        This means that the ratio of consecutive terms is non-increasing. Thus, even if the sequence is initially increasing, it must eventually decrease. This means that the sequence is unimodal.
+        \item Consider $\binom{n}{k}$ for $0 \leq k \leq n$. We need to show \[\binom{n}{k}^2 \geq \binom{n}{k-1} \binom{n}{k+1}\]
+        Let $|A|=k, B=n-k$.\\
+        Notice the $\binom{n}{k}^2$ is the amount of ways to choose $k$ elements from $A$ and $k$ elements from $B$ independently then form separate pairs with these elements (Using $\binom{n}{k} = \binom{n}{n-k}$).
+        $\binom{n}{k-1} \binom{n}{k+1}$ shows the amount of ways to choose $k-1$ elements from a set of $n$ elements and $k+1$ elements from a different set of elements. The pairs formed from these choices will have one element in common, and this common element can be chosen in $n$ ways.
+        Now, notice that $A$ and $B$ together have $n$ elements, so the common element in the pairs from the right side can be any of the $n$ elements in A or B. Since choosing from $A$ and $B$ allows for more pairs, $\binom{n}{k}^2 \geq \binom{n}{k-1} \binom{n}{k+1}$, i.e. $\binom{n}{0}, \binom{n}{1},\ldots, \binom{n}{n}$ is a log concave sequence.
+    \end{enumerate}
 \end{proof}
 
 \begin{problem}[\textcolor{red}{Uniqueness in Sperner's Thm}]
     Show that equality in Sperner's Theorem for $B_n$ is achieved only by the middle (middle two) rank(s) if $n$ is even (odd). (\textit{Hint}: If not, then move the example closer to the middle rank(s))
 \end{problem}
 \begin{proof}
+    Let $l \ge \frac{n + 1}{2}$ correspond to a rank above $B_n$ above the middle of the poset. We call this rank $A$. Let $\delta A$ correspond to the $l-1$ rank. The shadow of elements in $A$ consists of $l$ elements in $\delta A$. Thus, we can represent the map from $A$ to $\delta A$ as a bipartite graph. There are $l$ connections from $A$ to $\delta A$,  
 \end{proof}
 
 \begin{problem}[\textcolor{red}{A generalization of Sperner's Thm}]
@@ -39,6 +52,10 @@
 \end{problem}
 
 \begin{proof}
+    We choose $j$ antichains we call $A_1, A_2, \ldots, A_j$. Each of these antichains will intersect every other chain at most once. Thus, we have 
+    \[
+        \textrm{\# of intersections} = \min{\left\{k, |A_j|\right\}}
+    \]
 \end{proof}
 
 \end{document}
