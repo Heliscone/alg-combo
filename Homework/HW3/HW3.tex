@@ -1,6 +1,5 @@
 \documentclass[11pt]{scrartcl}
 \usepackage{evan}
-\usepackage[inline]{asymptote}
 
 \title{Algebraic Combinatorics HW 3}
 \author{Evan L, Dallin G, Alexander D, and Sawyer V}
@@ -13,8 +12,15 @@
     $f(x)= p_0 + p_1x + p_2x^2 + \cdots + p_nx^n$ is \textit{symmetric} if for all $i$, $$p_i=p_{n-i}$$ It is \textit{unimodal} if for some fixed $j$, $$p_0\le p_1\le \cdots \le p_{j-1}\le p_j \ge p_{j+1}\ge \cdots \ge p_{n-1}\ge p_n$$ Let $F(q)$, $G(q)$ be symmetric and unimodal polynomials with non-negative real coefficients. Show that $F(q)G(q)$ is also symmetric (easy) and unimodal (less easy).
 \end{problem}
 \begin{proof}
-\end{proof}
+Let $F$ and $G$ be $n$-degree polynomials with $F(q)=\sum f_iq^i$ and $G(q)=\sum g_iq^i$. Let $H(q)=F(q)G(q)=\sum h_i q^i$ be the $2n$-degree polynomial that is the product of $F$ and $G$. Then, \[h_i=\sum_{a+b=i}f_ag_b=\sum_{a+b=i}f_{n-a}g_{n-b}=\sum_{c+d=2n-i}f_cg_d=h_{2n-i},\] so $F(q)G(q)$ is symmetric.
 
+Since $F$ is both unimodal, we can assign it center term $f_j$. $F$'s symmetry also allows us to write it as a sum of ``chunks'' $x^{j-c}+x^{j-c+1}+\cdots+x^{j+c-1}+x^{j+c}$  centered at $f_j$. We can do similarly for $G$, writing it as a sum of ``chunks'' $x^{l-c}+x^{l-c+1}+\cdots+x^{l+c}$ with maximal coefficient $q_l$. Then, the product of $F$ and $G$ is the sum of products of said chunks, and since 
+\begin{align*}
+    &(x^{j-c}+x^{j-c+1}+\cdots+x^{j+c-1}+x^{j+c})(x^{l-d}+x^{l-d+1}+\cdots+x^{l+d})\\
+    &=x^{j+l-c-d}(1+x+\cdots+x^{2c})(1+x+\cdots+x^{2d})
+\end{align*}
+is unimodal, $F(q)G(q)$ is a sum of unimodal polynomials and thus unimodal.
+\end{proof}
 \begin{problem}[\textcolor{red}{Log-concavity of Binomial coefficients}]
     A sequence $a_1,a_2, a_3, \cdots, a_n$ is \textcolor{red}{\textit{logarithmically concave}} if $$a_i^2\ge a_{i-1}a_{i+1}~;~ \forall i$$
 
@@ -23,20 +29,22 @@
         \item It is easy to see algebraically that the sequence $\binom{n}{0},\binom{n}{1}, \binom{n}{2}, \cdots, \binom{n}{n}$ is log-concave. Give a combinatorial proof of this fact.
     \end{enumerate}
 \end{problem}
-
 \begin{proof}
-    \begin{enumerate}
+    \begin{enumerate}[(i)]
         \item We rewrite the given relation as 
         \[
             \frac{a_i}{a_{i-1}} \ge \frac{a_{i+1}}{a_i}.
         \]
         
-        This means that the ratio of consecutive terms is non-increasing. Thus, even if the sequence is initially increasing, it must eventually decrease. This means that the sequence is unimodal.
+        This means that the ratio of consecutive terms is non-increasing. Thus, if the sequence is not either nonincreasing or nondecreasing (in which case it is naturally unimodal), it is initially increasing and must decrease at some point. This means that the sequence is unimodal.
         \item Consider $\binom{n}{k}$ for $0 \leq k \leq n$. We need to show \[\binom{n}{k}^2 \geq \binom{n}{k-1} \binom{n}{k+1}\]
-        Let $|A|=k, B=n-k$.\\
-        Notice the $\binom{n}{k}^2$ is the amount of ways to choose $k$ elements from $A$ and $k$ elements from $B$ independently then form separate pairs with these elements (Using $\binom{n}{k} = \binom{n}{n-k}$).
+        Let $|A|=k$ and $|B|=n-k$.
+
+        There are $\binom{n}{k}^2$ ways to independently choose $k$ elements for $A$ and $n-k$ elements for $B$ then form separate pairs with these elements (Using $\binom{n}{k} = \binom{n}{n-k}$).
         $\binom{n}{k-1} \binom{n}{k+1}$ shows the amount of ways to choose $k-1$ elements from a set of $n$ elements and $k+1$ elements from a different set of elements. The pairs formed from these choices will have one element in common, and this common element can be chosen in $n$ ways.
         Now, notice that $A$ and $B$ together have $n$ elements, so the common element in the pairs from the right side can be any of the $n$ elements in A or B. Since choosing from $A$ and $B$ allows for more pairs, $\binom{n}{k}^2 \geq \binom{n}{k-1} \binom{n}{k+1}$, i.e. $\binom{n}{0}, \binom{n}{1},\ldots, \binom{n}{n}$ is a log concave sequence.
+
+        % Evan began writing this: If we have $n$ distinct people in a room, there are $\binom nk ^2$ ways to give $k$ people red cards and $k$ people green cards. There is $1$ way to deport everyone to Martha's vineyard. There are naturally $\binom n{k-1}\binom n{k+1}$ ways to give $k-1$ red cards and $k+1$ green cards. Then, we can choose one person with a green card and no red card to swap card colors... this does not work. I just included in case
     \end{enumerate}
 \end{proof}
 
@@ -44,7 +52,11 @@
     Show that equality in Sperner's Theorem for $B_n$ is achieved only by the middle (middle two) rank(s) if $n$ is even (odd). (\textit{Hint}: If not, then move the example closer to the middle rank(s))
 \end{problem}
 \begin{proof}
-    Let $l \ge \frac{n + 1}{2}$ correspond to a rank above $B_n$ above the middle of the poset. We call this rank $A$. Let $\delta A$ correspond to the $l-1$ rank. The shadow of elements in $A$ consists of $l$ elements in $\delta A$. Thus, we can represent the map from $A$ to $\delta A$ as a bipartite graph. There are $l$ connections from $A$ to $\delta A$,  
+    Let $l> \frac{n+1}{2}$ correspond to a minimum above-middle rank $l$. Consider the section of the graph of elements with ranks $l$ ($A$) and $l-1$ ($\delta A$). The shadow of $A$ is evidently $\delta A$, and we aim to show that there are more elements in $\delta A$ than in $A$. Considering the conections between $A$ and $\delta A$ gives us a bipartite graph, where each vertex of $A$ is connected to $l$ vertices in $\delta A$ ($l$ elements to remove) and each vertex of $\delta A$ is connected to $n-l+1$ vertices in $A$ ($n-(l-1)$ vertices not in any given element of $\delta A$). For $l$ as chosen, notice that \[\frac{l}{n-l+1}> 1,\] so there are more elements in $\delta A$ than $A$, and so equality cannot be achieved in both $A$ and $\delta A$ (the middle-rank). This argument also shows that the ranks above middle strictly increase in number as we approach the middle rank.
+
+    A converse argument, with $l<\frac{n-1}{2}$ and $A$ and $\delta A$ constructed as before, gives the same bipartite graph, but $\frac{l}{n-l+1}<1$, so as we move down, the ranks decrease in size. 
+
+    Thus, beacuse of this strict approach to equality, equality is only achieved when $\frac{n-1}{2}\leq l\leq \frac{n+1}{2}$, which is the middle (middle two) rank(s) if $n$ is even (odd), as desired.
 \end{proof}
 
 \begin{problem}[\textcolor{red}{A generalization of Sperner's Thm}]
@@ -52,10 +64,18 @@
 \end{problem}
 
 \begin{proof}
-    We choose $j$ antichains we call $A_1, A_2, \ldots, A_j$. Each of these antichains will intersect every other chain at most once. Thus, we have 
-    \[
-        \textrm{\# of intersections} = \min{\left\{k, |A_j|\right\}}
-    \]
+
+
+    Consider a collection $A$ of $j$ antichains $A_1,A_2,\dots,A_j$. The number of intersections between any chain $C_i$ in the symmetric decomposition $P=C_1\cup C_2\cup\cdots\cup C_p$ and $A$ is at most the minimum of $|C_i|$ and $j$, as no chain can intersect an antichain more than once. Also, since the $C_i$ are disjoint by definition, \[|F|\leq\sum_i |C_i\cap F|=\sum_i \min\{|C_i|,j\},\] and we can rewrite this sum based on the length of the chains in the symmetric chain decomposition.  
+    
+    We find the number of chains $C_i$ with $|C_i|=l$. By the chain's symmetry, the chain runs from the $\frac{n-(l-1)}{2}^{\text{th}}$ rank to the $\frac{n+l-1}{2}^{\text{th}}$ rank ($|C_i|=(l-1)+1=l$). The number of such chains is the number of chains that reach rank $\frac{n-l+1}{2}$ minus the number of chains that reach rank $\frac{n-l-1}{2}$, which is also $p_{\frac{n-l+1}{2}}-p_{\frac{n-l-1}{2}}$. For ease of calculation, we can define a permutation\footnote{this step was due to a hint from another person who was at camp with me.} $f(x)$ on $0,1,\dots,n+1$ to take care of the parity issues with $n-l-1$ while arranging them in decreasing order. That is, $f(x)$ gives the rank that is $\left\lfloor\frac{x}{2}\right\rfloor$ ranks away from the middle rank(s). Explicitly, for odd $n$, $f(x)=\frac{n+(-1)^x\left(2\left\lfloor\frac{x}2\right\rfloor+1\right)}2$; dual definition for even $n$. Thus, we can simplify our expression for the number of chains with $l$ vertices to $p_{f(l-1)}-p_{f(l)}$. When $l$ is an invalid parity, we have $f(l-1)=f(l)$, so we can write
+    \begin{align*}
+        \sum_i\min\{|C_i|,j\}&=\sum_{l=1}^{j-1}l|\{i:|C_i|=l\}|+\sum_{l=j}^{n+1}j|\{i:|C_i|=l\}|\\
+        &=\sum_{l=1}^{j-1}l(p_{f(l-1)}-p_{f(l)})+j\sum_{l=j}^{n+1}p_{f(l-1)}-p_{f(l)}\\
+        &=\sum_{l=1} ^{j}p_{f(l-1)}+0-p_{n+1}\\
+        &=\sum_{l=0}^{j-1}p_{f(l)},
+    \end{align*}
+    which is precisely the sum of the $j$ largest $p_i$.
 \end{proof}
 
 \end{document}
