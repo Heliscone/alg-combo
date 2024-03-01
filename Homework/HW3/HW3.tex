@@ -3,7 +3,7 @@
 
 \title{Algebraic Combinatorics HW 3}
 \author{Evan L, Dallin G, Alexander D, and Sawyer V}
-\date{2-22-2024}
+\date{3-1-2024}
 \definecolor{palegreen}{rgb}{0.6, 0.98, 0.6}
 \begin{document}
 \maketitle
@@ -37,14 +37,11 @@ is unimodal, $F(q)G(q)$ is a sum of unimodal polynomials and thus unimodal.
         \]
         
         This means that the ratio of consecutive terms is non-increasing. Thus, if the sequence is not either nonincreasing or nondecreasing (in which case it is naturally unimodal), it is initially increasing and must decrease at some point. This means that the sequence is unimodal.
-        \item Consider $\binom{n}{k}$ for $0 \leq k \leq n$. We need to show \[\binom{n}{k}^2 \geq \binom{n}{k-1} \binom{n}{k+1}\]
-        Let $|A|=k$ and $|B|=n-k$.
+        \item \textit{Main Proof}: We show that $\frac{\binom{n}{k}}{\binom{n}{k-1}}\geq\frac{\binom{n}{k+1}}{\binom n k}$. The LHS is the ratio of the number of $k$-subsets of a set with $n$ elements to the number of $k-1$-subsets of the same set. There are $n-(k-1)$ ways to extend this subset to a $k$-subset, and each $k$-subset can be formed from $k$ different $k-1$-subsets. Thus, the LHS is $\frac{n-(k-1)}{k}$, and it follows that the RHS is $\frac{n-k}{k+1}$. $\frac{n-k+1}{k}\geq \frac{n-k}{k+1}$ holds when \[nk-k^2+k+n-k+1\geq kn-k^2\implies n\geq -1,\] as desired.
 
-        There are $\binom{n}{k}^2$ ways to independently choose $k$ elements for $A$ and $n-k$ elements for $B$ then form separate pairs with these elements (Using $\binom{n}{k} = \binom{n}{n-k}$).
-        $\binom{n}{k-1} \binom{n}{k+1}$ shows the amount of ways to choose $k-1$ elements from a set of $n$ elements and $k+1$ elements from a different set of elements. The pairs formed from these choices will have one element in common, and this common element can be chosen in $n$ ways.
-        Now, notice that $A$ and $B$ together have $n$ elements, so the common element in the pairs from the right side can be any of the $n$ elements in A or B. Since choosing from $A$ and $B$ allows for more pairs, $\binom{n}{k}^2 \geq \binom{n}{k-1} \binom{n}{k+1}$, i.e. $\binom{n}{0}, \binom{n}{1},\ldots, \binom{n}{n}$ is a log concave sequence.
+        \textit{Alternate Proof}: If we have $n$ distinct people in a room, there are $\binom nk ^2$ ways to give $k$ people red cards and $k$ people green cards. There are naturally $\binom n{k-1}\binom n{k+1}$ ways to give $k-1$ red cards and $k+1$ green cards. 
 
-        % Evan began writing this: If we have $n$ distinct people in a room, there are $\binom nk ^2$ ways to give $k$ people red cards and $k$ people green cards. There is $1$ way to deport everyone to Martha's vineyard. There are naturally $\binom n{k-1}\binom n{k+1}$ ways to give $k-1$ red cards and $k+1$ green cards. Then, we can choose one person with a green card and no red card to swap card colors... this does not work. I just included in case
+        Suppose we start by assigning $k-1$ green and red cards. Then, there are of course $(n-(k-1))^2$ ways to assign one more green and one more red card. In order to assign two more red cards, we have $\binom{n-(k-1)}{2}$ ways, noting that a person cannot have more than one card of each color. Clearly, \[(n-(k-1))^2\geq \frac{(n-(k-1))(n-(k-1)-1)}{2},\] so there are more ways to set up a $k$-$k$ scenario than a $k-1$-$k+1$ scenario, so $\binom n k ^2\geq \binom{n}{k-1}\binom{n}{k+1}$, as desired.
     \end{enumerate}
 \end{proof}
 
