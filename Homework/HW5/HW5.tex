@@ -1,0 +1,81 @@
+\documentclass[11pt]{article}
+\usepackage[lightbagel]{evan}
+
+\title{Algebraic Combinatorics: HW5}
+\author{various authors}
+\date{3/14/2024}
+\begin{document}
+\maketitle
+\begin{quest}[\textcolor{red}{Pairing $2n$ people}]
+    The Lemma to prove Burnside’s Lemma states that when a group $G$ acts on $X$, the number of permutations that map $x$ to $y$ is the same for all $y$ in the orbit of $x$. Use this to count the ways to pair up $2n$ people. (\textit{Remark}: This can also be shown by a very easy combinatorial argument.)
+\end{quest}
+\begin{proof}
+    $x\to x_1\to x_2\cdots\to x_n\to x$ orbit $x$.
+
+    First, define an ordering of $2n$ people $p_1,p_2,\cdots,p_{2n}$ as some ordering, for example $p_1p_2p_3\cdots p_{2n}$ defines pairings $p_{2i-1}p_{2i}$. Set $X$ is all possible orderings, $|X|=2n!$.
+
+    $(12)(13)(14)(23)$
+
+    1234, pairing is a permutation $(12)(34),(13)(24),(23)(14)$ or smth.
+\[\frac{2n!}{2^n n!}\]
+    group $G$ is then all $S_4$
+\end{proof}
+\begin{quest}
+    Partitions of an integer $n$ are obtained from compositions of $n$ by ignoring the order of the parts. Use Burnside's Lemma and the symetric group $S_3$ to count the partitions of $9$ into three parts. List all such partitions explicitly.
+\end{quest}
+\begin{proof}
+    $S_3$ fixes various partitions as follows:
+    \begin{itemize}
+        \item $(123)$ and $(132)$ fix only the $3+3+3$ partition. There is $1$ such partition.
+        \item $(12)$, $(13)$, and $(23)$ fix one ordering of the $1|1|7$, $2|2|5$, $4|4|1$, and $3|3|3$ partitions. For example, $(23)$ fixes $7|1|1,5|2|2,1|4|4,3|3|3$.
+        \item The identity fixes all $\binom{9-3+2}{2}=\binom{8}{2}=28$ partitions.
+    \end{itemize}
+    Thus, by Burnside's Lemma, the total number of partitions is
+    \[\frac{1+1+4+4+4+28}{6}=7.\]
+
+    By simple enumeration, the partitions are as follows:
+    \begin{itemize}
+        \item $1|1|7$
+        \item $1|2|6$
+        \item $1|3|5$
+        \item $1|4|4$
+        \item $2|2|5$
+        \item $2|3|4$
+        \item $3|3|3$
+    \end{itemize}
+\end{proof}
+\begin{quest}[\textcolor{red}{Burnside's $\implies$ \tiny{Fermat's Theorem}}]
+    Let $p,n,l$ be positive integers with $p$ prime. Use induction (on $l$) and Burnside's Lemma to prove that \[p^l\bigg\vert\paren{n^{p^l}-n^{p^{l-1}}}\]
+\end{quest}
+\begin{proof}
+    We first show the base case $p|n^p-n$.
+
+    Consider the number of ways to color a $p$-necklace with $n$ colors, where we are only concerned about rotational symmetries. From $p$'s primality, the fixed points of any non-identity rotation are the $a$ constant-color necklaces. Thus, the number of distinct colorings is \[\frac{1}{p}(n^p+(p-1)n),\] so $p|n^p+(p-1)n$. Therefore, $p|n^p-n$.
+
+    Now, assume that the statement holds for all integers up to $l-1$. Consider the number of ways to color a $p^l$-necklace with $n$ colors, where we are concerned with rotational symmetries, that is, the cyclic group $G\cong \ZZ_{p^l}$. $G$ has a generator $\pi$, the unit rotation.
+
+    Consider the number of fixed points of $\pi^i$, where $0\leq i<p^l$. If $i\neq0$ and $p|i$, then $\pi^i$ fixes $n^{p^{l-1}}$ necklaces, since our necklace has $p^l/p=p^{l-1}$ free beads. There are $p^{l-1}-1$ such $i$.
+    
+    Otherwise, we fix the $n$ constant color necklaces, or when $i=0$, fix all $n^{p^{l}}$ necklaces. 
+    
+    Thus, by Burnside's Lemma, the number of colorings is 
+    \begin{align*}        
+        \frac{1}{p^l}((p^{l-1}-1)n^{p^{l-1}}+(p^{l}-p^{l-1})(n)+(n^{p^l}))&=\frac{1}{p^l}(n^{p^l}-n^{p^{l-1}}+p^{l-1}(n^{p^{l-1}}-n)+p^ln).
+    \end{align*}
+    Notice that 
+    \begin{align*}
+        n^{p^{l-1}}-n&=(n^{p^{l-1}}-n^{p^{l-2}})+(n^{p^{l-2}}-n^{p^{l-3}})+\cdots+(n^p-n)\\
+        &\equiv 0\pmod{p},
+    \end{align*}
+    so $p^l|p^{l-1}(n^{p^{l-1}}-n)$, whence \[\frac{1}{p^l}(n^{p^l}-n^{p^{l-1}})\] is an integer, so $p^l|n^{p^l}-n^{p^{l-1}}$, as desired. Therefore, by strong induction, our proof is complete.
+
+    And that's the end of the proof. I hope you enjoyed it. It was a pleasure to do. Goodbye, goodbye, goodbye. Goodbye, goodbye, goodbye. Goodbye, goodbye, goodbye. Goodbye, goodbye, goodbye. I will continnue this conclusion by induction. The base case is "goodbye." The inductive step is "goodbye." The conclusion is "goodbye." The proof is complete. Goodbye.
+\end{proof}
+
+\begin{quest}[\textcolor{red}{Crowns with missing jewels}; Extra-Credit]
+    A crown with $n$ places for diamonds is missing $k$ of them. How many distinguishable ways can this happen? In other words, how many convex $k$-gons can be formed from the vertices of a regular $n$-gon, where two $k$-gons are considered distinguishable when they do not arise from each other by rotations.
+\end{quest}
+\begin{proof}
+    We apply Polyá's Enumeration Theorem. Let $G$ be the cyclic group of order $n$. We want the coefficient of the $z^k$ term in \[\frac{1}{n}\sum_{d|n}\phi(d)z_d^{n/d},\] and $z_d=(1+z^d)$ ($z$ is like the `generator').
+\end{proof}
+\end{document}
