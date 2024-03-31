@@ -31,7 +31,7 @@
         \item The identity fixes all $\binom{9-3+2}{2}=\binom{8}{2}=28$ partitions.
     \end{itemize}
     Thus, by Burnside's Lemma, the total number of partitions is
-    \[\frac{1+1+4+4+4+28}{6}=7.\]
+    \[\frac{1+1+4+4+4+28}{6}=\boxed{7}.\]
 
     By simple enumeration, the partitions are as follows:
     \begin{itemize}
@@ -76,6 +76,6 @@
     A crown with $n$ places for diamonds is missing $k$ of them. How many distinguishable ways can this happen? In other words, how many convex $k$-gons can be formed from the vertices of a regular $n$-gon, where two $k$-gons are considered distinguishable when they do not arise from each other by rotations.
 \end{quest}
 \begin{proof}
-    We apply Polyá's Enumeration Theorem. Let $G$ be the cyclic group of order $n$. We want the coefficient of the $z^k$ term in \[\frac{1}{n}\sum_{d|n}\phi(d)z_d^{n/d},\] and $z_d=(1+z^d)$ ($z$ is like the `generator').
+    We apply Polyá's Enumeration Theorem. Let $G$ be the cyclic group of order $n$. We want the coefficient of the $z^k$ term in \[\frac{1}{n}\sum_{d|n}\phi(d)z_d^{n/d},\] and $z_d=(1+z^d)$ ($z$ is like the `generator'). There is a nonzero coefficient of $z^k$ in $(1+z^d)^{n/d}$ when $k|d$, and this coefficient is $\binom{n/d}{k/d}$. Thus, our desired coefficient is the sum \[\boxed{\frac{1}{n}\sum_{d\mid\gcd(k,n)}\phi(d)\binom{n/d}{k/d}}.\]
 \end{proof}
 \end{document}
