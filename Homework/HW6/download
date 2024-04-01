@@ -1,0 +1,368 @@
+
+
+
+<!doctype html>
+<html class="no-js" lang="en-us" xml:lang="en-us" data-basehref="https://www.unr.edu">
+<head>
+    
+    
+<!-- Page Meta -->
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Google Site Verification Code -->
+<meta name="google-site-verification" content="6j3dvSLvv_Jh0BLkPyV8a1SxysA_BzewSX2uYDmdjYQ" />
+
+<!-- Title -->
+<title>WebCampus Login Page | University of Nevada, Reno</title>
+
+
+<!-- Icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/Assets/Icons/other/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/Assets/Icons/other/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Assets/Icons/other/favicon-16x16.png">
+<link rel="manifest" href="/Assets/Icons/other/site.webmanifest">
+<link rel="mask-icon" href="/Assets/Icons/other/safari-pinned-tab.svg" color="#003366">
+<meta name="msapplication-TileColor" content="#dfe5e9">
+<meta name="theme-color" content="#041E42">
+
+    <!-- SEO Meta -->
+        <meta name="description" content="Sign into the WebCampus Learning Management System at the University of Nevada, Reno." />
+    <!-- Open Graph Metadata -->
+        <meta property="og:title" content="WebCampus Login Page" />
+        <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.unr.edu/webcampus" />
+            <meta property="og:image" content="https://www.unr.edu/global/images/unr-stock/CampusImage-FB.jpg" />
+            <meta property="og:image:secure_url" content="https://www.unr.edu/global/images/unr-stock/CampusImage-FB.jpg" />
+            <meta property="og:image:alt" content="University of Nevada, Reno Logo" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+        <meta property="og:description" content="Sign into the WebCampus Learning Management System at the University of Nevada, Reno." />
+    <meta property="og:site_name" content="University of Nevada, Reno" />
+    <!-- Twitter Card Metadata -->
+        <meta name="twitter:title" content="WebCampus Login Page">
+        <meta name="twitter:description" content="Sign into the WebCampus Learning Management System at the University of Nevada, Reno.">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@unevadareno">
+            <meta property="twitter:image" content="https://www.unr.edu/global/images/unr-stock/CampusImage-FB.jpg" />
+            <meta property="twitter:image:alt" content="University of Nevada, Reno Logo" />
+        <meta name="twitter:dnt" content="on">
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://www.unr.edu/webcampus" />
+        <!-- Siteimprove CMS Deeplink URL -->
+        <meta name="editingPage" content="https://cms.unr.edu/#/site/x337146/edit" />
+
+    <!-- PreConnects -->
+    <link rel="preconnect" href="https://use.typekit.net/" />
+    <link rel="preconnect" href="https://www.googletagmanager.com/" />
+    <link rel="preconnect" href="https://www.google-analytics.com/" />
+    
+    <!-- Start Data Layer -->
+    
+<script>
+        dataLayer = [
+            {
+                'title': 'WebCampus',
+                'pageType': '',
+                'schema': 'SectionFront',
+                'sectionTitle': 'WebCampus login page',
+                'sectionType': 'Office',
+                'sectionParent': 'WebCampus',
+                'audience': 'off-campus',
+                'authors': '',
+                'created': '20230612T18:00:22',
+                'changed': '20230724T22:54:48'
+            }
+    ];
+</script>
+
+    <!-- End Data Layer -->
+    <!-- Start GTM -->
+    
+    <!-- UNR Google Tag Manager Start -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WLVRVJL');
+    </script>
+    <!-- UNR Google Tag Manager End -->
+<!-- End Google Tag Manager -->
+    <!-- End GTM -->
+    <!-- Site CSS -->
+    <!--Fonts-->
+    <link href="/Assets/Styles/Fonts/_MainFonts.min.css" rel="preload" as="style" onload="this.rel='stylesheet'" />
+<link href="/Assets/Styles/External/foundation-6.7.4.min.css" rel="preload" as="style" onload="this.rel='stylesheet'" />
+<link href="/Assets/Styles/Site.min.css" rel="preload" as="style" onload="this.rel='stylesheet'" />
+
+    <link href="/Assets/Styles/External/motion-ui-1.1.1.min.css" rel="preload" as="style" onload="this.rel='stylesheet'" />
+
+        <!-- Section CSS -->
+<link href="/Assets/Styles/Section.min.css" rel="preload" as="style" onload="this.rel='stylesheet'" />
+                    <!-- Start Render Section Styles-->
+    
+
+    <!--Plyr stylesheet-->
+    
+
+    <!-- End Render Section Styles-->
+    <!-- Start CSS Includes -->
+    
+
+
+    <!-- End CSS Includes -->
+    <meta property="fb:app_id" content="1062885220401235" />
+    <!-- Preloads -->
+    
+</head>
+<body id="x337146"  data-schema-type="SectionFront" style="visibility: hidden;">
+    <!-- Firefox visibility bug fix & noscript options -->
+    <script>0</script>
+    <!-- Start Header -->
+    <header aria-label="Site Header">
+        <!-- Skip Navigation -->
+        <div id="skipnav" class="site-skip-nav" aria-label="Skip Navigation" role="navigation">
+            <a href="#main-content" class="blue" tabindex="0">skip to main content</a>
+        </div>
+
+
+
+
+
+
+
+<!-- Start Site Navigation -->
+<nav class="nav nav-site" aria-label="Site Navigation">
+    <!--KS navigation container-->
+    <div class="ks-nav-container grid-container">
+
+
+        <!-- New Site/Section Logo -->
+        
+
+
+<div class="grid-x">
+    <div class="branding-new cell text-center" style="margin-left:0 auto; margin-right:0 auto;">
+        <a href="/" class="logo-link">
+            <img class="university-logo-large-img align-image-middle" alt="University of Nevada, Reno Homepage" src="https://www.unr.edu/Assets/Icons/logos/university-logo.svg" width="65" height="65">
+        </a>
+        <a href="https://www.unr.edu/webcampus" class="logo-link">
+                <h1 class="logo-text-new align-text-middle">WebCampus login page</h1>
+        </a>
+    </div>
+</div>
+
+
+<!-- Start Site Logo -->
+
+<!-- End Site Logo -->
+
+        <!-- New Site/Section Primary Nav Links -->
+        
+
+
+
+    </div>
+</nav>
+<!-- End Site Navigation -->
+<!-- Local alert-->
+<!-- End Local alert-->
+<!--Start Degree Detail Header-->
+
+<!--End degree detail header-->    </header>
+    <!-- End Header -->
+        <!-- Start Main -->
+        <main id="main-content">
+            
+
+
+
+<div class="section-front grid-container full  ">
+    
+    <div class="grid-x">
+        <div class="cell section-front-main small-12 medium-12 large-12">
+            
+
+
+
+
+<!-- start: Panel component -->
+<div class="grid-x component panel-component  panel-silver-bg  ">
+    
+
+    <div class="cell">
+        <!-- component description area -->
+        <!-- start: content-block component -->
+        <div class="grid-x align-justify component-maxwidth content-block cb-wrapper">
+
+
+
+        <div class="cell small-12 medium-6 large-6   flex-container flex-dir-column cb-blue  ">
+
+            
+
+            <div class="flex-child-auto">
+                    <div class="js-background-image">
+                        <img class="lazyload" data-src="https://www.unr.edu/main/images/divisions/tlt/tile/Nevada_N_and_Rotunda_afternoon.jpg" src="https://www.unr.edu/Assets/Images/default-place-holder-image.jpg" alt="University of Nevada, Reno Knowledge Center with the Nevada N sculpture in front." width="346" height="249" />
+                    </div>
+                <div class="cb-content NT">
+                            <a href="https://webcampus.unr.edu/login/saml" class="cb-link"><h2 >UNR NetID login</h2></a>
+                    <p>Use this login if you are a current student, faculty, or staff member.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="cell small-12 medium-6 large-6   flex-container flex-dir-column cb-blue  ">
+
+            
+
+            <div class="flex-child-auto">
+                    <div class="js-background-image">
+                        <img class="lazyload" data-src="https://www.unr.edu/main/images/divisions/tlt/tile/wolves-mackey-stadium.jpg" src="https://www.unr.edu/Assets/Images/default-place-holder-image.jpg" alt="Statue of three wolves located at Mackey Stadium." width="346" height="249" />
+                    </div>
+                <div class="cb-content NT">
+                            <a href="https://webcampus.unr.edu/login/canvas" class="cb-link"><h2 >Community and guest login</h2></a>
+                    <p>Use this login if you do not have University credentials.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="cell small-12 medium-12 large-12   flex-container flex-dir-column cb-no-bg text-center  ">
+
+            
+
+            <div class="flex-child-auto">
+                <div class="cb-content NT">
+                    <p>For assistance with your NetID, password, or other account-related issues, please <a href="/oit" title="Office of Information Technology">contact the Office of Information Technology</a>.</p>
+<p>For assistance with WebCampus, please visit the <a href="/digital-learning/tools-and-technologies/webcampus" title="WebCampus">WebCampus resources website</a>.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- end: content-block component -->
+    </div>
+</div>
+<!-- end: Panel component -->
+
+        </div>
+    </div>
+</div>
+
+        </main>
+        <!-- End Main -->
+        <!-- Section Contanct -->
+    
+    <!-- Start Footer -->
+        <footer class="footer site-footer">
+
+
+
+
+<!-- ************************** NEW FOOTER ************************* -->
+<div class="grid-x ks-footer">
+    <div class="cell ks-branding text-center" style="background-image:url(/web-team/uploads/site-footer-bg.jpg);">
+        <a href="/" class="logo-link" aria-label="University of Nevada, Reno Homepage">
+            <img class="university-logo-large-img" alt="" src="https://www.unr.edu/Assets/Icons/logos/university-logo.svg" width="55" height="55">
+        </a>
+        <br />
+            <span class="logo-text-new">Office of Digital Learning</span>
+    <p class="text-center address">
+        
+            </p>
+    </div>
+    <!-- required footer links -->
+    <div class="cell required-wrapper">
+            <ul class="required-links menu align-center">
+                    <li>
+                        <a href="https://www.unr.edu/diversity">Commitment to Diversity</a>
+                    </li>
+                    <li>
+                        <a href="https://www.unr.edu/accessibility/policy-and-procedures/commitment">Commitment to Accessibility</a>
+                    </li>
+                    <li>
+                        <a href="https://www.unr.edu/contact">Contact the University</a>
+                    </li>
+                    <li>
+                        <a href="https://www.unr.edu/equal-opportunity-title-ix">Equal Opportunity and Title IX</a>
+                    </li>
+                    <li>
+                        <a href="https://www.unr.edu/hr/job-opportunities">Employment &amp; Careers</a>
+                    </li>
+                    <li>
+                        <a href="https://www.unr.edu/non-discrimination">Non-Discrimination Statement</a>
+                    </li>
+                    <li>
+                        <a href="https://www.unr.edu/privacy">Privacy</a>
+                    </li>
+                            </ul>
+    </div>
+</div>        </footer>
+    <!-- End Footer -->
+    <script src="/Assets/Scripts/External/jquery-3.5.0.min.js"></script>
+    <script src="/Assets/Scripts/External/foundation-6.7.4.min.js"></script>
+        <!-- Start Global Scripts -->
+<script type="text/javascript" src="/Assets/Scripts/External/jquery-lazyLoad.min.js" ></script>
+<script type="text/javascript" src="/Assets/Scripts/External/lazysizes.min.js" ></script>
+<script type="text/javascript" src="/Assets/Scripts/External/jquery.waypoints.min.js" ></script>
+        <!-- End Global Scripts -->
+    <!-- Initialize Foundation Framework -->
+    <script src="/Assets/Scripts/Custom/initializeCustom.js" type="text/javascript"></script>
+    <!-- Foundation Framework-->
+
+        <!-- Start Custom Scripts -->
+<script type="text/javascript" src="/Assets/Scripts/Custom/mutation-observer.min.js" ></script>
+<script type="text/javascript" src="/Assets/Scripts/Custom/navigation.min.js" ></script>
+<script type="text/javascript" src="/Assets/Scripts/Custom/cleanup-with-javascript.min.js" ></script>
+<script type="text/javascript" src="/Assets/Scripts/Custom/alerts.min.js" ></script>
+<script type="text/javascript" src="/Assets/Scripts/Custom/convert-imgs-to-svgs.min.js" ></script>
+<script type="text/javascript" src="/Assets/Scripts/Custom/convert-imgs-to-css.min.js" ></script>
+<script type="text/javascript" src="/Assets/Scripts/Custom/image-descriptions.min.js" ></script>
+<script type="text/javascript" src="/Assets/Scripts/Custom/ie-overrides.min.js" ></script>
+        <!-- End Custom Scripts -->
+        <!-- Start Render Section Scripts-->
+    
+
+
+
+
+
+
+
+    <!-- End Render Section Scripts-->
+
+        <!-- Start Render Effect Background Scripts-->
+        <script type="text/javascript" src="/Assets/Scripts/Custom/Effects/EffectBackground.js"></script>
+        <!-- End Render Effect Background Scripts-->
+
+    <!--Start Schema.org section-->
+    
+
+
+    <!--End Schema.org section-->
+    <!-- Start JS Includes-->
+    
+
+
+
+    <!-- End JS Includes-->
+
+    
+
+    <noscript>
+        <style>
+            body {
+                visibility: visible;
+            }
+        </style>
+    </noscript>
+</body>
+</html>

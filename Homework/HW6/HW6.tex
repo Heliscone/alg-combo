@@ -1,0 +1,53 @@
+\documentclass[11pt]{article}
+\usepackage[lightbagel]{evan}
+
+\title{Algebraic Combinatorics: HW6}
+\author{various.}
+\date{\today}
+\begin{document}
+\maketitle
+\begin{quest}[\textcolor{red}{Trees with prescribed degrees and Cayley's formula}]
+    \begin{enumerate}[(a)]\phantom{0}
+
+        \item Given positive integers $d_1,d_2,\dots,d_n$ such that $\sum d_i=2n-2$, show that the number of labelled trees on $[n]$ such that vertex $i$ has degree $d_i$ for each $i$ is \[\frac{(n-2)!}{\prod(d_i-1)!}.\]
+        \item Prove Cayley's formula from (a).
+        \item What is the number of all trees on $n$ vertices with exactly $n-l$ leaves? (Hint: You may use (a) and leave your answer in terms of \textit{Stirning's number of the second kind}.)
+    \end{enumerate}
+\end{quest}
+\begin{proof}
+    \begin{enumerate}[(a)]
+        \item The proof via Prüfer codes is a trivial arrangement argument. Proceeding by induction on $n$, the base case $n=1$ is also trivial. So, assume that the statement holds for $n-1$, that is, there are \[\frac{(n-3)!}{\prod_{i=1}^{n-1}(d_i-1)!}\] ways to create a labelled tree with $\sum d_i=2n-4$.
+
+        For $n$ vertices, notice that there must be at least one vertex with degree $1$ since the sum of degrees is $2n-2$. Assign $d_n$ to be the vertex with degree $1$. Then, we have $n-1$ remaining vertices ways to connect the $n$th vertex to. If we connect to the $k$th vertex, then we are interested in the number of labelled trees with degrees $d_1,d_2,\dots d_k-1,\dots,d_{n-1}$, which is $\frac{(n-3)!}{\prod_{i=1}^{n-1}(d_i-1)!}\cdot (d_k-1)$. So, the total number of valid trees on $[n]$ vertices is
+        \begin{align*}
+            \sum_{k=1}^{n-1}\frac{(n-3)!}{\prod_{i=1}^{n-1}(d_i-1)!}\cdot (d_k-1)&=\frac{(n-3)!}{\prod_{i=1}^{n-1}(d_i-1)!}\cdot\sum_{k=1}^{n-1}(d_k-1)\\
+            &=\frac{(n-3)!}{\prod_{i=1}^{n-1}(d_i-1)!}\cdot(2n-3-(n-1))\\
+            &=\frac{(n-2)!}{\prod_{i=1}^{n-1}(d_i-1)!}\cdot\frac{1}{0!}\\
+            &=\frac{(n-2)!}{\prod_{i=1}^n(d_i-1)!},
+        \end{align*}
+        as desired. The proof by induction is complete.
+        \item Finding the total number of labelled trees on $[n]$ is the same to summing $\frac{(n-2)!}{\prod(d_i-1)!}$ over all possible degrees $d_1,d_2,\dots,d_n$ such that $\sum d_i=2n-2$. Note that $\frac{(n-2)!}{\prod(d_i-1)!}$ is the number of ways to order $n-2$ numbers in a row, where $x$ appears $d_x-1$ times, so our sum is counting the number of ways to list $n-2$ integers in an ordered row, where each number is between $1$ and $n$, which is precisely $n^{n-2}$.
+
+        This proof effectively travels through Prüfer codes.
+        \item Let vertices $l+1$ through $n$ be the leaves, so $d_{l+1}=d_{l+2}=\cdots=d_n=1$. The sum of the remaining degrees is $2n-2-(n-l)=n+l-2$. By (a), the number of trees is then \[\frac{(n-2)!}{\prod_{i=1}^l (d_i-1)!}\]
+    \end{enumerate}
+\end{proof}
+\begin{quest}[\textcolor{red}{Counting Spanning trees of $K_{m,n}$}]
+    Find the value of $\tau(K_{m,n})$ using:
+    \begin{enumerate}
+        \item Matrix-Tree Theorem.
+        \item Combinatorial argument, say,
+    \end{enumerate}
+\end{quest}
+\begin{quest}
+    Starting at a point $x_0$ we walk along the edges of a connected graph $G$ according to the following rules:
+    \begin{itemize}
+        \item We never use the same edge twice in the same direction.
+        \item Whenever we arrive at a point $x\neq x_0$ not previously visited, we mark the edge along which we entered $x$. We use the marked edge to leave $x$ only if we must, that is, if we have used all the other edges before.
+    \end{itemize}
+    Show that we get stuck at $x_0$, and that, by then, every edge has been traversed in both direction.
+\end{quest}
+\begin{proof}
+    We first show that we must get stuck at $x_0$. For the purposes of getting stuck, we don't particularly
+\end{proof}
+\end{document}
