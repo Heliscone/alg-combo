@@ -2,7 +2,7 @@
 \usepackage[lightbagel]{evan}
 
 \title{Algebraic Combinatorics: HW5}
-\author{various authors}
+\author{Dallin, Evan, Sawyer, and Xander}
 \date{3/14/2024}
 \begin{document}
 \maketitle
@@ -10,15 +10,7 @@
     The Lemma to prove Burnside’s Lemma states that when a group $G$ acts on $X$, the number of permutations that map $x$ to $y$ is the same for all $y$ in the orbit of $x$. Use this to count the ways to pair up $2n$ people. (\textit{Remark}: This can also be shown by a very easy combinatorial argument.)
 \end{quest}
 \begin{proof}
-    $x\to x_1\to x_2\cdots\to x_n\to x$ orbit $x$.
-
-    First, define an ordering of $2n$ people $p_1,p_2,\cdots,p_{2n}$ as some ordering, for example $p_1p_2p_3\cdots p_{2n}$ defines pairings $p_{2i-1}p_{2i}$. Set $X$ is all possible orderings, $|X|=2n!$.
-
-    $(12)(13)(14)(23)$
-
-    1234, pairing is a permutation $(12)(34),(13)(24),(23)(14)$ or smth.
-\[\frac{2n!}{2^n n!}\]
-    group $G$ is then all $S_4$
+    Consider two rows of $n$ people, and represent this ordering by an arrangement of the numbers from $1$ to $2n$, where the $2i-1$ and $2i$th people are in a pair. Construct the set $X$ (size $2n!$), and let our group $G=S_n\oplus (S_2)^n$ (swapping all $n$ pairs, and shuffling them amongst each other). Then, notice that there is only one permutation that maps one pairing arrangement to another, so there will be orbits of size $|G|$, for a total number of possible distinct pairings of \[\frac{|X|}{|G|}=\frac{2n!}{n!2^n}.\]
 \end{proof}
 \begin{quest}
     Partitions of an integer $n$ are obtained from compositions of $n$ by ignoring the order of the parts. Use Burnside's Lemma and the symetric group $S_3$ to count the partitions of $9$ into three parts. List all such partitions explicitly.
