@@ -36,9 +36,18 @@
     Find the value of $\tau(K_{m,n})$ using:
     \begin{enumerate}
         \item Matrix-Tree Theorem.
-        \item Combinatorial argument, say,
+        \item Combinatorial argument, say, that of Prüfer or Joyal.
+        \item Let $L$ be the Laplacian of $K_{m,n}$.
+            \begin{enumerate}[(a)]
+                \item Find a simple upper bound on $\mathop{\mathrm{rank}}(L-mI)$.
+            \end{enumerate}
     \end{enumerate}
 \end{quest}
+\begin{proof}
+    \begin{enumerate}
+        \item Recall that the Matrix-Tree Theorem states that $\tau(G) = |L_0|$. We let vertices $v_1$ through $v_m$ be within the first partite and $v_{m+1}$ through $v_{m+n}$ be within the second partite. Then, the Laplacian of $K_{m,n}$ is \[L=\begin{pmatrix}mI_n&-J\\-J&nI_m\end{pmatrix},\] where $J$ is the all-ones matrix. Then, we have \[L_0=\begin{pmatrix}mI&-J\\-J&nI\end{pmatrix}_{\{v_1,v_2,\dots,v_{m+n-1}\}}=\begin{pmatrix}mI&-J\\-J&nI\end{pmatrix}_{\{v_1,v_2,\dots,v_m\}}.\] The determinant of this matrix is \[mI\cdot nI-J^2=mIn-nJ^2=mIn-nJn=n(m-n),\] so $\tau(K_{m,n})=n(m-n)$.
+    \end{enumerate}
+\end{proof}
 \begin{quest}
     Starting at a point $x_0$ we walk along the edges of a connected graph $G$ according to the following rules:
     \begin{itemize}
@@ -48,6 +57,8 @@
     Show that we get stuck at $x_0$, and that, by then, every edge has been traversed in both direction.
 \end{quest}
 \begin{proof}
-    We first show that we must get stuck at $x_0$. For the purposes of getting stuck, we don't particularly
+    Set the vertex at which we get stuck to be $v$. Suppose, for the sake of contradiction, then $v\neq x_0$. Then, if we consider the number of times we have traversed an edge to arrive \textit{at} $v$, this must be one more than the number of times we have traversed an edge to leave \textit{from} $v$. Thus, there must be at least one edge that we have not traversed in both directions, so we may traverse that edge and leave. Therefore, we must be stuck at $x_0$.
+
+    We now show that, when we get stuck at $x_0$, every other edge must be traversed in both directions. 
 \end{proof}
 \end{document}
