@@ -40,17 +40,28 @@
         \item Let $L$ be the Laplacian of $K_{m,n}$.
             \begin{enumerate}[(a)]
                 \item Find a simple upper bound on $\mathop{\mathrm{rank}}(L-mI)$.
+                \item Deduce a lwoer bound on the multiplicity of eigenvalue $L$ equal to $m$.
+                \item Assume $m\neq n$ and do the same for $n$.
+                \item Find the remaining eigenvalues of $L$.
+                \item Use (a)-(d) to compute $\tau(K_{m,n})$.
             \end{enumerate}
     \end{enumerate}
 \end{quest}
 \begin{proof}
-    \begin{enumerate}
-        \item Recall that the Matrix-Tree Theorem states that $\tau(G) = |L_0|$. We let vertices $v_1$ through $v_m$ be within the first partite and $v_{m+1}$ through $v_{m+n}$ be within the second partite. Then, the Laplacian of $K_{m,n}$ is \[L=\begin{pmatrix}nI_m&-J_{m \times n}\\-J_{n \times m}&mI_n\end{pmatrix},\]. Then, we have
+    \begin{enumerate}[(i)]
+        \item Recall that the Matrix-Tree Theorem states that $\tau(G) = |L_0|$. We let vertices $v_1$ through $v_m$ be within the first partite and $v_{m+1}$ through $v_{m+n}$ be within the second partite. Then, the Laplacian of $K_{m,n}$ is \[L=\begin{pmatrix}nI_m&-J_{m \times n}\\-J_{n \times m}&mI_n\end{pmatrix},\] Then, we have
         \[
-            L_0=\begin{pmatrix}nI_m&-J_{m \times (n-1)}\\-J_{(n-1) \times m}&mI_{n-1}\end{pmatrix}
+            L_0=\begin{pmatrix}nI_m&-J_{m \times (n-1)}\\-J_{(n-1) \times m}&mI_{n-1}\end{pmatrix},
         \]
+        and block expansion gives 
+        \begin{align*}
+            |L_0|&=n^m\det(mI_{n-1})-n^m\det\paren{J_{(n-1)\times m}\paren{\frac{1}{n}I_m}J_{m\times(n-1)}}\\
+            &=n^m\paren{m^{n-1}-\frac{1}{n^m}\det(J_{(n-1)\times m}I_mJ_{m\times (n-1)})}\\
+            &=n^m\paren{m^{n-1}-\frac{1}{n^m}\det(mJ_{(n-1)\times(n-1)})}\\
+            &=n^m(m^{n-1}-m^{n-1}0)
+        \end{align*}
         and $\tau(K_{m,n})=|L_0|=n^{m-1}m^{n-1}$.
-
+        %this def be mistakey
         \item We can use the Prüfer code argument to show that $\tau(K_{m,n})=n^{m-1}m^{n-1}$. The proof is similar to the one in the previous question. We can also use Joyal's bijection to show that $\tau(K_{m,n})=n^{m-1}m^{n-1}$.
     \end{enumerate}
 \end{proof}
