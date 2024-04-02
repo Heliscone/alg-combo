@@ -65,10 +65,24 @@
 \begin{quest}[\textcolor{red}{Universal cycles for $S_n$}]
     \begin{enumerate}[(i)]
         \item Let $n\geq 3$. Show that there does not exist a sequence $a_1,a_2,\dots,a_{n!}$ such that all the $n!$ contiguous blocks $a_{i},a_{i+1},\dots,a_{i+n-1}$ (subscripts taken modulo $n!$) are all the $n!$ permutations of $S_n$.
-        \item Show that for all $n\geq 1$, there exist a sequence $a_1,a_2,\dots,a_{n!}$ such that all the $n!$ contiguous blocks $a_{i},a_{i+1},\dots,a_{i+n-1}$ consists of the first $n-1$ terms $b_1,b_2,\dots,b_{n-1}$ of all permutations $b_1,b_2,\dots,b_n$ of $[n]$. 
+        \item Show that for all $n\geq 1$, there exist a sequence $a_1,a_2,\dots,a_{n!}$ such that all the $n!$ contiguous blocks $a_{i},a_{i+1},\dots,a_{i+n-2}$ consists of the first $n-1$ terms $b_1,b_2,\dots,b_{n-1}$ of all permutations $b_1,b_2,\dots,b_n$ of $[n]$. 
         
         Such sequences are called \vocab{universal cycles} for $S_n$ (for example, for $n=3$, $123213$ is a universal cycle.)
         \item For $n=3$, find the number of universal cycles beginning with $123$.
     \end{enumerate}
 \end{quest}
+\begin{proof}
+    \begin{enumerate}[(i)]
+        \item There are $(n-1)!$ sequences that begin with a given $i$ (integer $1\leq i\leq n$), so the $i$s must be evenly spaced throughout the sequence, which means that the sequence is just $(n-1)!$ copis of $a_1,a_2,\dots,a_n$, which will certainly not contain all $n!$ permutations of $S_n$.
+        
+        For the example of $n=3$, the requirement of $2$ blocks beginning wth $1,2,$ and $3$ force a structure of $ABCABC$, which, because of the repeat, doesn't contain all $n!$ permutations. 
+        \item %I DONT KNOWWWWWWWWWW
+        \item The beginning $123$ gives blocks of $12$ and $23$, so the next term can be a block of $32$ or $31$, giving cases of:
+        \begin{enumerate}
+            \item $1232$: we've accounted for $23$ already, so the next number must be $1$. In $12321$, we already have a $12$, so the next number must be $3$, yielding the universal cycle $123213$.
+            \item $1231$: we've accounted for $12$ already, so the next number must be $3$. In $12313$, we already have a $31$, so the last number must be a $2$, yielding the universal cycle $123132$.
+        \end{enumerate}
+        We confirm that all permutations are present, so the two universal cycles are \[\boxed{12313,123132}.\]
+    \end{enumerate}
+\end{proof}
 \end{document}
