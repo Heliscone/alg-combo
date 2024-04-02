@@ -51,7 +51,12 @@
         \]
         and $\tau(K_{m,n})=|L_0|=n^{m-1}m^{n-1}$.
 
-        \item We can use the Prüfer code argument to show that $\tau(K_{m,n})=n^{m-1}m^{n-1}$. The proof is similar to the one in the previous question. We can also use Joyal's bijection to show that $\tau(K_{m,n})=n^{m-1}m^{n-1}$.
+        \item First, we note that one of the partites of $K_{m,n}$ must be larger than the other. [EXPLANATION OF THIS] Therefore, WLOG, let $n > m$. We divide the vertices of $K_{m,n}$ into two sets, $A$ and $B$, where $|A|=m$ and $|B|=n$. Then, we delete the smallest leaf in B and append its neighbor to the Prüfer code. We repeat this process until $|B|=m$. Then, we delete the smallest leaf in $A$ and append its neighbor to the Prüfer code, followed by deleting the smallest leaf in $B$ and appending its neighbor, etc.
+        
+        From the first part of the process, we have $n^{m-n}$ ways to choose the neighbors of the leaves in $B$, and from the second part of the process, we have $m^{m-1} n^{m-1}$ ways to choose the neighbors of the leaves in $A$. Whence,
+        \[
+            \tau(K_{m,n})={m-n}m^{m-1} n^{m-1}=n^{m-1}m^{n-1}
+        \].
     \end{enumerate}
 \end{proof}
 \setcounter{problem}{3}
