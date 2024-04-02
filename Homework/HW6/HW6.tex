@@ -34,7 +34,7 @@
 \end{proof}
 \begin{quest}[\textcolor{red}{Counting Spanning trees of $K_{m,n}$}]
     Find the value of $\tau(K_{m,n})$ using:
-    \begin{enumerate}
+    \begin{enumerate}[(i)]
         \item Matrix-Tree Theorem.
         \item Combinatorial argument, say, that of Prüfer or Joyal.
         \item Let $L$ be the Laplacian of $K_{m,n}$.
@@ -48,6 +48,7 @@
         \item Recall that the Matrix-Tree Theorem states that $\tau(G) = |L_0|$. We let vertices $v_1$ through $v_m$ be within the first partite and $v_{m+1}$ through $v_{m+n}$ be within the second partite. Then, the Laplacian of $K_{m,n}$ is \[L=\begin{pmatrix}mI_n&-J\\-J&nI_m\end{pmatrix},\] where $J$ is the all-ones matrix. Then, we have \[L_0=\begin{pmatrix}mI&-J\\-J&nI\end{pmatrix}_{\{v_1,v_2,\dots,v_{m+n-1}\}}=\begin{pmatrix}mI&-J\\-J&nI\end{pmatrix}_{\{v_1,v_2,\dots,v_m\}}.\] The determinant of this matrix is \[mI\cdot nI-J^2=mIn-nJ^2=mIn-nJn=n(m-n),\] so $\tau(K_{m,n})=n(m-n)$.
     \end{enumerate}
 \end{proof}
+\setcounter{problem}{3}
 \begin{quest}
     Starting at a point $x_0$ we walk along the edges of a connected graph $G$ according to the following rules:
     \begin{itemize}
@@ -59,6 +60,15 @@
 \begin{proof}
     Set the vertex at which we get stuck to be $v$. Suppose, for the sake of contradiction, then $v\neq x_0$. Then, if we consider the number of times we have traversed an edge to arrive \textit{at} $v$, this must be one more than the number of times we have traversed an edge to leave \textit{from} $v$. Thus, there must be at least one edge that we have not traversed in both directions, so we may traverse that edge and leave. Therefore, we must be stuck at $x_0$.
 
-    We now show that, when we get stuck at $x_0$, every other edge must be traversed in both directions. 
+    We now show that, when we get stuck at $x_0$, every other edge must be traversed in both directions, where we duplicate each edge and direct it, to create the enter-exit effect. Then, consider the ``in-tree'' rooted at $x_0$. Suppose, for the sake of contradiction, that we get stuck at $x_0$ when there is still some untraversed edges. At least one of those eddges but be an edge of the in-tree rooted at $v$, and let the point closest to $x_0$ (in the in-tree) on an untraversed edge of the in-tree be $y$. Since we travel to and from $y$ an equal number of times, there is an ``exit'' from $y$ we don't use, so $y$ is closer to $x_0$ than the initial vertex on the untraversed edge, meaning that $y=v$ (by the choice of edge). But, if there is an in-edge to $x_0$, then we must certainly also have an unused out-edge, contradicting our stuckness. So, all edges are traversed in our manually constructed directed graph, meaning all edges are traversed twice in the original graph.
 \end{proof}
+\begin{quest}[\textcolor{red}{Universal cycles for $S_n$}]
+    \begin{enumerate}[(i)]
+        \item Let $n\geq 3$. Show that there does not exist a sequence $a_1,a_2,\dots,a_{n!}$ such that all the $n!$ contiguous blocks $a_{i},a_{i+1},\dots,a_{i+n-1}$ (subscripts taken modulo $n!$) are all the $n!$ permutations of $S_n$.
+        \item Show that for all $n\geq 1$, there exist a sequence $a_1,a_2,\dots,a_{n!}$ such that all the $n!$ contiguous blocks $a_{i},a_{i+1},\dots,a_{i+n-1}$ consists of the first $n-1$ terms $b_1,b_2,\dots,b_{n-1}$ of all permutations $b_1,b_2,\dots,b_n$ of $[n]$. 
+        
+        Such sequences are called \vocab{universal cycles} for $S_n$ (for example, for $n=3$, $123213$ is a universal cycle.)
+        \item For $n=3$, find the number of universal cycles beginning with $123$.
+    \end{enumerate}
+\end{quest}
 \end{document}
