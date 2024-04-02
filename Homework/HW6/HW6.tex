@@ -45,7 +45,13 @@
 \end{quest}
 \begin{proof}
     \begin{enumerate}
-        \item Recall that the Matrix-Tree Theorem states that $\tau(G) = |L_0|$. We let vertices $v_1$ through $v_m$ be within the first partite and $v_{m+1}$ through $v_{m+n}$ be within the second partite. Then, the Laplacian of $K_{m,n}$ is \[L=\begin{pmatrix}mI_n&-J\\-J&nI_m\end{pmatrix},\] where $J$ is the all-ones matrix. Then, we have \[L_0=\begin{pmatrix}mI&-J\\-J&nI\end{pmatrix}_{\{v_1,v_2,\dots,v_{m+n-1}\}}=\begin{pmatrix}mI&-J\\-J&nI\end{pmatrix}_{\{v_1,v_2,\dots,v_m\}}.\] The determinant of this matrix is \[mI\cdot nI-J^2=mIn-nJ^2=mIn-nJn=n(m-n),\] so $\tau(K_{m,n})=n(m-n)$.
+        \item Recall that the Matrix-Tree Theorem states that $\tau(G) = |L_0|$. We let vertices $v_1$ through $v_m$ be within the first partite and $v_{m+1}$ through $v_{m+n}$ be within the second partite. Then, the Laplacian of $K_{m,n}$ is \[L=\begin{pmatrix}nI_m&-J_{m \times n}\\-J_{n \times m}&mI_n\end{pmatrix},\]. Then, we have
+        \[
+            L_0=\begin{pmatrix}nI_m&-J_{m \times (n-1)}\\-J_{(n-1) \times m}&mI_{n-1}\end{pmatrix}
+        \]
+        and $\tau(K_{m,n})=|L_0|=n^{m-1}m^{n-1}$.
+
+        \item We can use the Prüfer code argument to show that $\tau(K_{m,n})=n^{m-1}m^{n-1}$. The proof is similar to the one in the previous question. We can also use Joyal's bijection to show that $\tau(K_{m,n})=n^{m-1}m^{n-1}$.
     \end{enumerate}
 \end{proof}
 \setcounter{problem}{3}
