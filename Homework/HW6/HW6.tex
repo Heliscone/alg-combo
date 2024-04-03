@@ -8,10 +8,10 @@
 \maketitle
 \begin{quest}[\textcolor{red}{Trees with prescribed degrees and Cayley's formula}]
     \begin{enumerate}[(a)]\phantom{0}
-
+        
         \item Given positive integers $d_1,d_2,\dots,d_n$ such that $\sum d_i=2n-2$, show that the number of labelled trees on $[n]$ such that vertex $i$ has degree $d_i$ for each $i$ is \[\frac{(n-2)!}{\prod(d_i-1)!}.\]
         \item Prove Cayley's formula from (a).
-        \item What is the number of all trees on $n$ vertices with exactly $n-l$ leaves? (Hint: You may use (a) and leave your answer in terms of \textit{Stirning's number of the second kind}.)
+        \item What is the number of all trees on $n$ vertices with exactly $n-l$ leaves? (Hint: You may use (a) and leave your answer in terms of \textit{Stirling's number of the second kind}.)
     \end{enumerate}
 \end{quest}
 \begin{proof}
@@ -29,7 +29,12 @@
         \item Finding the total number of labelled trees on $[n]$ is the same to summing $\frac{(n-2)!}{\prod(d_i-1)!}$ over all possible degrees $d_1,d_2,\dots,d_n$ such that $\sum d_i=2n-2$. Note that $\frac{(n-2)!}{\prod(d_i-1)!}$ is the number of ways to order $n-2$ numbers in a row, where $x$ appears $d_x-1$ times, so our sum is counting the number of ways to list $n-2$ integers in an ordered row, where each number is between $1$ and $n$, which is precisely $n^{n-2}$.
 
         This proof effectively travels through Prüfer codes.
-        \item Let vertices $l+1$ through $n$ be the leaves, so $d_{l+1}=d_{l+2}=\cdots=d_n=1$. The sum of the remaining degrees is $2n-2-(n-l)=n+l-2$. By (a), the number of trees is then \[\frac{(n-2)!}{\prod_{i=1}^l (d_i-1)!}\]
+        \item There are $\binom n l$ ways to choose the $l$ non-leaves. We count the number of trees for any given combination of leaves.
+        
+        
+        WLOG, let vertices $l+1$ through $n$ be the leaves, so $d_{l+1}=d_{l+2}=\cdots=d_n=1$. The sum $\sum_{i=1}^l d_i-1$ is then $2n-2-(n-l)-l=n-2$. By (a), the number of trees with this degree condition is then \[\sum_{\sum_{i=1}^l d_i-1=n-2}\frac{(n-2)!}{\prod_{i=1}^l (d_i-1)!},\] and setting the $d_i'=d_i-1$ gives, where $1\leq i\leq l$, \[\sum_{\sum d_i'=n-2}\frac{(n-2)!}{\prod d_i'!},\] which is precisely the number of ways to partition $n-2$ objects into $l$ labelled partitions, also $l\!$ times the number of ways to partition $n-2$ into $l$ partitions, which is the stirling number $\left\{\genfrac{}{}{0pt}{}{n-2}{l}\right\}$.
+
+        Thus, there are \[\frac{n!}{(n-l)!}\left\{\genfrac{}{}{0pt}{}{n-2}{l}\right\}\] trees on $[n]$ with $n-l$ leaves.
     \end{enumerate}
 \end{proof}
 \begin{quest}[\textcolor{red}{Counting Spanning trees of $K_{m,n}$}]
@@ -40,7 +45,7 @@
         \item Let $L$ be the Laplacian of $K_{m,n}$.
             \begin{enumerate}[(a)]
                 \item Find a simple upper bound on $\mathop{\mathrm{rank}}(L-mI)$.
-                \item Deduce a lwoer bound on the multiplicity of eigenvalue $L$ equal to $m$.
+                \item Deduce a lower bound on the multiplicity of eigenvalue $L$ equal to $m$.
                 \item Assume $m\neq n$ and do the same for $n$.
                 \item Find the remaining eigenvalues of $L$.
                 \item Use (a)-(d) to compute $\tau(K_{m,n})$.
@@ -57,17 +62,29 @@
         Now all we must do is evaluate $|L_0|$. Adding all of the rows to the first row, we get
         \[
             |L_0| = \begin{pmatrix}
-                1 & \cdots & \cdots & 1 & 0 & \cdots & 0\\
-                0 & n & 0 & 0 & 
-            \end{pmatrix}
-        \]
+                1 & \multicolumn{2}{c}{\underbrace{\cdots}_{m\text{ ones}}} & 1 & 0 & \cdots & 0\\
+                0 & n & 0 & 0 & -1 & \cdots & -1\\
+                0 & 0 & \ddots & 0 & \vdots & \ddots & \vdots\\
+                0 & 0 & 0 & n & -1 & \cdots & -1\\
+                0 & \multicolumn{2}{c}{\cdots} & 0 & m & 0 & 0\\
+                0 & \multicolumn{2}{c}{\cdots} & 0 & 0 & \ddots & 0\\
+                0 & \multicolumn{2}{c}{\cdots} & 0 & 0 & 0 & m
 
-        \item First, we note that one of the partites of $K_{m,n}$ must be larger than the other. [EXPLANATION OF THIS] Therefore, WLOG, let $n > m$. We divide the vertices of $K_{m,n}$ into two sets, $A$ and $B$, where $|A|=m$ and $|B|=n$. Then, we delete the smallest leaf in B and append its neighbor to the Prüfer code. We repeat this process until $|B|=m$. Then, we delete the smallest leaf in $A$ and append its neighbor to the Prüfer code, followed by deleting the smallest leaf in $B$ and appending its neighbor, etc.
+            \end{pmatrix},
+        \]
+            so \[|L_0|=\det(\diag\{1,\underbrace{m,\dots,m}_{n-1},\underbrace{n,\dots,n}_{m-1}\})=m^{n-1}n^{m-1}.\]
+        \item First, WLOG, we let $n \ge m$. We divide the vertices of $K_{m,n}$ into two sets, $A$ and $B$, where $|A|=m$ and $|B|=n$. We first must verify that a leaf exists in $B$. This can be shown by contradiction: If the degree of every vertex in $B$ were to be $> 1$, the total number of edges in our tree would be $\ge 2n$. This would be greater than the total number of edges, $m + n - 1$, a contradiction.
+        
+        We procee by deleting the smallest leaf in B and append its neighbor to the Prüfer code. We repeat this process until $|B|=m$. Then, we delete the smallest leaf in $A$ and append its neighbor to the Prüfer code, followed by deleting the smallest leaf in $B$ and appending its neighbor, etc.
         
         From the first part of the process, we have $n^{m-n}$ ways to choose the neighbors of the leaves in $B$, and from the second part of the process, we have $m^{m-1} n^{m-1}$ ways to choose the neighbors of the leaves in $A$. Whence,
         \[
-            \tau(K_{m,n})={m-n}m^{m-1} n^{m-1}=n^{m-1}m^{n-1}
-        \].
+            \tau(K_{m,n})={m-n}m^{m-1} n^{m-1}=n^{m-1}m^{n-1}.
+        \]
+
+        \item \begin{enumerate}[(a)]
+            \item The rank of $L - mI$ is at most $m+n$ 
+        \end{enumerate}
     \end{enumerate}
 \end{proof}
 \setcounter{problem}{3}
