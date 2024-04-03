@@ -2,7 +2,7 @@
 \usepackage[lightbagel]{evan}
 
 \title{Algebraic Combinatorics: HW6}
-\author{various.}
+\author{Dallin, Evan}
 \date{\today}
 \begin{document}
 \maketitle
@@ -75,7 +75,7 @@
             so \[|L_0|=\det(\diag\{1,\underbrace{m,\dots,m}_{n-1},\underbrace{n,\dots,n}_{m-1}\})=m^{n-1}n^{m-1}.\]
         \item First, WLOG, we let $n \ge m$. We divide the vertices of $K_{m,n}$ into two sets, $A$ and $B$, where $|A|=m$ and $|B|=n$. We first must verify that a leaf exists in $B$. This can be shown by contradiction: If the degree of every vertex in $B$ were to be $> 1$, the total number of edges in our tree would be $\ge 2n$. This would be greater than the total number of edges, $m + n - 1$, a contradiction.
         
-        We procee by deleting the smallest leaf in B and append its neighbor to the Prüfer code. We repeat this process until $|B|=m$. Then, we delete the smallest leaf in $A$ and append its neighbor to the Prüfer code, followed by deleting the smallest leaf in $B$ and appending its neighbor, etc.
+        We proceed by deleting the smallest leaf in B and append its neighbor to the Prüfer code. We repeat this process until $|B|=m$. Then, we delete the smallest leaf in $A$ and append its neighbor to the Prüfer code, followed by deleting the smallest leaf in $B$ and appending its neighbor, etc.
         
         From the first part of the process, we have $n^{m-n}$ ways to choose the neighbors of the leaves in $B$, and from the second part of the process, we have $m^{m-1} n^{m-1}$ ways to choose the neighbors of the leaves in $A$. Whence,
         \[
@@ -83,7 +83,13 @@
         \]
 
         \item \begin{enumerate}[(a)]
-            \item The rank of $L - mI$ is at most $m+n$ 
+            \item $L-mI$ is a matrix \[\begin{pmatrix}(n-m)I_m&-J_{m\times n}\\-J_{n\times m}&0\end{pmatrix},\] and since all of the rows in the lower blocks are the same ($m$ $-1$s and $n$ $0$s), the rank is at most $m+1$.
+            \item $m$'s multiplicity is at least $(m+n)-\rank(L-mI)\geq m+n-m-1=n-1$.
+            \item $L-nI$ is the matrix \[\begin{pmatrix}0&-J_{m\times n}\\-J_{n\times m}& (m-n)I_n\end{pmatrix},\] and again we can collapse the top $m$ rows into one, for a rank of $n+1$.
+            
+            $n$'s multiplicity is then at least $m-1$.
+            \item We have two more eigenvalues of multiplicity one (or one eigenvalue of multiplicity two) to find. Clearly, $0$ is an eigenvalue with multiplicity one. Then, informed by the answer, we notice that $m+n$ is also an eigenvalue with multiplicity one.
+            \item By Corollary (i) from lecture, we have \[\tau(K_{m,n})=\frac{1}{m+n}(m+n)(n^{m-1})(m^{n-1})=m^{n-1}n^{m-1}.\]
         \end{enumerate}
     \end{enumerate}
 \end{proof}
@@ -115,7 +121,9 @@
         \item There are $(n-1)!$ sequences that begin with a given $i$ (integer $1\leq i\leq n$), so the $i$s must be evenly spaced throughout the sequence, which means that the sequence is just $(n-1)!$ copis of $a_1,a_2,\dots,a_n$, which will certainly not contain all $n!$ permutations of $S_n$.
         
         For the example of $n=3$, the requirement of $2$ blocks beginning wth $1,2,$ and $3$ force a structure of $ABCABC$, which, because of the repeat, doesn't contain all $n!$ permutations. 
-        \item %I DONT KNOWWWWWWWWWW
+        \item Consider a way to create a digraph of the elements of $S_n$ (written as $n$-strings), where we have a directed edge from $\rho_1$ to $\rho_2$ if the middle $n-2$ elements of $\rho_1$ are the same as the first $n-2$ elements of $\rho_2$. In this sense, a step is like a left shift of the $n$-string, where the first character is deleted and we append some character to the end, i.e. from $123$ to $234$ or $231$. We wish to show that this graph is Eulerian. 
+        
+        Firstly, by the setup, it is clear that the graph is connected (we may perform a ``shifting'' walk until we get from one permutation to another). Then, notice that $\delta^-(v)=\delta^+(v)=2$ for all $v$, by the string setup, so the digraph is balanced and thus Eulerian.
         \item The beginning $123$ gives blocks of $12$ and $23$, so the next term can be a block of $32$ or $31$, giving cases of:
         \begin{enumerate}
             \item $1232$: we've accounted for $23$ already, so the next number must be $1$. In $12321$, we already have a $12$, so the next number must be $3$, yielding the universal cycle $123213$.
