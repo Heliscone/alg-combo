@@ -1,0 +1,27 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lightbagel]{evan}
+
+\title{Algebraic Combinatorics - HW7}
+\author{Evan Lim}
+\date{04/09/2024}
+\begin{document}
+\maketitle
+\begin{quest}[\textcolor{red}{Lattice Paths avoiding a certain set of points}]
+Let $P$ be a fixed lattice (ballot) path from $(0,0)$ to $(m,n)$. Let $T$ be a set of interior points on $P$ (that is, some subset of points on $P$ other than $(0,0)$ and $(m,n)$). Let $f_{m,n}(T)$ be the number of lattice paths from $(0,0)$ to $(m,n)$ that avoid all of $T$.
+\begin{enumerate}[(i)]
+    \item Use a Corollary of Gessel-Viennot Lemma to find an expression for $f_{m,n}(T)$.
+    \item Use Inclusion-Exclusion to find an expression for $f_{m,n}(T)$.
+\end{enumerate}
+\end{quest}
+\begin{quest}[\textcolor{red}{Linear dependency and Gessel-Vienot}]
+    Let $A_{n\times n}$ be a matrix with linearly dependent rows. Show by using Gessel-Viennot Lemma that $|A|=0$.
+\end{quest}
+\begin{quest}[\textcolor{red}{GCD matrix}]
+    Let $S=\{a_1,a_2,\dots,a_n\}\subset\NN$. let the \vocab{GCD matrix} $M$ of $S$ have entries $m_{ij}=\gcd(a_i,a_j)$. Prove that if $S$ is closed under taking divisors, then \[|M|=\prod_{i=1}^n\varphi(a_i).\]
+    (\textit{Hint:} Form a certain digraph using three copies of $S$, and then put certain edges and weights on them.)
+\end{quest}
+\begin{quest}[\textcolor{red}{Determinant of a marix of Stirling Numbers}]
+    For $m\geq0$, $n\geq 1$, prove the following identity. Here $S_{n,k}$ is the Stirling number of the $2^{\text{nd}}$ kind.
+    \[\det\begin{pmatrix}S_{m+1,1}&S_{m+1,2}&\cdots&S_{m+1,n}\\S_{m+2,1}&S_{m+2,2}&\cdots&S_{m+2,n}\\\vdots&\vdots&\ddots&\vdots\\S_{m+n,1}&S_{m+n,2}&\cdots&S_{m+n,n}\end{pmatrix}=(n!)^m\]
+\end{quest}
+\end{document}
