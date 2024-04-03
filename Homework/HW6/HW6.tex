@@ -51,16 +51,16 @@
     \begin{enumerate}[(i)]
         \item Recall that the Matrix-Tree Theorem states that $\tau(G) = |L_0|$. We let vertices $v_1$ through $v_m$ be within the first partite and $v_{m+1}$ through $v_{m+n}$ be within the second partite. Then, the Laplacian of $K_{m,n}$ is \[L=\begin{pmatrix}nI_m&-J_{m \times n}\\-J_{n \times m}&mI_n\end{pmatrix},\] Then, we have
         \[
-            L_0=\begin{pmatrix}nI_m&-J_{m \times (n-1)}\\-J_{(n-1) \times m}&mI_{n-1}\end{pmatrix},
+            L_0=\begin{pmatrix}nI_m&-J_{m \times (n-1)}\\-J_{(n-1) \times m}&mI_{n-1}\end{pmatrix}.
         \]
-        and block expansion gives 
-        \begin{align*}
-            |L_0|&=n^m\det(mI_{n-1})-n^m\det\paren{J_{(n-1)\times m}\paren{\frac{1}{n}I_m}J_{m\times(n-1)}}\\
-            &=n^m\paren{m^{n-1}-\frac{1}{n^m}\det(J_{(n-1)\times m}I_mJ_{m\times (n-1)})}\\
-            &=n^m\paren{m^{n-1}-\frac{1}{n^m}\det(mJ_{(n-1)\times(n-1)})}\\
-            &=n^m(m^{n-1}-m^{n-1}0)
-        \end{align*}
-        and $\tau(K_{m,n})=|L_0|=n^{m-1}m^{n-1}$.
+
+        Now all we must do is evaluate $|L_0|$. Adding all of the rows to the first row, we get
+        \[
+            |L_0| = \begin{pmatrix}
+                1 & \cdots & \cdots & 1 & 0 & \cdots & 0\\
+                0 & n & 0 & 0 & 
+            \end{pmatrix}
+        \]
 
         \item First, we note that one of the partites of $K_{m,n}$ must be larger than the other. [EXPLANATION OF THIS] Therefore, WLOG, let $n > m$. We divide the vertices of $K_{m,n}$ into two sets, $A$ and $B$, where $|A|=m$ and $|B|=n$. Then, we delete the smallest leaf in B and append its neighbor to the Prüfer code. We repeat this process until $|B|=m$. Then, we delete the smallest leaf in $A$ and append its neighbor to the Prüfer code, followed by deleting the smallest leaf in $B$ and appending its neighbor, etc.
         
