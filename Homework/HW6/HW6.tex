@@ -53,13 +53,7 @@
         \[
             L_0=\begin{pmatrix}nI_m&-J_{m \times (n-1)}\\-J_{(n-1) \times m}&mI_{n-1}\end{pmatrix},
         \]
-        and block expansion gives 
-        \begin{align*}
-            |L_0|&=n^m\det(mI_{n-1})-n^m\det\paren{J_{(n-1)\times m}\paren{\frac{1}{n}I_m}J_{m\times(n-1)}}\\
-            &=n^m\paren{m^{n-1}-\frac{1}{n^m}\det(J_{(n-1)\times m}I_mJ_{m\times (n-1)})}\\
-            &=n^m\paren{m^{n-1}-\frac{1}{n^m}\det(mJ_{(n-1)\times(n-1)})}\\
-            &=n^m(m^{n-1}-m^{n-1}0)
-        \end{align*}
+        and we may use row operations
         and $\tau(K_{m,n})=|L_0|=n^{m-1}m^{n-1}$.
 
         \item First, we note that one of the partites of $K_{m,n}$ must be larger than the other. [EXPLANATION OF THIS] Therefore, WLOG, let $n > m$. We divide the vertices of $K_{m,n}$ into two sets, $A$ and $B$, where $|A|=m$ and $|B|=n$. Then, we delete the smallest leaf in B and append its neighbor to the Prüfer code. We repeat this process until $|B|=m$. Then, we delete the smallest leaf in $A$ and append its neighbor to the Prüfer code, followed by deleting the smallest leaf in $B$ and appending its neighbor, etc.
