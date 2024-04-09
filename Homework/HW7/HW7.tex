@@ -15,7 +15,7 @@ Let $P$ be a fixed lattice (ballot) path from $(0,0)$ to $(m,n)$. Let $T$ be a s
 \end{quest}
 \begin{proof}
 \begin{enumerate}[(i)]
-    \item We begin with the formula for the total number of lattice paths from $(0,0)$ to $(m,n)$: ${ m+n \choose m}$. First, consider the case where $T$ has only one point with coordinates $(a_1, b_1)$. The number of lattice paths from $(0,0)$ to $(a_1, b_1)$ is ${a_1+b_1 \choose a_1}$, and the number of lattice paths from $(a_1, b_1)$ to $(m,n)$ is ${(m-a)+(n-b) \choose m-a}. Multiplying these together 
+    \item We begin with the formula for the total number of lattice paths from $(0,0)$ to $(m,n)$: ${ m+n \choose m}$. First, consider the case where $T$ has only one point with coordinates $(a_1, b_1)$. The number of lattice paths from $(0,0)$ to $(a_1, b_1)$ is ${a_1+b_1 \choose a_1}$, and the number of lattice paths from $(a_1, b_1)$ to $(m,n)$ is ${(m-a_1)+(n-b_1) \choose m-a}$. Multiplying these two together, we get ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a}$ as the number of lattice paths we must avoid, so the total number of lattice paths from $(0,0)$ to $(a_1, b_1
 \end{enumerate}
 \end{quest}
 
@@ -26,7 +26,7 @@ Let $P$ be a fixed lattice (ballot) path from $(0,0)$ to $(m,n)$. Let $T$ be a s
     Let $S=\{a_1,a_2,\dots,a_n\}\subset\NN$. let the \vocab{GCD matrix} $M$ of $S$ have entries $m_{ij}=\gcd(a_i,a_j)$. Prove that if $S$ is closed under taking divisors, then \[|M|=\prod_{i=1}^n\varphi(a_i).\]
     (\textit{Hint:} Form a certain digraph using three copies of $S$, and then put certain edges and weights on them.)
 \end{quest}
-\begin{quest}[\textcolor{red}{Determinant of a marix of Stirling Numbers}]
+\begin{quest}[\textcolor{red}{Determinant of a matrix of Stirling Numbers}]
     For $m\geq0$, $n\geq 1$, prove the following identity. Here $S_{n,k}$ is the Stirling number of the $2^{\text{nd}}$ kind.
     \[\det\begin{pmatrix}S_{m+1,1}&S_{m+1,2}&\cdots&S_{m+1,n}\\S_{m+2,1}&S_{m+2,2}&\cdots&S_{m+2,n}\\\vdots&\vdots&\ddots&\vdots\\S_{m+n,1}&S_{m+n,2}&\cdots&S_{m+n,n}\end{pmatrix}=(n!)^m\]
 \end{quest}
