@@ -1,0 +1,57 @@
+\documentclass[10pt]{article}
+\usepackage{fullpage}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm,xcolor, dsfont}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\begin{center}
+\textbf{\Large{HW 8 - Cycle Space and Bond Space (Due Tuesday 4/16)}}
+\end{center}
+\medskip
+
+\textbf{1}. [\textcolor{red}{Saving electricity through Linear Algebra and Graph Theory}]\medskip
+
+%$(i)$ Let $\mathbb{F}_2 = GF(2)$. Consider the vector space $V=\mathbb{F}_2^n$ over $\mathbb{F}_2$ and $W$ be any subspace of $V$. Show that $$\overrightarrow{j}=(1,1,\cdots, 1)\in span(W\cup W^{\perp})=\big(W\cap W^{\perp}\big)^{\perp}$$
+
+$(i)$ Consider the vector space $V=\mathbb{F}_2^n$ (over $\mathbb{F}_2)$. Let $A_{n\times n}$ be a symmetric matrix over $\mathbb{F}_2$. Consider the diagonal of $A$, as a column vector $\overrightarrow{d}$. Prove that $$\overrightarrow{d}\in Col(A)$$ (\emph{Hint}: First show that $\overrightarrow{v}^{T}A\overrightarrow{v}=\overrightarrow{d}^{T}\overrightarrow{v}$ for all $\overrightarrow{v}\in V$. Then show the required result by contradiction.)\medskip
+
+$(ii)$ Given a graph $G$, show (using $(i)$) that $V(G)$ can be partitioned into $V_1$ and $V_2$ such that $G[V_1]$ is an even graph (that is, all degrees are even) and for all vertices $v\in V_2$, $|N(v)\cap V_1|$ is odd.\medskip
+
+$(iii)$ Assume that there is a bulb and a button at each vertex of a graph $G$. The connections are made such that pushing the button at a vertex once, will change the status of the bulb and its neighbors. Initially all bulbs are on. Show (using $(ii)$) that one can push some buttons and turn all the bulbs off. Does this remind you of a game that you may have played as a kid ?\medskip
+
+(\emph{Remark}: This can also be done by a purely Graph-theoretic argument, avoiding Linear Algebra. )\\
+
+\textbf{2}. [\textcolor{red}{Cycle Space and Bond Space in Graphs + some applications}]\medskip
+
+Given an undirected connected graph $G$ with $n$ vertices and $m$ edges, let each subset of the edge set $E(G)$ be represented by its characteristic binary vector. Let $$\mathcal{C}(G)=\{\text{all even subgraphs of}\,\, G \} \,\,\,;\,\,\,\mathcal{B}(G)=\{\text{all minimal edge-cuts of}\,\, G\}\,\,\,;\,\,\,M(G)= \text{incidence matrix of}\,\, G$$
+
+$(i)$ Show that both $\mathcal{C}(G)$ and $\mathcal{B}(G)$ are subspaces of $\mathbb{F}_2^m$ (over $\mathbb{F}_2)$.\medskip
+
+$(ii)$ Show that the \emph{stars} at any $n-1$ vertices of $G$ are linearly independent and forms a basis in $\mathcal{B}(G)$, thus $$\mathcal{B}(G)=Row\big(M(G)\big)\,\,\,; \,\,\, dim\big(\mathcal{B}(G)\big)=n-1$$
+
+$(iii)$ Given any spanning tree $T$ of $G$, show that the \emph{fundamental cycles} (as described in class) are linearly independent in $\mathcal{C}(G)$. Then show that $$\mathcal{C}(G)=\big(\mathcal{B}(G)\big)^{\perp}\,\,\,, \,\,\,\mathcal{C}(G)=Nul\big(M(G)\big)\,\,\,; \,\,\, dim\big(\mathcal{C}(G)\big)=m-n+1$$
+
+$(iv)$ Use the above to show that:\smallskip
+
+\hspace{0.25 in} $(a)$ A graph is bipartite $\iff$ every circuit is of even length. \big(\emph{Hint}: Show that $\overrightarrow{j}=(1,1,\cdots, 1)\in \mathcal{B}(G)$\big)\smallskip
+
+\hspace{0.25 in} $(b)$ Show that for any graph $G$, $E(G)$ can be partitioned into an even graph and an edge-cut.\smallskip
+
+\hspace{0.25 in} $(c)$ Use $(b)$ to give a new proof of $\# 1(ii)$ (and hence $\# 1(iii)$)\\
+
+\textbf{3}. [\textcolor{red}{Totally Unimodular Matrices and an extension of the Matrix-Tree Theorem}; \textbf{Not for credit}]\medskip
+
+A matrix is called \emph{totally unimodular} if every square submatrix of it has determinant either $0$ or $\pm 1$.\smallskip
+
+Let $G$ be a loopless connected graph with $n$ vertices, $m$ edges and incidence matrix $M(G)$. The proof of Matrix-Tree Theorem (shown in class) says that $M(G)$ is totally unimodular. Cauchy-Binet formula then says that $$\tau(G)=\big|M_0M_0^T\big|$$
+
+Note that the rows of $M_0$ are precisely the incidence vectors of some $n-1$ stars of $G$, which we know from $\# 2(ii)$, forms a basis of $\mathcal{B}(G)$. In fact, a lot more is true:\smallskip
+
+Let $T$ be a spanning tree of $G$. Let $B$ and $C$ be the basis matrices for $\mathcal{B}(G)$ and $\mathcal{C}(G)$ w.r.to $T$, then one can similarly show that $B$ and $C$ are also totally unimodular and that $$\tau(G)=\big|BB^T\big|=\big|CC^T\big|$$
+
+%Totally unimodular matrices
+
+\end{document} 
