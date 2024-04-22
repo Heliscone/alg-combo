@@ -1,4 +1,4 @@
-\documentclass[11pt,letterpaper]{article}
+\documentclass[letterpaper]{article}
 \usepackage[lightbagel]{evan}
 
 \title{Algebraic Combinatorics - HW7}
@@ -104,4 +104,7 @@ Let $P$ be a fixed lattice (ballot) path from $(0,0)$ to $(m,n)$. Let $T$ be a s
     For $m\geq0$, $n\geq 1$, prove the following identity. Here $S_{n,k}$ is the Stirling number of the $2^{\text{nd}}$ kind.
     \[\det\begin{pmatrix}S_{m+1,1}&S_{m+1,2}&\cdots&S_{m+1,n}\\S_{m+2,1}&S_{m+2,2}&\cdots&S_{m+2,n}\\\vdots&\vdots&\ddots&\vdots\\S_{m+n,1}&S_{m+n,2}&\cdots&S_{m+n,n}\end{pmatrix}=(n!)^m\]
 \end{quest}
+\begin{proof}
+    The Stirling number of the second kind $S_{n,k}$ is the number of ways to partition a set of $n$ elements into $k$ partitions. We with to construct a DAG from $A$ to $B$ (where $|A|=|B|=n$) such that the number of paths from $a_i$ to $b_j$ is $S_{m+i,j}$.
+\end{proof}
 \end{document}
