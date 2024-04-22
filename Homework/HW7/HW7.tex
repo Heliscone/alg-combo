@@ -15,17 +15,91 @@ Let $P$ be a fixed lattice (ballot) path from $(0,0)$ to $(m,n)$. Let $T$ be a s
 \end{quest}
 \begin{proof}
 \begin{enumerate}[(i)]
-    \item We begin with the formula for the total number of lattice paths from $(0,0)$ to $(m,n)$: ${ m+n \choose m}$. First, consider the case where $T$ has only one point with coordinates $(a_1, b_1)$. The number of lattice paths from $(0,0)$ to $(a_1, b_1)$ is ${a_1+b_1 \choose a_1}$, and the number of lattice paths from $(a_1, b_1)$ to $(m,n)$ is ${(m-a_1)+(n-b_1) \choose m-a}$. Multiplying these two together, we get ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a}$ as the number of lattice paths we must avoid, so the total number of lattice paths from $(0,0)$ to $(a_1, b_1
+    \item We begin with the formula for the total number of lattice paths from $(0,0)$ to $(m,n)$: ${ m+n \choose m}$. First, consider the case where $T$ has only one point with coordinates $(a_1, b_1)$. The number of lattice paths from $(0,0)$ to $(a_1, b_1)$ is ${a_1+b_1 \choose a_1}$, and the number of lattice paths from $(a_1, b_1)$ to $(m,n)$ is ${(m-a_1)+(n-b_1) \choose m-a}$. Multiplying these two together, we get ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a}$ as the number of lattice paths we must avoid, so the total number of lattice paths from $(0,0)$ to $(a_1, b_1)$.
 \end{enumerate}
-\end{quest}
+\end{proof}
 
 \begin{quest}[\textcolor{red}{Linear dependency and Gessel-Vienot}]
     Let $A_{n\times n}$ be a matrix with linearly dependent rows. Show by using Gessel-Viennot Lemma that $|A|=0$.
 \end{quest}
+\begin{proof}
+    Let $A_{n\times n}$ represent the edge matrix of a weighted DAG from $A=\{a_1,a_2,\dots,a_n\}$ and $B=\{b_1,b_2,\dots,b_n\}$. Let $e_{ij}=[A_{ij}]$. Then, since the rows are linearly independent, the first row can be written as a linera combination of the other rows, say \[e_{1j}=\sum_{2\leq i\leq n}c_ie_{ij}.\]
+    We can construct our graph with $a_1$ above all the other $a_i$, with the example for $n=4$ shown below:
+    \begin{center}
+        \begin{asy}
+            dot((0,1));
+            label("$a_1$",(0,1),N);
+            label("$a_2$",(-1,0),W);
+            label("$a_3$",(0,0),ENE);
+            label("$a_4$",(1,0),E);
+            for(int i=-1;i<=1;++i) {
+                dot((i,0));
+                draw((0,1)--(i,0),Arrow);
+                for(int j=0; j<=3; ++j) {
+                    draw((i,0)--(j-1.5,-1),Arrow);
+                    if(i==-1) {
+                        dot((j-1.5,-1));                    
+                    }
+                }
+            }
+            label("$b_1$",(-1.5,-1),S);
+            label("$b_2$",(-0.5,-1),S);
+            label("$b_3$",(0.5,-1),S);
+            label("$b_4$",(1.5,-1),S);
+        \end{asy}
+    \end{center}
+    We can set the edge from $a_1$ to $a_k$ to have weight $c_k$, whence we have the linear combination relationship in $A$. For example, \[e_{11}=e_{21}c_2+e_{31}c_3+e_{41}c_4.\] By the Gessel-Viennot Lemma, the determinant of $A$ is the sum of the weights of all path systems from $A$ to $B$. However, notice that the path system from $a_1$ to $b_{\sigma(a_1)}$ will have an odd number of vertices, while the path system from all other $a_i$ to $b_{\sigma(a_i)}$ will have an even number of vertices, while $|A|+|B|=2n$ is even. Therefore, there are no path systems, so \[\det A=\sum_{\mathscr{P}}\text{sign}(\mathscr{P})\omega(\mathscr{P})=0.\]
+\end{proof}
 \begin{quest}[\textcolor{red}{GCD matrix}]
     Let $S=\{a_1,a_2,\dots,a_n\}\subset\NN$. let the \vocab{GCD matrix} $M$ of $S$ have entries $m_{ij}=\gcd(a_i,a_j)$. Prove that if $S$ is closed under taking divisors, then \[|M|=\prod_{i=1}^n\varphi(a_i).\]
     (\textit{Hint:} Form a certain digraph using three copies of $S$, and then put certain edges and weights on them.)
 \end{quest}
+\begin{proof}
+    We form a digraph between $S$, $T$, and $U$, where $T$ and $U$ are two copies of $S$, placing edges in a way that allows us to make use of the Totient Function's divisor sum. For a given $1\leq i\leq n$, let $d$ be a divisor of $i$. Then, we place an edge from $s_i$ to $t_d$ of weight $\phi(d)$ and an edge from $t_d$ to $u_i$ of weight $1$. We give the examples of $n=4$ and $n=6$, where the colorings  are relevant for our path counting argument:
+    \begin{center}
+        \begin{asy}
+            for(int i=1;i<=4;++i) {
+                dot((i,0));
+                dot((i,-1));
+                dot((i,-2));
+                label("$s_"+string(i)+"$",(i,0),N);
+                label("$t_"+string(i)+"$",(i,-1),W);
+                label("$u_"+string(i)+"$",(i,-2),S);
+                for(int j=1;j<=i;++j) {
+                    if(i%j==0) {
+                        pen p=hsv(i*90,1,0.8);
+                        draw((i,0)--(j,-1),p,Arrow);
+                        if(j==1) {
+                            label("$\phi("+string(j)+")$",(0.7*(i,0)+0.3*(j,-1)),N,p);
+                        }
+                        else {
+                            label("$\phi("+string(j)+")$",(0.3*(i,0)+0.7*(j,-1)),p);
+                        }
+                        draw((j,-1)--(i,-2),p,Arrow);
+                    }
+                }
+            }
+        \end{asy}
+
+        \begin{asy}
+            for(int i=1;i<=6;++i) {
+                dot((i,0));
+                dot((i,-1));
+                dot((i,-2));
+                for(int j=1;j<=i;++j) {
+                    if(i%j==0) {
+                        pen p=hsv(i*60,1,0.8);
+                        draw((i,0)--(j,-1),p,Arrow);
+                        draw((j,-1)--(i,-2),p,Arrow);
+                    }
+                }
+            }
+            pen p=hsv(0,1,1);
+        \end{asy}
+    \end{center}
+    \textcolor{black}
+    Consider the edge matrix $A$ of this graph, where $a_{ij}$ is the number of paths from $s_i$ to $u_j$. By our setup, \[a_{ij}=\sum_{d|i,j}\phi(d)=\sum_{d|(i,j)}\phi(d)=(i,j),\] so $A=M$. By the Gessel-Viennot Lemma, $|M|=|A|$, which is the sum of the weights of all path systems from $S$ to $U$. Notice that $\sigma(s_1)$ is necessarily $u_1$, whence $\sigma(s_p)=u_p$ for all prime $p$. We can continue inductively on the number of divisors to conclude that $\sigma(s_k)=u_k$ for all $1\leq k\leq n$, so we only have one path system $\mathscr{P}$, and $\omega(\mathscr{P})=\prod_{i=1}^n\varphi(i)$, as desired.
+\end{proof}
 \begin{quest}[\textcolor{red}{Determinant of a matrix of Stirling Numbers}]
     For $m\geq0$, $n\geq 1$, prove the following identity. Here $S_{n,k}$ is the Stirling number of the $2^{\text{nd}}$ kind.
     \[\det\begin{pmatrix}S_{m+1,1}&S_{m+1,2}&\cdots&S_{m+1,n}\\S_{m+2,1}&S_{m+2,2}&\cdots&S_{m+2,n}\\\vdots&\vdots&\ddots&\vdots\\S_{m+n,1}&S_{m+n,2}&\cdots&S_{m+n,n}\end{pmatrix}=(n!)^m\]
