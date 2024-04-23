@@ -15,7 +15,7 @@ Let $P$ be a fixed lattice (ballot) path from $(0,0)$ to $(m,n)$. Let $T$ be a s
 \end{quest}
 \begin{proof}
 \begin{enumerate}[(i)]
-    \item We begin with the formula for the total number of lattice paths from $(0,0)$ to $(m,n)$: ${ m+n \choose m}$. First, consider the case where $T$ has only one point with coordinates $(a_1, b_1)$. The number of lattice paths from $(0,0)$ to $(a_1, b_1)$ is ${a_1+b_1 \choose a_1}$, and the number of lattice paths from $(a_1, b_1)$ to $(m,n)$ is ${(m-a_1)+(n-b_1) \choose m-a}$. Multiplying these two together, we get ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a}$ as the number of lattice paths we must avoid, so the total number of lattice paths from $(0,0)$ to $(a_1, b_1)$.
+    \item We begin with the formula for the total number of lattice paths from $(0,0)$ to $(m,n)$: ${ m+n \choose m}$. First, consider the case where $T$ has only one point with coordinates $(a_1, b_1)$. The number of lattice paths from $(0,0)$ to $(a_1, b_1)$ is ${a_1+b_1 \choose a_1}$, and the number of lattice paths from $(a_1, b_1)$ to $(m,n)$ is ${(m-a_1)+(n-b_1) \choose m-a}$. Multiplying these two together, we get ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a}$ as the number of lattice paths we must avoid. Suppose $T$ has a second point with coordinates $(a_2, b_2)$. We n
 \end{enumerate}
 \end{proof}
 
@@ -23,7 +23,7 @@ Let $P$ be a fixed lattice (ballot) path from $(0,0)$ to $(m,n)$. Let $T$ be a s
     Let $A_{n\times n}$ be a matrix with linearly dependent rows. Show by using Gessel-Viennot Lemma that $|A|=0$.
 \end{quest}
 \begin{proof}
-    Let $A_{n\times n}$ represent the edge matrix of a weighted DAG from $A=\{a_1,a_2,\dots,a_n\}$ and $B=\{b_1,b_2,\dots,b_n\}$. Let $e_{ij}=[A_{ij}]$. Then, since the rows are linearly independent, the first row can be written as a linera combination of the other rows, say \[e_{1j}=\sum_{2\leq i\leq n}c_ie_{ij}.\]
+    Let $A_{n\times n}$ represent the edge matrix of a weighted DAG from $A=\{a_1,a_2,\dots,a_n\}$ and $B=\{b_1,b_2,\dots,b_n\}$. Let $e_{ij}=[A_{ij}]$. Then, since the rows are linearly independent, the first row can be written as a linear combination of the other rows, say \[e_{1j}=\sum_{2\leq i\leq n}c_ie_{ij}.\]
     We can construct our graph with $a_1$ above all the other $a_i$, with the example for $n=4$ shown below:
     \begin{center}
         \begin{asy}
