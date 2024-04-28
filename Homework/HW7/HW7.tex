@@ -15,7 +15,7 @@ Let $P$ be a fixed lattice (ballot) path from $(0,0)$ to $(m,n)$. Let $T$ be a s
 \end{quest}
 \begin{proof}
 \begin{enumerate}[(i)]
-    \item We begin with the formula for the total number of lattice paths from $(0,0)$ to $(m,n)$: ${ m+n \choose m}$. First, consider the case where $T$ has only one point with coordinates $(a_1, b_1)$. The number of lattice paths from $(0,0)$ to $(a_1, b_1)$ is ${a_1+b_1 \choose a_1}$, and the number of lattice paths from $(a_1, b_1)$ to $(m,n)$ is ${(m-a_1)+(n-b_1) \choose m-a}$. Multiplying these two together, we get ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a}$ as the number of lattice paths we must avoid. Suppose $T$ has a second point with coordinates $(a_2, b_2)$. We n
+    \item We begin with the formula for the total number of lattice paths from $(0,0)$ to $(m,n)$: ${ m+n \choose m}$. First, consider the case where $T$ has only one point with coordinates $(a_1, b_1)$. The number of lattice paths from $(0,0)$ to $(a_1, b_1)$ is ${a_1+b_1 \choose a_1}$, and the number of lattice paths from $(a_1, b_1)$ to $(m,n)$ is ${(m-a_1)+(n-b_1) \choose m-a_1}$. Multiplying these two together, we get ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a_1}$ as the number of lattice paths that are not available. Suppose $T$ has a second point with coordinates $(a_2, b_2)$. We need to avoid all paths that pass through either $(a_1, b_1)$ or $(a_2, b_2)$, but we cannot double-count the paths that go through both points, so our expression for the number of paths that are not available is ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a_1}+{a_2+b_2 \choose a_2}*{(m-a_2)+(n-b_2) \choose m-a_2}-
 \end{enumerate}
 \end{proof}
 
