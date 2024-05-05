@@ -1,0 +1,60 @@
+\documentclass[10pt]{article}
+\usepackage{fullpage}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm,xcolor, dsfont}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\begin{center}
+\textbf{\Large{HW 9 - Polynomial Method in Combinatorics (Due Tue 04/23)}}
+\end{center}
+\medskip
+
+\textbf{1}. [\textcolor{red}{Testing for Database consistency}] Two friends \textbf{Dallin} and \textbf{Evan} separately maintain copies of a large database of information. Every week they must compare their databases for consistency. Since transmission is expensive, they would like to find if there is any inconsistency between their databases by sending very little amount of information. Let their full databases be represented as the following $\{0,1\}$-vectors: $$\text{Dallin}: (a_0,a_1,\cdots, a_{n-1})~~;~~\text{Evan}: (b_0,b_1,\cdots, b_{n-1})$$ Design a randomized strategy that detects an inconsistency with high probability \big(say $\ge 1-\frac{1}{n}$\big) while transmitting only $O(\log n)$ bits.\\ %(\emph{Hint}: Use Schwartz-Zippel Lemma)\\
+
+\textbf{2}. [\textcolor{red}{Multivariate Factor Theorem + (Finite Field) Kakeya's Needle Conjecture}; \textbf{Extra-Credit}]\medskip
+
+$(i)$ Let $n\in \mathbb{N}$, $\mathbb{F}$ be a field and $S\subseteq \mathbb{F}$ such that $|S|<\binom{n+d}{d}$, then $$\boxed{\exists~(\text{non-zero})~f\in \mathbb{F}[x_1,\cdots, x_n]~ \text{of}~ deg(f)\le d~:~ f(S)=0}$$ (\emph{Hint}: First find the dimension of the vector space of all polynomials of degree at most $d$ in $n$ variables. \emph{Remark}: This gives us a non-constructive proof for the existence of such an $f$.)\medskip
+
+$(ii)$ Let $f\in \mathbb{F}_q[x_1,\cdots, x_n]$ be a non-zero polynomial of $deg(f)=d$, then show that $$\boxed{\#~ \text{roots of}~ f\le dq^{n-1}}$$
+
+(\emph{Hint}: Use induction on $n$. Imitate the proof of Schwartz-Zippel Lemma.)\medskip
+
+$(iii)$ In $1917$, \textbf{Soichi Kakeya} asked the question: What is the smallest set in the plane (room) in which someone (Samurai) can rotate a unit needle (sword) around completely ?\medskip
+
+Define a \emph{Kakeya Set} $S$ as follows: $$\text{Given any direction}~ \overrightarrow{v}\in \mathbb{F}^n,~ \exists \overrightarrow{u}\in \mathbb{F}^n~:~\overrightarrow{u}+t\overrightarrow{v}\in S,~ \forall t\in \mathbb{F}$$ The \textbf{Kakeya Needle Conjecture} then states that: $$\boxed{\text{Any Kakeya set}\,\, S\subset \mathbb{R}^n\,\, \text{has Hausdorff (fractal) dimension}\,\, n}$$ The conjecture is open for $n\ge 3$, but the following Finite Field analog of it has been proved: $$\boxed{\text{Any Kakeya set}~ S\subset \mathbb{F}_q^n~ \text{has}~ |S|>c\,|\mathbb{F}_q|^n ~~ (c~\text{depends only on the dimension}~ n)}$$
+
+\hspace{0.2 in} $(a)$ Let $f\in \mathbb{F}_q[x_1,\cdots, x_n]$, $deg(f)\le q-1$. If $S\subset \mathbb{F}_q^n$ is Kakeya and $f(S)=0$, then show that $f\equiv O$ \medskip
+
+\hspace{0.2 in} $(b)$ Let $S\subset \mathbb{F}^n$ be a Kakeya set, then $$|S|\,\ge\,\binom{q+n-1}{n}\,>\, \frac{q^n}{n!}\,=\,\frac{1}{n!}\,|\mathbb{F}_q|^n$$
+
+\hspace{0.2 in}(\emph{Hint}: For $(a)$ use $(ii)$ and for $(b)$ use $(i)$. This result is by \textbf{Zeev Dvir} ($2009$))
+
+\pagebreak
+
+\textbf{3}. [\textcolor{red}{Low local-degree polynomials and Combinatorial Nullstellensatz}; \textbf{Extra-Credit}]\medskip
+
+Schwartz-Zippel Lemma says: For any (non-zero) $f\in \mathbb{F}[x_1,\cdots, x_n]$ of degree $d$ and a set $S\subset \mathbb{F}$ with $|S|>d$, $$\boxed{\#~ \text{roots of}~f~\text{in}~S^n\le d|S|^{n-1}}\Leftrightarrow \boxed{P\big(\exists~ \text{root of}~ f~ \text{in}~ S^n\big)\le \frac{d}{|S|}}\Leftrightarrow \boxed{P\big(\exists~ \text{a non-root of}~ f~ \text{in}~ S^n\big)\ge 1-\frac{d}{|S|}}$$
+
+Equivalently, one can say $$\boxed{|S|>d ~\Rightarrow~ f~ \text{has a non-root in}\,\, S^n}$$
+
+In many applications (like in that of ``Testing for perfect matching" problem) the \emph{total degree} $d$ of the polynomial can be much larger than the \emph{local-degree} of $f$ (The \emph{local degree}, say $\delta$, of $f$ is the maximum exponent over each of its variables. So $d$ can be as large as $n\delta$). Schwartz-Zippel would be a trivial statement whenever $|S|\le n$, that is, we have to sample over large $S$ for Schwarz-Zippel to make it work. Can we make it work for small $\delta$ ?\medskip
+
+$(i)$ Consider a non-zero $f\in \mathbb{F}[x_1,\cdots, x_n]$. Let $\delta$ be the local degree of $f$, show (using induction on $n$) that $$\boxed{|S|>\delta ~\Rightarrow~ f~ \text{has a non-root in}~ S^n}$$
+
+$(ii)$ [not-for-credit] One can in fact show a `granulated' version of $(i)$. Let $\delta_i$ be the degree of $f$ in $x_i$, then $$\boxed{|S_i|>\delta_i, \forall i ~\Rightarrow~ f~ \text{has a non-root in}~ S_1\times S_2\times\cdots \times S_n}$$
+
+We could do a bit better than this too, as follows:\medskip
+
+$(iii)$ [\textbf{Noga Alon's \textcolor{red}{Combinatorial Nullstellensatz}}, not-for-credit]\medskip
+
+Let $f\in \mathbb{F}[x_1,\cdots, x_n]$ be of degree $d$. Let $x_1^{t_1}x_2^{t_2}\cdots x_n^{t_n}$ be a monomial of degree $d$ in $f$ (that is, $\sum t_i=d$) with non-zero coefficient, then $$\boxed{|S_i|>t_i, \forall i ~\Rightarrow f~ \text{has a non-root in}\,\, S_1\times S_2\times\cdots \times S_n}$$
+
+$(iv)$ [\textcolor{red}{Covering $Q_n\setminus \{\overrightarrow{0}\}$ by Hyperplanes} (revisited) - \textbf{Alon + F\"uredi} $(1993)$]\smallskip
+
+Suppose the hyperplanes $H_1,\cdots, H_m$ in $\mathbb{R}^n$ cover $Q_n\setminus \{\overrightarrow{0}\}$. Show that $$m\ge n$$
+
+(\emph{Hint}: Assume $m<n$. Consider the polynomial as shown in class and then use $(iii)$ to get a contradiction.)
+\end{document} 
