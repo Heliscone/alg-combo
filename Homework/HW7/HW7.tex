@@ -12,11 +12,15 @@ Let $P$ be a fixed lattice (ballot) path from $(0,0)$ to $(m,n)$. Let $T$ be a s
     \item Use a Corollary of Gessel-Viennot Lemma to find an expression for $f_{m,n}(T)$.
     \item Use Inclusion-Exclusion to find an expression for $f_{m,n}(T)$.
 \end{enumerate}
-\end{quest}
+\end{quest} 
 \begin{proof}
 \begin{enumerate}[(i)]
-    \item We begin with the formula for the total number of lattice paths from $(0,0)$ to $(m,n)$: ${ m+n \choose m}$. First, consider the case where $T$ has only one point with coordinates $(a_1, b_1)$. The number of lattice paths from $(0,0)$ to $(a_1, b_1)$ is ${a_1+b_1 \choose a_1}$, and the number of lattice paths from $(a_1, b_1)$ to $(m,n)$ is ${(m-a_1)+(n-b_1) \choose m-a_1}$. Multiplying these two together, we get ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a_1}$ as the number of lattice paths that are not available. Suppose $T$ has a second point with coordinates $(a_2, b_2)$. We need to avoid all paths that pass through either $(a_1, b_1)$ or $(a_2, b_2)$, but we cannot double-count the paths that go through both points, so our expression for the number of paths that are not available is ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a_1}+{a_2+b_2 \choose a_2}*{(m-a_2)+(n-b_2) \choose m-a_2}-$
-\end{enumerate}
+    % \item We begin with the formula for the total number of lattice paths from $(0,0)$ to $(m,n)$: ${ m+n \choose m}$. First, consider the case where $T$ has only one point with coordinates $(a_1, b_1)$. The number of lattice paths from $(0,0)$ to $(a_1, b_1)$ is ${a_1+b_1 \choose a_1}$, and the number of lattice paths from $(a_1, b_1)$ to $(m,n)$ is ${(m-a_1)+(n-b_1) \choose m-a_1}$. Multiplying these two together, we get ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a_1}$ as the number of lattice paths that are not available. Suppose $T$ has a second point with coordinates $(a_2, b_2)$. We need to avoid all paths that pass through either $(a_1, b_1)$ or $(a_2, b_2)$, but we cannot double-count the paths that go through both points, so our expression for the number of paths that are not available is ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a_1}+{a_2+b_2 \choose a_2}*{(m-a_2)+(n-b_2) \choose m-a_2}-$
+    \item hum.
+    \item We use PIE to count the number of ballot paths that intersect at least one vertex in $T$. Let $t_1,t_2,\dots,t_k$ be the vertices of $T$, where $t_i=(x_i,y_i)$. Let $B$ be the set of all ``bad'' ballot paths from $(0,0)$ to $(m,n)$, and consider the subsets $B_i\subset B$ where $B_i$ is the set of all ballot paths that intersect $t_i$. Then, by PIE, \[|B|=\sum_{1\leq i\leq k}|B_i|-\sum_{1\leq i<j\leq k}|B_i\cap B_j|+\cdots,\] that is, \[\sum_{i=1}^k\paren{(-1)^{i+1}\sum_{1\leq c_1<\cdots<c_i\leq k}|B_{c_1}\cap B_{c_2}\cap\cdots\cap B_{c_i}|}\]
+    Notice that $|B_{c_1}\cap \dots \cap B_{c_i}|$ is the number of ballot paths through $t_{c_1},\dots,t_{c_i}$, which is \[\prod_{v=0}^i\dbinom{x_{c_{v+1}}-x_{c_v}+y_{c_{v+1}}-y_{c_v}}{x_{c_{v+1}}-x_{c_v}},\] where $x_{c_0}=y_{c_0}=0$ and $x_{c_{i+1}}=m$, $y_{c_{i+1}}=n$, whence 
+    \[|B|=\sum_{i=1}^k\paren{(-1)^{i+1}\sum_{1\leq c_1<\cdots<c_i\leq k}\prod_{v=0}^i\dbinom{x_{c_{v+1}}-x_{c_v}+y_{c_{v+1}}-y_{c_v}}{x_{c_{v+1}}-x_{c_v}}}.\]
+    \end{enumerate}
 \end{proof}
 
 \begin{quest}[\textcolor{red}{Linear dependency and Gessel-Vienot}]
