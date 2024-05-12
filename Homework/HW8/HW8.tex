@@ -1,0 +1,41 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lightbagel]{evan}
+
+\title{Algebraic Combinatorics - HW8}
+\author{Evan/Dallin/Xander/Sawyer}
+\date{4/16/2024}
+\begin{document}
+\maketitle
+\begin{quest}[\textcolor{red}{Saving electricity through Linear Algebra and Graph Theory}]
+    \begin{enumerate}[(i)]
+        \item Consider the vector space $V=\mathbb{F}_2^n$ (over $\mathbb{F}_2)$. Let $A_{n\times n}$ be a symmetric matrix over $\mathbb{F}_2$. Consider the diagonal of $A$, as a column vector $\overrightarrow{d}$. Prove that 
+        \[\vec{d}\in Col(A)\]
+        (\textit{Hint}: First show that $\vec{v}^{T}A\vec{v}=\vec{d}^{T}\vec{v}$ for all $\vec{v}\in V$. Then show the required result by contradiction.)
+        \item Given a graph $G$, show (using $(i)$) that $V(G)$ can be partitioned into $V_1$ and $V_2$ such that $G[V_1]$ is an even graph (that is, all degrees are even) and for all vertices $v\in V_2$, $|N(v)\cap V_1|$ is odd.
+        \item Assume that there is a bulb and a button at each vertex of a graph $G$. The connections are made such that pushing the button at a vertex once, will change the status of the bulb and its neighbors. Initially all bulbs are on. Show (using $(ii)$) that one can push some buttons and turn all the bulbs off. Does this remind you of a game that you may have played as a kid?
+    \end{enumerate}
+\end{quest}
+\begin{proof}
+    
+\end{proof}
+\begin{quest}[\textcolor{red}{Cycle Space and Bond Space in Graphs + some applications}]
+    Given an undirected connected graph $G$ with $n$ vertices and $m$ edges, let each subset of the edge set $E(G)$ be represented by its characteristic binary vector. Let 
+    \begin{align*}
+        \mathcal{C}(G)&=\{\text{all even subgraphs of } G \}\\
+        \mathcal{B}(G)&=\{\text{all minimal edge-cuts of } G\}\\
+        M(G)&= \text{incidence matrix of } G
+    \end{align*}
+    \begin{enumerate}[(i)]
+        \item Show that both $\mathcal{C}(G)$ and $\mathcal{B}(G)$ are subspaces of $\mathbb{F}_2^m$ (over $\mathbb{F}_2)$.
+        \item Show that the \textit{stars} at any $n-1$ vertices of $G$ are linearly independent and forms a basis in $\mathcal{B}(G)$, thus \[\mathcal{B}(G)=\text{Row}(M(G))\quad\text{and}\quad \dim(\mathcal{B}(G))=n-1.\]
+        \item Given any spanning tree $T$ of $G$, show that the \textit{fundamental cycles} (as described in class) are linearly independent in $\mathcal{C}(G)$. Then show that 
+        \[\mathcal{C}(G)=(\mathcal{B}(G))^{\perp}\quad\mathcal{C}(G)=\text{Nul}(M(G))\quad \dim\big(\mathcal{C}(G)\big)=m-n+1\]
+        \item Use the above to show that:
+        \begin{enumerate}
+            \item A graph is bipartite $\iff$ every circuit is of even length. (\textit{Hint}: Show that $\overrightarrow{j}=(1,1,\cdots, 1)\in \mathcal{B}(G)$)
+            \item Show that for any graph $G$, $E(G)$ can be partitioned into an even graph and an edge-cut.
+            \item Use $(b)$ to give a new proof of $\# 1(ii)$ (and hence $\# 1(iii)$)
+        \end{enumerate}
+    \end{enumerate}
+\end{quest}
+\end{document}
