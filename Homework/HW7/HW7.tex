@@ -114,7 +114,7 @@ Let $P$ be a fixed lattice (ballot) path from $(0,0)$ to $(m,n)$. Let $T$ be a s
 
     We construct the path matrix by considering the weighted sum of path systems from the $x_i$ to the $y_i$. From the weighting, the only surviving path is the identity. the number of ways to get from $x_i$ to $y_i$ is $n!$: we must start by taking $i$ up-right steps, since the paths must be vertex disjoint. We then take $m$ steps to the right, each of which has width $i$. Thus, the weight of the surviving path system is $(n!)^m$.
 
-    The number of paths from $x_i$ to $y_j$ is $S_{m+i,j}$ as well: a path from $x_i$ to $y_j$ involves taking $j$ steps up-right and $m+i-j$ steps right. We are effectively splitting the $m+i$ steps to the right across the $j$ levels, where a setp up from the $y_k$ to $y_{k+1}$ level counts as a step to the right for the $k$th level. Thus, we are more or less splitting $m+i$ steps into $j$ non-empty subsets, that is, $S_{m+i,j}$.
+    The number of paths from $x_i$ to $y_j$ is $S_{m+i,j}$ as well: a path from $x_i$ to $y_j$ involves taking $j$ steps up-right and $m+i-j$ steps right. We are effectively splitting the $m+i$ steps to the right across the $j$ levels, where a setp up from the $y_k$ to $y_{k+1}$ level counts as a step to the right for the $k$th level. Thus, we are splitting $m+i$ steps into $j$ partitions, that is, $S_{m+i,j}$.
 
     Thus, Gessel-Viennot gives the desired result.
 \end{proof}
