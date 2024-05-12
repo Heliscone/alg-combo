@@ -15,14 +15,13 @@ Let $P$ be a fixed lattice (ballot) path from $(0,0)$ to $(m,n)$. Let $T$ be a s
 \end{quest} 
 \begin{proof}
 \begin{enumerate}[(i)]
-    % \item We begin with the formula for the total number of lattice paths from $(0,0)$ to $(m,n)$: ${ m+n \choose m}$. First, consider the case where $T$ has only one point with coordinates $(a_1, b_1)$. The number of lattice paths from $(0,0)$ to $(a_1, b_1)$ is ${a_1+b_1 \choose a_1}$, and the number of lattice paths from $(a_1, b_1)$ to $(m,n)$ is ${(m-a_1)+(n-b_1) \choose m-a_1}$. Multiplying these two together, we get ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a_1}$ as the number of lattice paths that are not available. Suppose $T$ has a second point with coordinates $(a_2, b_2)$. We need to avoid all paths that pass through either $(a_1, b_1)$ or $(a_2, b_2)$, but we cannot double-count the paths that go through both points, so our expression for the number of paths that are not available is ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a_1}+{a_2+b_2 \choose a_2}*{(m-a_2)+(n-b_2) \choose m-a_2}-$
-    \item hum.
+%We begin with the formula for the total number of lattice paths from $(0,0)$ to $(m,n)$: ${ m+n \choose m}$. First, consider the case where $T$ has only one point with coordinates $(a_1, b_1)$. The number of lattice paths from $(0,0)$ to $(a_1, b_1)$ is ${a_1+b_1 \choose a_1}$, and the number of lattice paths from $(a_1, b_1)$ to $(m,n)$ is ${(m-a_1)+(n-b_1) \choose m-a_1}$. Multiplying these two together, we get ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a_1}$ as the number of lattice paths that are not available. Suppose $T$ has a second point with coordinates $(a_2, b_2)$. We need to avoid all paths that pass through either $(a_1, b_1)$ or $(a_2, b_2)$, but we cannot double-count the paths that go through both points, so our expression for the number of paths that are not available is ${a_1+b_1 \choose a_1}*{(m-a_1)+(n-b_1) \choose m-a_1}+{a_2+b_2 \choose a_2}*{(m-a_2)+(n-b_2) \choose m-a_2}-$
+    \item Let $A$ be an ordered list of points $P_i=(a_i,b_i)$ on $T$, with last element $(0,0)$. Let $B$ be an ordered list of the same $P_i$, except with last element $(m,n)$ instead of $(0,0)$. Construct the directed acyclic graph $G$, the grid of points from $(0,0)$ to $(m,n)$, with edges going up or right with weight $1$. Our path matrix $M$ is a $|A|\times |B|$ matrix, that is, an $(|T|+1)\times (|T|+1)$ matrix. The number of paths from $P_i$ to $P_j$ is naturally $\binom{a_j-a_i+b_j-b_i}{a_j-a_i}$ (note this is zero when $P_i$ is after $P_j$). Thus, Gessel-Viennot Lemma gives us that the sum of signed vertex-disjoint paths from $A$ to $B$ is $\det M$. However, since the permutations are signed, the only path system that survives is that the identity, which counts the number of paths from $(0,0)$ to $(m,n)$ avoiding $T$. Therefore, \[f_{(m,n)}(T)=\det(\left[\binom{a_j-a_i+b_j-b_i}{a_j-a_i}\right])\]
     \item We use PIE to count the number of ballot paths that intersect at least one vertex in $T$. Let $t_1,t_2,\dots,t_k$ be the vertices of $T$, where $t_i=(x_i,y_i)$. Let $B$ be the set of all ``bad'' ballot paths from $(0,0)$ to $(m,n)$, and consider the subsets $B_i\subset B$ where $B_i$ is the set of all ballot paths that intersect $t_i$. Then, by PIE, \[|B|=\sum_{1\leq i\leq k}|B_i|-\sum_{1\leq i<j\leq k}|B_i\cap B_j|+\cdots,\] that is, \[\sum_{i=1}^k\paren{(-1)^{i+1}\sum_{1\leq c_1<\cdots<c_i\leq k}|B_{c_1}\cap B_{c_2}\cap\cdots\cap B_{c_i}|}\]
     Notice that $|B_{c_1}\cap \dots \cap B_{c_i}|$ is the number of ballot paths through $t_{c_1},\dots,t_{c_i}$, which is \[\prod_{v=0}^i\dbinom{x_{c_{v+1}}-x_{c_v}+y_{c_{v+1}}-y_{c_v}}{x_{c_{v+1}}-x_{c_v}},\] where $x_{c_0}=y_{c_0}=0$ and $x_{c_{i+1}}=m$, $y_{c_{i+1}}=n$, whence 
     \[|B|=\sum_{i=1}^k\paren{(-1)^{i+1}\sum_{1\leq c_1<\cdots<c_i\leq k}\prod_{v=0}^i\dbinom{x_{c_{v+1}}-x_{c_v}+y_{c_{v+1}}-y_{c_v}}{x_{c_{v+1}}-x_{c_v}}}.\]
     \end{enumerate}
 \end{proof}
-
 \begin{quest}[\textcolor{red}{Linear dependency and Gessel-Vienot}]
     Let $A_{n\times n}$ be a matrix with linearly dependent rows. Show by using Gessel-Viennot Lemma that $|A|=0$.
 \end{quest}
@@ -109,6 +108,14 @@ Let $P$ be a fixed lattice (ballot) path from $(0,0)$ to $(m,n)$. Let $T$ be a s
     \[\det\begin{pmatrix}S_{m+1,1}&S_{m+1,2}&\cdots&S_{m+1,n}\\S_{m+2,1}&S_{m+2,2}&\cdots&S_{m+2,n}\\\vdots&\vdots&\ddots&\vdots\\S_{m+n,1}&S_{m+n,2}&\cdots&S_{m+n,n}\end{pmatrix}=(n!)^m\]
 \end{quest}
 \begin{proof}
-    The Stirling number of the second kind $S_{n,k}$ is the number of ways to partition a set of $n$ elements into $k$ partitions. We wish to construct a DAG from $A$ to $B$ (where $|A|=|B|=n$) such that the number of paths from $a_i$ to $b_j$ is $S_{m+i,j}$.
+    Construct a digraph as shown in the hint, with vertices $x_n$ through $x_1$, followed by $m+1$ vertices on the horizontal axis and $y_1$ through $y_n$ on the vertical axis.
+
+    With a digraph as shown below, we use the Gessel-Viennot lemma on the path systems from the $x_i$ to $y_i$.
+
+    We construct the path matrix by considering the weighted sum of path systems from the $x_i$ to the $y_i$. From the weighting, the only surviving path is the identity. the number of ways to get from $x_i$ to $y_i$ is $n!$: we must start by taking $i$ up-right steps, since the paths must be vertex disjoint. We then take $m$ steps to the right, each of which has width $i$. Thus, the weight of the surviving path system is $(n!)^m$.
+
+    The number of paths from $x_i$ to $y_j$ is $S_{m+i,j}$ as well: a path from $x_i$ to $y_j$ involves taking $j$ steps up-right and $m+i-j$ steps right. We are effectively splitting the $m+i$ steps to the right across the $j$ levels, where a setp up from the $y_k$ to $y_{k+1}$ level counts as a step to the right for the $k$th level. Thus, we are more or less splitting $m+i$ steps into $j$ non-empty subsets, that is, $S_{m+i,j}$.
+
+    Thus, Gessel-Viennot gives the desired result.
 \end{proof}
 \end{document}
