@@ -16,7 +16,14 @@
     \end{enumerate}
 \end{quest}
 \begin{proof}
+    By matrix multiplication, \[v^TAv=\sum_{a_{ij}\in A}a_{ij}v_iv_j=\sum a_{ii}v_i^2+0=d^Tv.\]
+    Note that $(Ax)^Ty=(Ay)^Tx$ by dot product properties. 
     
+    Thus, the image of $A$ is the orthogonal complement of the kernel of $A^T=A$.
+
+    If $Av=0$, then $d^Tv=0$, so $d$ is orthogonal to the Kernel of $A$, whence $d\in \text{Col}(A)$.
+
+
 \end{proof}
 \begin{quest}[\textcolor{red}{Cycle Space and Bond Space in Graphs + some applications}]
     Given an undirected connected graph $G$ with $n$ vertices and $m$ edges, let each subset of the edge set $E(G)$ be represented by its characteristic binary vector. Let 
@@ -38,4 +45,9 @@
         \end{enumerate}
     \end{enumerate}
 \end{quest}
+\begin{proof}
+    Clearly, over $\F_2$, scalar multiplication is no issue. We must show that the ``addition'' of two graphs in $\mathcal{C}$ or $\mathcal{B}$, that is, their symmetric difference, remains in $\mathcal{C}$ or $\mathcal{B}$, respectively. $\mathcal{C}$ is clear; given $C_1,C_2\in\mathcal{C}$, consider the degree of a vertez in $C_1+C_2$. Clearly, the sum of two even degrees is even, and is unchanged over $\F_2$. For $\mathcal{B}$, consider two minimal edge cuts $B_1$ and $B_2$, yielding partitions $v_1, v_1'$ and $v_2, v_2'$, respectively. $B_1$ consists of all edges between $v_1$ and $v_1'$ and likewise for $B_2$, $v_2$, and $v_2'$.
+
+    The only edges that remain are those in $B_1\setminus B_2$ or $B_2\setminus B_1$. These connect vertices in $v_1\setminus v_2$ to $v_1'\setminus v_2'$ or $v_2\setminus v_1$ to $v_2'\setminus v_1'$. 
+\end{proof}
 \end{document}
