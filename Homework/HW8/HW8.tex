@@ -11,7 +11,7 @@
         \item Consider the vector space $V=\mathbb{F}_2^n$ (over $\mathbb{F}_2)$. Let $A_{n\times n}$ be a symmetric matrix over $\mathbb{F}_2$. Consider the diagonal of $A$, as a column vector $\overrightarrow{d}$. Prove that 
         \[\vec{d}\in Col(A)\]
         (\textit{Hint}: First show that $\vec{v}^{T}A\vec{v}=\vec{d}^{T}\vec{v}$ for all $\vec{v}\in V$. Then show the required result by contradiction.)
-        \item Given a graph $G$, show (using $(i)$) that $V(G)$ can be partitioned into $V_1$ and $V_2$ such that $G[V_1]$ is an even graph (that is, all degrees are even) and for all vertices $v\in V_2$, $|N(v)\cap V_1|$ is odd.
+        \item Given a graph $G$, show (using $(i)$) that $V(G)$ can be partitioned into $V_1$ and $V_2$ such that $G[V_1]$ is an even graph (that is, all degrees are even) and for axll vertices $v\in V_2$, $|N(v)\cap V_1|$ is odd.
         \item Assume that there is a bulb and a button at each vertex of a graph $G$. The connections are made such that pushing the button at a vertex once, will change the status of the bulb and its neighbors. Initially all bulbs are on. Show (using $(ii)$) that one can push some buttons and turn all the bulbs off. Does this remind you of a game that you may have played as a kid?
     \end{enumerate}
 \end{quest}
@@ -48,6 +48,13 @@
 \begin{proof}
     Clearly, over $\F_2$, scalar multiplication is no issue. We must show that the ``addition'' of two graphs in $\mathcal{C}$ or $\mathcal{B}$, that is, their symmetric difference, remains in $\mathcal{C}$ or $\mathcal{B}$, respectively. $\mathcal{C}$ is clear; given $C_1,C_2\in\mathcal{C}$, consider the degree of a vertez in $C_1+C_2$. Clearly, the sum of two even degrees is even, and is unchanged over $\F_2$. For $\mathcal{B}$, consider two minimal edge cuts $B_1$ and $B_2$, yielding partitions $v_1, v_1'$ and $v_2, v_2'$, respectively. $B_1$ consists of all edges between $v_1$ and $v_1'$ and likewise for $B_2$, $v_2$, and $v_2'$.
 
-    The only edges that remain are those in $B_1\setminus B_2$ or $B_2\setminus B_1$. These connect vertices in $v_1\setminus v_2$ to $v_1'\setminus v_2'$ or $v_2\setminus v_1$ to $v_2'\setminus v_1'$. 
+    The only edges that remain are those in $B_1\setminus B_2$ or $B_2\setminus B_1$. These connect vertices in $v_1\setminus v_2$ to $v_1'\setminus v_2'$ or $v_2\setminus v_1$ to $v_2'\setminus v_1'$.
+    FINISH THIS ARGUMENT.
+    
+    Let $s_v$ be the star at vertex $v$. All $s_i$ are evidently in $\mathcal{B}$, and if we have a minimal edge-cut $b$ between $v_{i_1},\dots,v_{i_k}$ and $v_{j_1},\dots,v_{j_l}$, then note that $b=\sum_{c=1}^k s_{v_{i_c}}$, remembering that we are over $\FF_2$. (Another consequence of working over this field is that the sum is identical to $\sum_{c=1}^ls_{v_{j_c}}$.) We now need only write $s_1+s_2+\cdots+s_{n-1}=s_n$, which we can do by edge-counting: for an edge between $v_n$ and $v_m$, $s_m$ includes this edge, and no other $s_i$ does. Thus, the edge's coordinate remains nonzero in the partial sum of the $s_i$. Similarly, for an edge between $v_m$ and $v_o$ with $m,o\neq n$, $s_m$ and $s_o$ both include this edge, so it is not included in the partial sum. Thus, the only remaining edges in the partial sum are those connected to $v_n$, whence the sum is $s_n$, so we can write the $n$th star as a sum of the others. A quick examination of the $n-1$ other stars shows that they are linearly independent, by consider the coordinate representing an edge between $v_i$ and $v_n$: it is nonzero only in $s_i$, so if $\sum_{i}a_is_i=0$, all $a_i=0$.
+
+    The star for vertex $k$ represents the transpose of the $k$th row of $M(G)$, so $\mathcal{B}(G)=\text{Row}(M(G))$. The dimension of $\mathcal{B}$ is the number of linearly independent stars (elements in the basis), which is $n-1$.
+
+    
 \end{proof}
 \end{document}
