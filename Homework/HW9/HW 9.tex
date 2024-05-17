@@ -14,6 +14,19 @@
 
 \textbf{1}. [\textcolor{red}{Testing for Database consistency}] Two friends \textbf{Dallin} and \textbf{Evan} separately maintain copies of a large database of information. Every week they must compare their databases for consistency. Since transmission is expensive, they would like to find if there is any inconsistency between their databases by sending very little amount of information. Let their full databases be represented as the following $\{0,1\}$-vectors: $$\text{Dallin}: (a_0,a_1,\cdots, a_{n-1})~~;~~\text{Evan}: (b_0,b_1,\cdots, b_{n-1})$$ Design a randomized strategy that detects an inconsistency with high probability \big(say $\ge 1-\frac{1}{n}$\big) while transmitting only $O(\log n)$ bits.\\ %(\emph{Hint}: Use Schwartz-Zippel Lemma)\\
 
+\begin{proof}
+    Let $A$ be a degree-$n$ polynomial such that the coefficient on the degree-$n$ term of $A$ is $a_n$. Similarly, let $B$ be a degree-$n$ polynomial such that the coefficient on the degree-$n$ term of $B$ is $b_n$. For random testing, we let $S$ be a set of $m$ random elements from $\mathbb{R}$ such that $m \ge n^2$. We proceed by the folowing algorithm:
+
+    \begin{enumerate}
+        \item Dallin and Evan agree upon an $r \in S$ and transmit this value to each other.
+        \item Dallin evaluates $A(r) \mod (\log n)$ and transmits this value to Evan. Taking the output $\mod (\log n)$ ensures that the output is no more than $\log n$ bits while still being able to detect inconsistencies.
+        \item Evan similarly evaluates $B(r)\mod (\log n)$ and transmits this value to Dallin.
+        \item Evan and Dallin define a polynomial $P(x) = A(x) - B(x)$ and evaluate at $x=r$.
+    \end{enumerate}
+    
+    If $P(r) \ne 0$, then the databases are inconsistent. Otherwise, by the Schwartz-Zippel lemma, the databases are consistent with a probability $\le \frac{n}{|S|}$ and are thus inconsistent with a probability $\ge 1 - \frac{n}{m}$.
+\end{proof}
+
 \textbf{2}. [\textcolor{red}{Multivariate Factor Theorem + (Finite Field) Kakeya's Needle Conjecture}; \textbf{Extra-Credit}]\medskip
 
 $(i)$ Let $n\in \mathbb{N}$, $\mathbb{F}$ be a field and $S\subseteq \mathbb{F}$ such that $|S|<\binom{n+d}{d}$, then $$\boxed{\exists~(\text{non-zero})~f\in \mathbb{F}[x_1,\cdots, x_n]~ \text{of}~ deg(f)\le d~:~ f(S)=0}$$ (\emph{Hint}: First find the dimension of the vector space of all polynomials of degree at most $d$ in $n$ variables. \emph{Remark}: This gives us a non-constructive proof for the existence of such an $f$.)\medskip
