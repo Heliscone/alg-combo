@@ -11,18 +11,21 @@
         \item Consider the vector space $V=\mathbb{F}_2^n$ (over $\mathbb{F}_2)$. Let $A_{n\times n}$ be a symmetric matrix over $\mathbb{F}_2$. Consider the diagonal of $A$, as a column vector $\overrightarrow{d}$. Prove that 
         \[\vec{d}\in Col(A)\]
         (\textit{Hint}: First show that $\vec{v}^{T}A\vec{v}=\vec{d}^{T}\vec{v}$ for all $\vec{v}\in V$. Then show the required result by contradiction.)
-        \item Given a graph $G$, show (using $(i)$) that $V(G)$ can be partitioned into $V_1$ and $V_2$ such that $G[V_1]$ is an even graph (that is, all degrees are even) and for axll vertices $v\in V_2$, $|N(v)\cap V_1|$ is odd.
+        \item Given a graph $G$, show (using $(i)$) that $V(G)$ can be partitioned into $V_1$ and $V_2$ such that $G[V_1]$ is an even graph (that is, all degrees are even) and for all vertices $v\in V_2$, $|N(v)\cap V_1|$ is odd.
         \item Assume that there is a bulb and a button at each vertex of a graph $G$. The connections are made such that pushing the button at a vertex once, will change the status of the bulb and its neighbors. Initially all bulbs are on. Show (using $(ii)$) that one can push some buttons and turn all the bulbs off. Does this remind you of a game that you may have played as a kid?
     \end{enumerate}
 \end{quest}
 \begin{proof}
-    By matrix multiplication, \[v^TAv=\sum_{a_{ij}\in A}a_{ij}v_iv_j=\sum a_{ii}v_i^2+0=d^Tv.\]
-    Note that $(Ax)^Ty=(Ay)^Tx$ by dot product properties. 
-    
-    Thus, the image of $A$ is the orthogonal complement of the kernel of $A^T=A$.
+    \begin{enumerate}[(i)]
+        \item By matrix multiplication, \[v^TAv=\sum_{a_{ij}\in A}a_{ij}v_iv_j=\sum a_{ii}v_i^2+0=d^Tv.\]
+        Note that $(Ax)^Ty=(Ay)^Tx$ by dot product properties. 
+        
+        Thus, the image of $A$ is the orthogonal complement of the kernel of $A^T=A$.
 
-    If $Av=0$, then $d^Tv=0$, so $d$ is orthogonal to the Kernel of $A$, whence $d\in \text{Col}(A)$.
+        If $Av=0$, then $d^Tv=0$, so $d$ is orthogonal to the Kernel of $A$, whence $d\in \text{Col}(A)$.
 
+        \item 
+    \end{enumerate}
 
 \end{proof}
 \begin{quest}[\textcolor{red}{Cycle Space and Bond Space in Graphs + some applications}]
@@ -46,15 +49,68 @@
     \end{enumerate}
 \end{quest}
 \begin{proof}
-    Clearly, over $\F_2$, scalar multiplication is no issue. We must show that the ``addition'' of two graphs in $\mathcal{C}$ or $\mathcal{B}$, that is, their symmetric difference, remains in $\mathcal{C}$ or $\mathcal{B}$, respectively. $\mathcal{C}$ is clear; given $C_1,C_2\in\mathcal{C}$, consider the degree of a vertez in $C_1+C_2$. Clearly, the sum of two even degrees is even, and is unchanged over $\F_2$. For $\mathcal{B}$, consider two minimal edge cuts $B_1$ and $B_2$, yielding partitions $v_1, v_1'$ and $v_2, v_2'$, respectively. $B_1$ consists of all edges between $v_1$ and $v_1'$ and likewise for $B_2$, $v_2$, and $v_2'$.
+    \begin{enumerate}[(i)]
+    \item Clearly, over $\F_2$, scalar multiplication is no issue, as scalar multiples of an edgeset are either the empty set or that same edgeset. We must show that the ``addition'' of two graphs in $\mathcal{C}$ or $\mathcal{B}$, that is, their symmetric difference, remains in $\mathcal{C}$ or $\mathcal{B}$, respectively. $\mathcal{C}$ is clear; given $C_1,C_2\in\mathcal{C}$, consider the degree of a vertez in $C_1+C_2$. Clearly, the sum of two even degrees is even, and is unchanged over $\F_2$. For $\mathcal{B}$, consider two minimal edge cuts $B_1$ and $B_2$, which yield vertex partitions $v_1, w_1$ and $v_2, w_2$, respectively.
 
-    The only edges that remain are those in $B_1\setminus B_2$ or $B_2\setminus B_1$. These connect vertices in $v_1\setminus v_2$ to $v_1'\setminus v_2'$ or $v_2\setminus v_1$ to $v_2'\setminus v_1'$.
-    FINISH THIS ARGUMENT.
+    We can draw a picture that represents the four potential $v_i$ and $w_i$ that a vertex can be in, as well as edges between these partitions:
+    \begin{center}
+        \begin{asy}
+            size(8cm);
+            pair A=3.2*dir(180-45),B=3.2*dir(45),C=3.2*dir(-45),D=3.2*dir(-135);
+            pair d1=(1,2),d2=(-1,2),d3=(-1,-2),d4=(1,-2);
+            draw((A+d1)--(A+d2)--(A+d3)--(A+d4)--cycle);
+            draw((B+d1)--(B+d2)--(B+d3)--(B+d4)--cycle);
+            draw((C+d1)--(C+d2)--(C+d3)--(C+d4)--cycle);
+            draw((D+d1)--(D+d2)--(D+d3)--(D+d4)--cycle);
+            draw((A+1.2*d1)--(A+1.2*d2)--(D+1.2*d3)--(D+1.2*d4)--cycle,blue+0.05cm+dashed);
+            draw((B+1.2*d1)--(B+1.2*d2)--(C+1.2*d3)--(C+1.2*d4)--cycle,green+0.05cm+dashed);
+            draw((A+1.1*d3)--(A+1.1*d2)--(B+1.1*d1)--(B+1.1*d4)--cycle,red+0.05cm+dotted);
+            draw((D+1.1*d3)--(D+1.1*d2)--(C+1.1*d1)--(C+1.1*d4)--cycle,orange+0.05cm+dotted);
+            label("$v_1$",(A.x+d2.x-1,0),blue);
+            label("$w_1$",(B.x+d1.x+1,0),green);
+            label("$v_2$",(0,A.y+d2.y+1),red);
+            label("$w_2$",(0,D.y+d3.y-1),orange);
+            dot("$A$",A,N);
+            dot("$B$",B,N);
+            dot("$C$",C,S);
+            dot("$D$",D,S);
+            draw(A--D,blue);
+            draw(B--C,green);
+            draw(A--C);
+            draw(B--D);
+            draw(C--D,orange);
+            draw(A--B,red);
+        \end{asy}
+    \end{center}
+    $XY$ represents all edges between vertices in $X$ and $Y$. $A$ represents all edges within the vertex set defined by $v_1\cap v_2$. Note that \[B_1=AB\cup CD\cup AC\cup DB\] and \[B_2=AD\cup BC\cup AC\cup BD,\] so the symmetric difference of $B_1$ and $B_2$ is simply \[AB\cup BC\cup CD\cup DA,\] which is a minimal edge cut that yields partitions \[z_1=(v_1\cap v_2)\cup(w_1\cap w_2)\] and \[z_2=(v_2\cap w_1)\cup(v_1\cap w_2).\]
+    \item Let $s_i$ be the star at vertex $v_i$. Select $n-1$ stars, WLOG $s_1$ through $s_{n-1}$. Clearly, any $s_i\in\mathcal{B}$, with vertex partitions $v_i$ and the non-$v_i$ vertices.
     
-    Let $s_v$ be the star at vertex $v$. All $s_i$ are evidently in $\mathcal{B}$, and if we have a minimal edge-cut $b$ between $v_{i_1},\dots,v_{i_k}$ and $v_{j_1},\dots,v_{j_l}$, then note that $b=\sum_{c=1}^k s_{v_{i_c}}$, remembering that we are over $\FF_2$. (Another consequence of working over this field is that the sum is identical to $\sum_{c=1}^ls_{v_{j_c}}$.) We now need only write $s_1+s_2+\cdots+s_{n-1}=s_n$, which we can do by edge-counting: for an edge between $v_n$ and $v_m$, $s_m$ includes this edge, and no other $s_i$ does. Thus, the edge's coordinate remains nonzero in the partial sum of the $s_i$. Similarly, for an edge between $v_m$ and $v_o$ with $m,o\neq n$, $s_m$ and $s_o$ both include this edge, so it is not included in the partial sum. Thus, the only remaining edges in the partial sum are those connected to $v_n$, whence the sum is $s_n$, so we can write the $n$th star as a sum of the others. A quick examination of the $n-1$ other stars shows that they are linearly independent, by consider the coordinate representing an edge between $v_i$ and $v_n$: it is nonzero only in $s_i$, so if $\sum_{i}a_is_i=0$, all $a_i=0$.
-
+    To show that the $n-1$ stars are linearly independent, we show that if $\sum_{i=1}^{n-1}a_is_i=0$, then all $a_i=0$. We can do this by considering an edge $v_nv_i$, which is nonzero only in $s_n$ and $s_i$, so $a_i=0$ for all $a_i$.
+    
+    Note that $s_1+s_2+\cdots+s_n=0$, since an edge from $v_i$ to $v_j$ is represented once in $s_i$ and $s_j$, and we are over $\F_2$. Thus, $s_n=s_1+\cdots+s_{n-1}$.
+    
+    Consider a bond $b\in\mathcal{B}$ that separates the vertices into $v_{a_k}$ and $v_{b_k}$ where $a_k$ and $b_k$ are disjoint and union to $1,\dots,n$. Then we may write \[b=\sum_k s_{a_k},\] and this representation is unique over $\F_2$. Thus, $\mathcal{B}=\text{Row}(M(G))$ and $\dim(\mathcal{B})=n-1$.
+    
     The star for vertex $k$ represents the transpose of the $k$th row of $M(G)$, so $\mathcal{B}(G)=\text{Row}(M(G))$. The dimension of $\mathcal{B}$ is the number of linearly independent stars (elements in the basis), which is $n-1$.
 
+    \item The fundamental cycles are linearly independent and form a basis by a similar argument to that of the bonds: an edge $e$ not on $T$ is included only in the fundamental cycle generated by itself.
+
+    Take some $c\in\mathcal{C}$ and $b\in\mathcal{B}$. The bond represented by $b$ splits, by definition, the graph $G$ into two partitions. If $b$ and $c$ share some edges, they must share an even number of edges, by the minimality of $b$. If $b$ and $c$ shared an odd number of edges, there would be some edge we could remove and still have an edge cut. For example, adding one edge on the cycle to the bond still leaves the vertices along the cycle connected. Thus, $c$ and $b$ both have ones only in an even number of coordinates, whence $c\cdot b=0$, and thereby every cycle $c$ is orthogonal to every bond $b$. Therefore, $\mathcal{C}(G)=(\mathcal{B}(G))^{\perp}$, as desired.
+    
+    Then, $\mathcal{C}(G)=(\mathrm{Row}(M(G)))^{\perp}=\mathrm{Nul}(M(G))$. The dimension theorem gives $\dim\mathcal{C}=m-\dim\mathcal{B}=m-n+1$.
+
+    \item \begin{enumerate}[(a)]
+        \item $\vec j\in\mathcal{B}$ means that the set of all edges is a minimal cut. If we consider the vertex partitions $v,v'$ cut by $\vec j$, it is clear that there are no edges within $v$ nor edges within $v'$, so $G$ is bipartite. The opposite direction is obvious. Therefore, it suffices to show that $\vec j\in\mathcal{B}$ if and only if every circuit is of even length.
+        
+        If $\vec j\in\mathcal{B}$, by the orthogonality of $\mathcal{C}$ and $\mathcal{B}$, $\vec j\cdot c=0$ for all $c\in\mathcal{C}$. Since we are working over $\F_2$, this means that $c$ has an even number of ones, so all circuits are of even length.
+
+        If all circuits are of even length, an identical argument gives $\vec j\cdot c=0$ for all $c\in\mathcal{C}$, so $\vec j\in\mathcal{B}$.
+        \item By the orthogonality of $\mathcal{C}$ and $\mathcal{B}$, we can partition any graph $G$'s edge set into a cycle and an edge-cut. Cycles are even graphs, so we can partition $E(G)$ into an even graph and an edge-cut.
+        \item It suffices to show that for such a partition into a cycle and an edge-cut, for any vertex $v$ in the edge cut, the intersection between the neighborhood of $v$ and the cycle is odd. This is clear, as the edge cut separates the graph into two partitions, and the cycle is a cycle, so the intersection is odd.
+        
+        However, it is unclear whether/how we can make the jumps between reasoning with edges and vertices.
+    \end{enumerate}
+    \end{enumerate}
     
 \end{proof}
 \end{document}
