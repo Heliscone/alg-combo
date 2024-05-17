@@ -1,0 +1,26 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[lightbagel]{evan}
+
+\title{Algebraic Combinatorics: HW9}
+\author{Dallin/Evan}
+\date{5/17/2024}
+\begin{document}
+\maketitle
+\begin{quest}[\textcolor{red}{Testing for Database consistency}] 
+    Two friends \textbf{Dallin} and \textbf{Evan} separately maintain copies of a large database of information. Every week they must compare their databases for consistency. Since transmission is expensive, they would like to find if there is any inconsistency between their databases by sending very little amount of information. Let their full databases be represented as the following $\{0,1\}$-vectors: 
+    \[\text{Dallin: } (a_0,a_1,\cdots, a_{n-1})\]
+    \[\text{Evan: } (b_0,b_1,\cdots, b_{n-1})\]
+    Design a randomized strategy that detects an inconsistency with high probability \big(say $\ge 1-\frac{1}{n}$\big) while transmitting only $O(\log n)$ bits.
+\end{quest}
+\begin{solution}
+    Define the degree-$n$ polynomials $A$ and $B$ with terms $a_ix^i$ and $b_ix^i$, respectively. For random testing, we let $S$ be a set of $m$ random elements from $\mathbb{R}$ such that $m \geq n^2$. We proceed by the folowing algorithm:
+
+    \begin{enumerate}
+        \item Dallin and Evan agree upon an $r \in S$ and transmit this value to each other.
+        \item Dallin evaluates $A(r) \pmod{2^{\log n}}$ and transmits this value to Evan. Taking the output $\pmod{2^{\log n}}$ ensures that the output is no more than $\log n$ bits while still being able to detect inconsistencies.
+        \item Evan similarly evaluates $B(r)\pmod{2^{\log n}}$ and transmits this value to Dallin.
+        \item Evan and Dallin have effectively evaluated $P(x)=A(x)-B(x)$ at $x=r$.
+    \end{enumerate}
+    If $P(r) \neq 0$, the databases are inconsistent. Otherwise, by the Schwartz-Zippel lemma, the databases are consistent with a probability at most $ \frac{n}{|S|}$ and are thus inconsistent with a probability $\ge 1 - \frac{n}{m}\geq 1-\frac{1}{n}$.
+\end{solution}
+\end{document}
